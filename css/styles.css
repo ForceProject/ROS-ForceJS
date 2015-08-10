@@ -141,7 +141,7 @@ h1,h2,h3,h4 {
 
 /* Media Queries */
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
 
   .landing {
   padding-left: -50px;
