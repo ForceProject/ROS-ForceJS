@@ -1,0 +1,35 @@
+/*FONTS*/
+@font-face {
+    font-family: 'pantonblack_caps';
+    src: url('../fonts/panton-blackcaps-webfont.eot');
+    src: url('../fonts/panton-blackcaps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/panton-blackcaps-webfont.woff2') format('woff2'),
+         url('../fonts/panton-blackcaps-webfont.woff') format('woff'),
+         url('../fonts/fonts/panton-blackcaps-webfont.ttf') format('truetype'),
+         url('../fonts/panton-blackcaps-webfont.svg#pantonblack_caps') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'pantonlight_caps';
+    src: url('../fonts/panton-lightcaps-webfont.eot');
+    src: url('../fonts/panton-lightcaps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/panton-lightcaps-webfont.woff2') format('woff2'),
+         url('../fonts/panton-lightcaps-webfont.woff') format('woff'),
+         url('../fonts/panton-lightcaps-webfont.ttf') format('truetype'),
+         url('../fonts/panton-lightcaps-webfont.svg#pantonlight_caps') format('svg');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+}
+
+h1,h2,h3,h4 {
+  font-family: "pantonblack_caps";
+}
