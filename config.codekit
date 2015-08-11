@@ -119,6 +119,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/images\/background-placeholder.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 96108,
+		"inputAbbreviatedPath": "\/images\/background-placeholder.jpg",
+		"outputAbbreviatedPath": "\/images\/background-placeholder.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/background.jpg": {
 		"fileType": 16384,
 		"ignore": 0,

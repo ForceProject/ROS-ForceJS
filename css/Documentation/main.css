@@ -1,14 +1,26 @@
 /* Import Fonts */
-@import url("fonts.css");
-
+@import url("../fonts.css");
+.vcenter {
+  vertical-align: middle;
+  float:none;
+  display:inline-block;
+}
 /* Extra small devices (phones, less than 768px) */
+.nav-wrapper {
+  margin-bottom: 0;
+}
+.header {
+  height: 450px;
+  width: 100%;
 
+  background-image: url("../../images/background-placeholder.jpg");
+  background-position: center;
+  background-size: cover;
+}
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) {  }
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) {  }
-
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) {  }
+.header .header-text {
+  margin: 200px auto;
+    font-family: 'pantonblack_caps';
+    text-align: center;
+    color: inherit;
+}
