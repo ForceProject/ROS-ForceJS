@@ -2,12 +2,30 @@
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
+	margin-top: 25px;
+	margin-bottom: 50px;
+	background: none;
 }
 
 h1,h2,h3,h4 {
   font-family: "pantonblack_caps";
 }
 
+.full {
+  background: url("../images/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.container #img {
+	background: url("../images/iphone6force_home.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 /* Media Queries */
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 768px) {
