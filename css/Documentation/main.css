@@ -1,6 +1,7 @@
 /* Import Fonts */
 @import url("../fonts.css");
 
+
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
 .nav-wrapper {
@@ -23,6 +24,7 @@
     color: inherit;
 }
 
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
 .header {
@@ -39,6 +41,30 @@
     font-family: 'pantonblack_caps';
     text-align: center;
     color: inherit;
+}
+
+.link-header {
+  text-align: center;
+  font-family: 'pantonlight_caps';
+}
+.docu-links {
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.docu-links .thumbnail {
+  background-color: #f5f5f5;
+}
+
+.docu-links .logo {
+  max-width: 30%;
+  height:auto;
+}
+
+.docu-links .row .btn {
+    font-family: 'open_sansregular';
+}
+
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: @screen-md-min) { ... }

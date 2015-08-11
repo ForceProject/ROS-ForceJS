@@ -185,6 +185,39 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 1
 		},
+	"\/images\/logos\/apple.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 9355,
+		"inputAbbreviatedPath": "\/images\/logos\/apple.png",
+		"outputAbbreviatedPath": "\/images\/logos\/apple.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/logos\/java.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 6415,
+		"inputAbbreviatedPath": "\/images\/logos\/java.png",
+		"outputAbbreviatedPath": "\/images\/logos\/java.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/logos\/python.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3272,
+		"inputAbbreviatedPath": "\/images\/logos\/python.png",
+		"outputAbbreviatedPath": "\/images\/logos\/python.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/index.html": {
 		"fileType": 8192,
 		"ignore": 0,
