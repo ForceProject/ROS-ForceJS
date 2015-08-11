@@ -1,136 +1,5 @@
-/*FONTS*/
-@font-face {
-    font-family: 'pantonblack_caps';
-    src: url('../fonts/panton-blackcaps-webfont.eot');
-    src: url('../fonts/panton-blackcaps-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/panton-blackcaps-webfont.woff2') format('woff2'),
-         url('../fonts/panton-blackcaps-webfont.woff') format('woff'),
-         url('../fonts/fonts/panton-blackcaps-webfont.ttf') format('truetype'),
-         url('../fonts/panton-blackcaps-webfont.svg#pantonblack_caps') format('svg');
-    font-weight: bold;
-    font-style: normal;
+@import url("fonts.css");
 
-}
-@font-face {
-    font-family: 'pantonlight_caps';
-    src: url('../fonts/panton-lightcaps-webfont.eot');
-    src: url('../fonts/panton-lightcaps-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/panton-lightcaps-webfont.woff2') format('woff2'),
-         url('../fonts/panton-lightcaps-webfont.woff') format('woff'),
-         url('../fonts/panton-lightcaps-webfont.ttf') format('truetype'),
-         url('../fonts/panton-lightcaps-webfont.svg#pantonlight_caps') format('svg');
-    font-weight: lighter;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'open_sansbold';
-    src: url('../fonts/opensans-bold-webfont.eot');
-    src: url('../fonts/opensans-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-bold-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-bold-webfont.woff') format('woff'),
-         url('../fonts/opensans-bold-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-bold-webfont.svg#open_sansbold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'open_sansbold_italic';
-    src: url('../fonts/opensans-bolditalic-webfont.eot');
-    src: url('../fonts/opensans-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-bolditalic-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-bolditalic-webfont.woff') format('woff'),
-         url('../fonts/opensans-bolditalic-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-bolditalic-webfont.svg#open_sansbold_italic') format('svg');
-    font-weight: bold;
-    font-style: italic;
-
-}
-@font-face {
-    font-family: 'open_sansextrabold';
-    src: url('../fonts/opensans-extrabold-webfont.eot');
-    src: url('../fonts/opensans-extrabold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-extrabold-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-extrabold-webfont.woff') format('woff'),
-         url('../fonts/opensans-extrabold-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-extrabold-webfont.svg#open_sansextrabold') format('svg');
-    font-weight: 800;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'open_sansextrabold_italic';
-    src: url('../fonts/opensans-extrabolditalic-webfont.eot');
-    src: url('../fonts/opensans-extrabolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-extrabolditalic-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-extrabolditalic-webfont.woff') format('woff'),
-         url('../fonts/opensans-extrabolditalic-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-extrabolditalic-webfont.svg#open_sansextrabold_italic') format('svg');
-    font-weight: 800;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'open_sansitalic';
-    src: url('../fonts/opensans-italic-webfont.eot');
-    src: url('../fonts/opensans-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-italic-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-italic-webfont.woff') format('woff'),
-         url('../fonts/opensans-italic-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-italic-webfont.svg#open_sansitalic') format('svg');
-    font-weight: normal;
-    font-style: italic;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'open_sanslight';
-    src: url('../fonts/opensans-light-webfont.eot');
-    src: url('../fonts/opensans-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-light-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-light-webfont.woff') format('woff'),
-         url('../fonts/opensans-light-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-light-webfont.svg#open_sanslight') format('svg');
-    font-weight: lighter;
-    font-style: normal;
-
-}
-
-
-
-
-@font-face {
-    font-family: 'open_sanslight_italic';
-    src: url('../fonts/opensans-lightitalic-webfont.eot');
-    src: url('../fonts/opensans-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-lightitalic-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-lightitalic-webfont.woff') format('woff'),
-         url('../fonts/opensans-lightitalic-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-lightitalic-webfont.svg#open_sanslight_italic') format('svg');
-    font-weight: lighter;
-    font-style: italic;
-
-}
-
-@font-face {
-    font-family: 'open_sansregular';
-    src: url('../fonts/opensans-regular-webfont.eot');
-    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
-         url('../fonts/opensans-regular-webfont.woff') format('woff'),
-         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
-         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
 }
@@ -142,12 +11,6 @@ h1,h2,h3,h4 {
 /* Media Queries */
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 768px) {
-
-  .landing {
-  padding-left: -50px;
-  }
-
-
   .landing .title h1{
     font-size: 6em;
     text-align: center;
@@ -155,48 +18,59 @@ h1,h2,h3,h4 {
   }
 
   .landing .title p{
-    font-size: 1.5em;
+    font-size: 1em;
     margin-bottom: 50px;
     text-align: justify;
     font-family: 'open_sansregular';
   }
 
-  .landing .title #version{
-    margin-top: 15px;
-
-    text-align: center;
-
-      font-family: 'open_sanslight';
-      font-style: italic;
-      font-size: 1.2em;
-      color: white;
-  }
-
-  .landing .title .itunesLink .spacer {
-    margin-left:20px;
-    margin-right: 20px;
-    display: inline;
-  }
-  .landing .title .itunesLink {
-    padding: 30px 100px 30px;
-    border: solid white 3px;
-    background-color: transparent;
-
-    color: white;
-    font-weight: 400;
-    font-size: 2em;
-    font-family: 'pantonlight_caps';
-  }
 
   .landing .title .phone {
-    margin:0 auto;
-    height:700px;
+    margin: 40px auto;
+    display: block;
+    height:80vh;
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     background-origin: content-box;
     background-image:url("../images/iphone6force_home.png");
   }
+
+  .landing .title .itunesLink {
+    width: 70%;
+    height: 3em;
+    border: solid white 3px;
+    border-radius: 5px;
+
+    background-color: transparent;
+
+    color: white;
+    font-weight: 400;
+    font-size: 1.5em;
+    font-family: 'pantonlight_caps';
+  }
+
+  .landing .title .itunesLink:hover {
+
+    border: solid #5bace6 3px;
+    background-color: white;
+    color: #5bace6
+  }
+
+  .landing .title #version{
+    margin-top: 15px;
+    text-align: center;
+
+      font-family: 'open_sanslight';
+      font-style: italic;
+      font-weight: 100;
+      font-size: 1.2em;
+      color: white;
+  }
+
+    .landing .title .icon {
+      display:none;
+    }
 
 }
 
@@ -209,11 +83,32 @@ h1,h2,h3,h4 {
 
   .landing .title p{
     font-size: 0.9em;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     padding-left: 10px;
     padding-right: 10px;
     text-align: justify;
     font-family: 'open_sansregular';
+  }
+
+  .landing .title .icon {
+    height: auto;
+    width: 30%;
+    display:block;
+    margin: 0 auto 25px;
+  }
+
+
+  .landing .title .itunesLink {
+    margin-top: 10px;
+    height: 50%;
+    width:70%;
+    border: solid white 3px;
+    background-color: transparent;
+
+    color: white;
+    font-weight: 400;
+    font-size: 1.25em;
+    font-family: 'pantonlight_caps';
   }
 
   .landing .title #version{
@@ -227,19 +122,7 @@ h1,h2,h3,h4 {
       color: white;
   }
 
-  .landing .title .itunesLink .spacer {
-    margin-left:20px;
-    margin-right: 20px;
-    display: inline;
-  }
-  .landing .title .itunesLink {
-    padding: 30px 50px 30px;
-    border: solid white 3px;
-    background-color: transparent;
-
-    color: white;
-    font-weight: 400;
-    font-size: 1.25em;
-    font-family: 'pantonlight_caps';
+  .landing .title .phone {
+    display:none;
   }
 }
