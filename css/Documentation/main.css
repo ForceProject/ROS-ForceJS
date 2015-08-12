@@ -46,10 +46,12 @@
 .link-header {
   text-align: center;
   font-family: 'pantonlight_caps';
+  margin-bottom:20px;
 }
+
 .docu-links {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .docu-links .thumbnail {
@@ -59,10 +61,12 @@
 .docu-links .logo {
   max-width: 30%;
   height:auto;
+  margin-top:30px;
 }
 
 .docu-links .row .btn {
     font-family: 'open_sansregular';
+    display:
 }
 
 }
