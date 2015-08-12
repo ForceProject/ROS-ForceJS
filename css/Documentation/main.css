@@ -10,7 +10,7 @@
 
 .header {
   height: 25vh;
-  width: 100%;
+  width:100;
 
   background-image: url("../../images/background-placeholder.jpg");
   background-position: center;
@@ -24,6 +24,31 @@
     color: inherit;
 }
 
+.docu-links {
+  padding-left: 50px;
+  padding-right: 50px;
+  height:94vh;
+}
+
+.docu-links .link-header {
+  text-align: center;
+  font-family: 'pantonlight_caps';
+}
+
+.docu-links .thumbnail {
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.docu-links .logo {
+  max-width: 30%;
+  height:auto;
+  margin-top:30px;
+}
+
+.docu-links .row .btn {
+    font-family: 'open_sansregular';
+}
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
@@ -46,12 +71,12 @@
 .link-header {
   text-align: center;
   font-family: 'pantonlight_caps';
-  margin-bottom:20px;
 }
 
 .docu-links {
   padding-left: 200px;
   padding-right: 200px;
+  height:94vh;
 }
 
 .docu-links .thumbnail {
@@ -66,7 +91,6 @@
 
 .docu-links .row .btn {
     font-family: 'open_sansregular';
-    display:
 }
 
 }
