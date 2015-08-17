@@ -1,6 +1,10 @@
 /* Import Fonts */
 @import url("../fonts.css");
 
+.nav-wrapper .navbar-header .navbar-brand {
+  display:inline;
+  max-height: 10%;
+}
 
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
@@ -24,6 +28,9 @@
     color: inherit;
 }
 
+.navbar-brand img {
+  width:5%;
+}
 .docu-links {
   padding-left: 50px;
   padding-right: 50px;

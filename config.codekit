@@ -68,7 +68,7 @@
 	"\/css\/Documentation\/main.css": {
 		"fileType": 16,
 		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/css\/Documentation\/main.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
