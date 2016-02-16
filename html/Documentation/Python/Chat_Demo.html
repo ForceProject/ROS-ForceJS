@@ -102,37 +102,6 @@
                             <p>The Python Force Server is designed to be run on almost any computer with networking capabilities.</p>
                         </div>
                         <div class="col-lg-12">
-                            <h2>Initialise the Server</h2>
-                            <p>
-                                Initialise the Server class with the code below to prepare it before starting:<br/>
-                            </p>
-                            <h4>Function Declaration</h4>
-                            <pre class="brush: python;">
-def __init__(self, _port, _delegate, _maxClients):
-                           </pre>
-                            <h4>Function Usage</h4>
-                            <pre class="brush: python;">
-self.&lt;Instance Name of Force Server&gt; = ForceServer(5555, self, 5)
-                           </pre>
-                        </div>
-                        <div class="col-lg-12">
-                            <h2>Start the Server</h2>
-                            <p>
-                                Now to start the server, after calling this function, your devices should be able to connect to the server:<br/>
-                            </p>
-                            <h4>Function Declaration</h4>
-                            <pre class="brush: python;">
-def startServer(self):
-                           </pre>
-                            <h4>Function Usage</h4>
-                            <pre class="brush: python;">
-self.&lt;Instance Name of Force Server&gt;.startServer()
-                           </pre>
-                            <h5>
-                                Note that code after this <b>will not</b> be executed, which is why it is best practice to put this at the end of the initialisation of your script's class.
-                            </h5>
-                        </div>
-                        <div class="col-lg-12">
                             <h2>Sending Data</h2>
                             <p>
                                 Data can be sent from your script to your client(s) very easily. Do this by calling a function built into ForceServer like below:<br/>
@@ -148,9 +117,9 @@ self.&lt;Instance Name of Force Server&gt;.sendMessage("Device Name", "Target Ti
 # To all devices
 self.&lt;Instance Name of Force Server&gt;.sendMessage(None, "Target Tile Tag", &lt;Data&gt;)
                            </pre>
-                            <h5>
+                            <p>
                                 Note that <b>&lt;Data&gt;</b> can be any data type, the data type should correspond to the data type of the tile you are sending data to.
-                            </h5>
+                            </p>
                         </div>
                         <div class="col-lg-12">
                             <h2>Image -> String</h2>

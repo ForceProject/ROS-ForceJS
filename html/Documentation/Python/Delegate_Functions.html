@@ -73,40 +73,43 @@
 
     <div id="wrapper">
 
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="#">
-                    Python Force Server
-                </a>
-            </li>
-            <li>
-                <a href="#">Overview and Installation</a>
-            </li>
-            <li>
-                <a href="#">Template</a>
-            </li>
-            <li>
-                <a href="#">Delegate Functions</a>
-            </li>
-            <li>
-                <a href="#">Built-In Functions</a>
-            </li>
-            <li>
-                <a href="#">Chat-Demo</a>
-            </li>
-            <li>
-                <a href="#">Known Issues</a>
-            </li>
-        </ul>
-    </div>
-    <!-- /#sidebar-wrapper -->
+<!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="Overview.html">
+                        Python Force Server
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Overview.html">Overview and Installation</a>
+                    </li>
+                    <li>
+                        <a href="Template.html">Template</a>
+                    </li>
+                    <li>
+                        <a href="Delegate_Functions.html">Delegate Functions</a>
+                    </li>
+                    <li>
+                        <a href="Built-In_Functions.html">Built-In Functions</a>
+                    </li>
+                    <li>
+                        <a href="Chat_Demo.html">Chat-Demo</a>
+                    </li>
+                    <li>
+                        <a href="Known_Issues.html">Known Issues</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <div class="row">
+              <div class="col-lg-12">
+               <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                </div>
                 <div class="col-lg-12">
                     <h1>Delegate Functions</h1>
                     <p>There are six delegate functions that the you can subscribe to. All six are optional. However it is recommended that you at least subscribe to Server Received Data.</p>
@@ -117,8 +120,10 @@
                         Called when the server is initiated and will begin listening for incoming device connections immediately after the function is called. It will pass the host name of the server, e.g. <code>192.168.1.3</code>.<br/>
 Use this if you want to store the host name of the server or do something with it. You can also do some of your own setup or config here, but it is recommended you do that before you start the server.
                     </p>
+                    <h4>Function Usage</h4>
                     <pre class="brush: python;">
 def forceServerInitialised(self, hostName):
+    # Set up your variables, GPIO, etc and remove the pass below
     pass
                     </pre>
                 </div>
@@ -127,8 +132,10 @@ def forceServerInitialised(self, hostName):
                     <p>
                         This function is called when a full message is read from the pipe/socket. All values WILL have a value so None checks are not required. The main arguments passed are, the device name of the sending device, the tag of the tile that sent the data, and the data. Note that the server automatically converts all values to the data type they are suppose to be. For example if a switch with tag ‘toggle’ was tapped, the data would be either a <code>True</code> or <code>False</code> boolean object in Python.
                     </p>
+                    <h4>Function Usage</h4>
                     <pre class="brush: python;">
 def forceServerDidReceiveData(self, deviceName, senderTag, data):
+       # Handle the data received here and remove the pass below
         pass
                     </pre>
                 </div>
@@ -137,8 +144,10 @@ def forceServerDidReceiveData(self, deviceName, senderTag, data):
                     <p>
                         Did receive error is called when something wrong is sent from the server to the client, for example a tile with the tag you sent doesn’t exist, or doesn't accept input. It is up to you to do with the error as you wish. It is a simple string describing what went wrong.
                     </p>
+                    <h4>Function Usage</h4>
                     <pre class="brush: python;">
 def forceServerDidReceiveError(self, deviceName, errorMessage):
+       # Handle the error message here and remove the pass below
         pass
                     </pre>
                 </div>
@@ -147,8 +156,11 @@ def forceServerDidReceiveError(self, deviceName, errorMessage):
                     <p>
                         Called when a device connects to the server. It will pass you the device name. Do with it as you wish.  For example use it to manage clients if there are multiple. Note that the server has an internal dictionary with all of the client names and instances of the connection. You can find this by doing: <code>&lt;Instance of ForceServer&gt;.clients</code>.
                     </p>
+                    <h4>Function Usage</h4>
                     <pre class="brush: python;">
 def forceServerDeviceConnectedWithName(self, deviceName):
+       # Handle the device connection here and remove the pass below
+       # It will probably be helpful to keep track of all the device names as they connect.
         pass
                     </pre>
                 </div>
@@ -157,8 +169,11 @@ def forceServerDeviceConnectedWithName(self, deviceName):
                     <p>
                         Called when a device connects to the server. It will pass you the device name. Do with it as you wish.  For example use it to manage clients if there are multiple. Note that the server has an internal dictionary with all of the client names and instances of the connection. You can find this by doing: <code>&lt;Instance of ForceServer&gt;.clients</code>.
                     </p>
+                    <h4>Function Usage</h4>
                     <pre class="brush: python;">
 def forceServerDeviceDisconnectedWithName(self, deviceName):
+       # Handle the device disconnect here and remove the pass below
+       # It will probably be helpful to keep track of all the device names that disconnect.
         pass
                     </pre>
                 </div>
@@ -167,8 +182,11 @@ def forceServerDeviceDisconnectedWithName(self, deviceName):
                     <p>
                         Called when there is a keyboard interrupt, as the server is always listening for one. Do any cleaning up here. For example disabling the GPIO pins on a RaspberryPi and calling its cleanup function. By the time this is called, all clients would have been disconnected by the server, this is the very last step before the Python terminates this program.
                     </p>
+                    <h4>Function Usage</h4>
                     <pre class="brush: python;">
 def forceServerWillShutdown(self):
+       # The server will shutdown after this function has been called,
+       # do whatever that needs to be done here i.e. GPIO.cleanup() and remove the pass below
         pass
                     </pre>
                 </div>
@@ -181,7 +199,7 @@ def forceServerWillShutdown(self):
 <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../../../js/jquery.js"></script>
 
 
     <!-- Bootstrap Core JavaScript -->
@@ -191,5 +209,6 @@ def forceServerWillShutdown(self):
      SyntaxHighlighter.all()
     </script>
     <script src="../../../js/sidebar-stick.js"></script>
+    <script src="../../../js/sidebar-toggle.js"></script>
   </body>
 </html>

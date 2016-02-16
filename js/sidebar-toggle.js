@@ -1,7 +1,5 @@
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-    $("#menu-toggle").toggleClass("toggled");
     $("#sidebar-wrapper").css({
             top: $('header').height(),
     });
@@ -11,4 +9,6 @@ $("#menu-toggle").click(function(e) {
             "-o-transition": "all 0.5s ease",
             "transition": "all 0.5s ease"
     });
+    $("#wrapper").toggleClass("toggled");
+    $("#menu-toggle").toggleClass("toggled");
 });
