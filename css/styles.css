@@ -2,9 +2,9 @@
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-	margin-top: 25px;
-	margin-bottom: 50px;
-	background: none;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    background: none;
 }
 
 h1,h2,h3,h4 {
@@ -20,16 +20,17 @@ h1,h2,h3,h4 {
 }
 
 .container #img {
-	background: url("../images/iphone6force_home.png") no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+    background: url("../images/iphone6force_home.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /* Media Queries */
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 768px) {
+
   .landing .title h1{
     font-size: 6em;
     text-align: center;
@@ -94,6 +95,7 @@ h1,h2,h3,h4 {
 }
 
 @media (max-width: 768px) {
+
   .landing .title h1{
     font-size: 4em;
     text-align: center;
