@@ -126,10 +126,19 @@ def startServer(self):
                            </pre>
                             <h4>Function Usage</h4>
                             <pre class="brush: python;">
+# Single line start server function call
 self.&lt;Instance Name of Force Server&gt;.startServer()
+
+# Best practice for initialisation and starting the server
+# Within a class
+    def __init__(self):
+        self.&lt;Instance Name of Force Server&gt; = ForceServer(5555, self, 5)
+        self.&lt;Instance Name of Force Server&gt;.startServer()
+        # End of Init, do any other initialisation in the Force Server delegate callback
+        # Code after this, within this function will not be executed
                            </pre>
                             <h5>
-                                Note that code after this <b>will not</b> be executed, which is why it is best practice to put this at the end of the initialisation of your script's class.
+                                Note that code after this <b>will not</b> be executed, which is why it is best practice to put this at the end of the initialisation of your script's class. Like in the <a href="Template.html">template</a>, or shown above.
                             </h5>
                         </div>
                         <div class="col-lg-12">

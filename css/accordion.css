@@ -1,0 +1,169 @@
+/*
+*	Accordion
+*/
+.accordion {
+    list-style: none;
+    width: 250px;
+    margin: auto;
+    padding-left: 0;
+    padding-bottom: 10px;
+    float: left;
+}
+.accordion li {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+}
+.accordion .header {
+    width: 250px;
+    height: auto;
+    padding: 3px;
+    padding-left: 0;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+.accordion .header .head {
+    text-decoration: none;
+    padding: 3px;
+}
+.accordion .header a.arrow {
+    float: right;
+    margin: 0;
+    margin-top: -2px;
+    margin-right: 1%;
+    display: float;
+}
+
+.accordion .content {
+    display: none;
+    padding: 5px;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-left-width: 1px;
+    border-bottom-width: 1px;
+}
+.accordion .content p {
+    margin: 0;
+    float: left;
+}
+.accordion .content img {
+    float: left;
+    max-width: 40%;
+    max-height: 40%;
+    padding: 3px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 5px;
+}
+.accordion .content img.full {
+    float: none;
+    max-width: 90%;
+    max-height: 90%;
+    padding: 3px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 5px;
+}
+.accordion .content .youtube {
+    margin-left: 3px;
+    width: 24%;
+    height: 24%;
+}
+
+/*
+* Youtube
+*/
+.accordion .content .youtube1 {
+    width: 640px;
+    height: 360px;
+}
+.accordion .content .youtube2 {
+    margin: 0;
+    padding: 0;
+    margin-left: 3px;
+    list-style: none;
+}
+.accordion .content .youtube2 li {
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 320px;
+    height: 180px;
+    float: left;
+}
+.accordion .content .youtube2 li iframe {
+    width: 320px;
+    height: 180px;
+}
+.accordion .content .youtube3 {
+    margin: 0;
+    padding: 0;
+    margin-left: 3px;
+    list-style: none;
+}
+.accordion .content .youtube3 li {
+    margin: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: 224px;
+    height: 126px;
+    float: left;
+}
+.accordion .content .youtube3 li iframe {
+    width: 224px;
+    height: 126px;
+}
+
+/*
+* Article Accordion
+*/
+article ul.accordion div.header {
+    border-color: #ffffff;
+    background-color: #ff7a00;
+}
+article ul.accordion div.header:hover {
+    background-color: #df4a00;
+}
+article ul.accordion div.header .head {
+    color: #ffffff;
+}
+article ul.accordion div.header .arrow {
+    color: #ffffff;
+}
+article ul.accordion div.content {
+    border-color: #ffffff;
+}
+article ul.accordion div.content p {
+    color: #ffffff;
+}
+article ul.accordion div.content img {
+    border-color: #ffffff;
+}
+
+/*
+* Side Nav Accordion
+*/
+.sidebar-nav ul.accordion div.header {
+    border-color: #585858;
+    background-color: #f9f9f9;
+}
+.sidebar-nav ul.accordion div.header:hover {
+    background-color: #d0d0d0;
+}
+.sidebar-nav ul.accordion div.header .head {
+    color: #585858;
+}
+.sidebar-nav ul.accordion div.header .arrow {
+    color: #585858;
+}
+.sidebar-nav ul.accordion div.content {
+    border-color: #585858;
+}
+.sidebar-nav ul.accordion div.content p {
+    color: #585858;
+}
+.sidebar-nav ul.accordion div.content img {
+    border-color: #585858;
+}
