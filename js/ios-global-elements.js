@@ -1,56 +1,76 @@
 jQuery(function ($) {
     var head = $('head');
-    var links = $('\
-            <!-- FavIcon -->\
-            <link rel="icon" type="image/png" href="../src/img/sixteen-logo-48px-stroke.png">\
-            <!-- Fonts -->\
-            <!-- PT Sans -->\
-            <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600&subset=latin,latin-ext" rel="stylesheet" type="text/css">\
-            <!-- Crete Roung -->\
-            <link href="http://fonts.googleapis.com/css?family=Crete+Round&subset=latin,latin-ext" rel="stylesheet" type="text/css">\
-            <!-- CSS -->\
-            <link rel="stylesheet" href="../css/fonts.css" />\
-            <link rel="stylesheet" href="../css/header-&-footer.css" />\
-            <link rel="stylesheet" href="../css/headroom.css" />\
-            <link rel="stylesheet" href="../css/body.css" />\
-            ');
+    var links = $('');
     head.add(links).appendTo(head);
 
-    // Add Other Scripts
-    function appendScript(pathToScript) {
-        var head = document.getElementsByTagName("head")[0];
-        var js = document.createElement("script");
-        js.type = "text/javascript";
-        js.src = pathToScript;
-        head.appendChild(js);
-    }
-    appendScript("../js/jQuery.headroom.js");
-    appendScript("../js/headroom.js");
-    appendScript("../js/activate-headroom.js");
-    appendScript("../js/up.js")
-
-    var body = $('body');
-    var sideNav = $("<header class='headroom'>\
-                        <nav>\
-                            <div class='container'>\
-                                <a href='home.html' class='company'>\
-                                    <img src='../src/img/sixteen-logo-48px-stroke.png' class='logo'>\
-                                    <p>\
-                                        Jordan Lewis\
-                                    </p>\
-                                </a>\
-                                <ul class='mainMenu'>\
-                                    <li><a href='home.html' title='Home'>Home</a></li>\
-                                    <li><a href='ipo-model.html' title='Information on the Input Processing and Output Model'>IPO - Model</a></li>\
-                                    <li><a href='storage-&-processing.html' title='A run down on storage and a little bit on processing.'>Storage & Processing</a></li>\
-                                    <li><a href='anatomy-of-computer.html' title='The Anatomy of a Computer 101'>Anatomy of a Computer</a></li>\
-                                    <li><a href='maintenance.html' title='How to keep your computer healthy. Maintenance Tips.'>Computer Maintenance</a></li>\
-                                    <li><a href='gaming-vs-office.html' title='The difference in build of a gaming computer and an office computer.'>Gaming vs Office PC</a></li>\
-                                    <li><a href='franks-gaming-cafe.html' title='A run down on how Frank's Gaming Cafe is going to work.'>Frank's Gaming Cafe</a></li>\
-                                </ul>\
-                            </div>\
-                           </nav>\
-                       </header>");
+    var body = $('#sidebar-wrapper');
+    var sideNav = $('<ul class="sidebar-nav">\
+                    <li class="sidebar-brand">\
+                        <a href="#">\
+                        iOS Client\
+                        </a>\
+                    </li>\
+                    <li>\
+                        <a href="Overview.html">Overview</a>\
+                    </li>\
+                    <li>\
+                        <a href="Template.html">Getting Started</a>\
+                    </li>\
+                     <li>\
+                        <ul class="accordion">\
+                            <li>\
+                                <div class="acc-header">\
+                                    <a href="#" class="head" title="Click to expand.">Tile Documentation</a>\
+                                    <a href="#" class="arrow">↓</a>\
+                                </div>\
+                                <div class="content">\
+                                    <ul>\
+                                        <li>\
+                                            <a href="Delegate_Functions.html">Button</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Built-In_Functions.html">Textfield</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Label</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Joystick</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Text View</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Image View</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">MJPEG Stream View</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Switch</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Segmented Control</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Horizontal Slider</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Vertical Slider</a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="Chat_Demo.html">Progress Bar</a>\
+                                        </li>\
+                                    </ul>\
+                                </div>\
+                            </li>\
+                        </ul>\
+                         <p><br/></p>\
+                    </li>\
+                    <li>\
+                        <a href="Known_Issues.html">Known Issues</a>\
+                    </li>\
+                </ul>');
 
     body.add(sideNav).appendTo(body);
 });

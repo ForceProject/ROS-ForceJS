@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('.accordion .header').click(function (e) {
+    $('.accordion .acc-header').click(function (e) {
         e.preventDefault();
 
         // Anything Necessary

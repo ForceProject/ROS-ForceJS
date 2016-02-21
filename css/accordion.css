@@ -14,7 +14,7 @@
     margin-bottom: 2%;
     width: 100%;
 }
-.accordion .header {
+.accordion .acc-header {
     width: 250px;
     height: auto;
     padding: 3px;
@@ -24,16 +24,17 @@
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
-.accordion .header .head {
+.accordion .acc-header .head {
     text-decoration: none;
     padding: 3px;
+    display: inline;
 }
-.accordion .header a.arrow {
+.accordion .acc-header a.arrow {
     float: right;
     margin: 0;
     margin-top: -2px;
     margin-right: 1%;
-    display: float;
+    display: inline
 }
 
 .accordion .content {
@@ -48,6 +49,12 @@
     margin: 0;
     float: left;
 }
+
+.accordion .content ul {
+    list-style: none;
+    padding-left: 5px;
+}
+
 .accordion .content img {
     float: left;
     max-width: 40%;
@@ -73,97 +80,31 @@
 }
 
 /*
-* Youtube
-*/
-.accordion .content .youtube1 {
-    width: 640px;
-    height: 360px;
-}
-.accordion .content .youtube2 {
-    margin: 0;
-    padding: 0;
-    margin-left: 3px;
-    list-style: none;
-}
-.accordion .content .youtube2 li {
-    margin: 0;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    width: 320px;
-    height: 180px;
-    float: left;
-}
-.accordion .content .youtube2 li iframe {
-    width: 320px;
-    height: 180px;
-}
-.accordion .content .youtube3 {
-    margin: 0;
-    padding: 0;
-    margin-left: 3px;
-    list-style: none;
-}
-.accordion .content .youtube3 li {
-    margin: 0;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    width: 224px;
-    height: 126px;
-    float: left;
-}
-.accordion .content .youtube3 li iframe {
-    width: 224px;
-    height: 126px;
-}
-
-/*
-* Article Accordion
-*/
-article ul.accordion div.header {
-    border-color: #ffffff;
-    background-color: #ff7a00;
-}
-article ul.accordion div.header:hover {
-    background-color: #df4a00;
-}
-article ul.accordion div.header .head {
-    color: #ffffff;
-}
-article ul.accordion div.header .arrow {
-    color: #ffffff;
-}
-article ul.accordion div.content {
-    border-color: #ffffff;
-}
-article ul.accordion div.content p {
-    color: #ffffff;
-}
-article ul.accordion div.content img {
-    border-color: #ffffff;
-}
-
-/*
 * Side Nav Accordion
 */
-.sidebar-nav ul.accordion div.header {
+.sidebar-nav ul.accordion div.acc-header {
     border-color: #585858;
-    background-color: #f9f9f9;
+    background-color: #000000;
 }
-.sidebar-nav ul.accordion div.header:hover {
-    background-color: #d0d0d0;
+
+.sidebar-nav ul.accordion div.acc-header:hover {
+    background-color: rgba(51,51,51,1);
+    color: #fff;
 }
-.sidebar-nav ul.accordion div.header .head {
-    color: #585858;
+
+.sidebar-nav ul.accordion div.acc-header .head {
+    color: #999999;
 }
-.sidebar-nav ul.accordion div.header .arrow {
-    color: #585858;
+
+.sidebar-nav ul.accordion div.acc-header .arrow {
+    color: #999999;
 }
 .sidebar-nav ul.accordion div.content {
-    border-color: #585858;
+    border-color: rgba(255,255,255,0.2);
 }
 .sidebar-nav ul.accordion div.content p {
-    color: #585858;
+    color: rgba(255,255,255,0.2);
 }
 .sidebar-nav ul.accordion div.content img {
-    border-color: #585858;
+    border-color: rgba(255,255,255,0.2);
 }
