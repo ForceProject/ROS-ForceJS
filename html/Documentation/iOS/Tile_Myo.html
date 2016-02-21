@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="../../../../../favicon.ico">
+        <title>The Force Project | Documentation</title>
+        <!-- Bootstrap core CSS -->
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="../../../css/Documentation/main.css" rel="stylesheet">
+        <link href="../../../css/ios-documentation.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-default navbar-fixed-top nav-wrapper">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="Documentation.html">Documentation</a>
+                        </li>
+                        <li>
+                            <a href="Blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="Shop.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="Downloads.html">Downloads</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="container-fluid header">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-text">
+                    <h1>Documentation</h1>
+                </div>
+            </div>
+        </header>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                            <h1>Overview</h1>
+                            <p>This tile will allow you to easily interface with your Myo Armband made by Thalmic Labs.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Settings</h1>
+                            <h3>Tag</h3>
+            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Input</h1>
+                            <p>You can easily interact with the Myo by sending messages to this tile as follows.</p>
+                            <ul>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">"\\LOCK\\"</span> &rarr; Lock the attached Myo.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">"\\UNLOCK_TIMED\\"</span> &rarr; Unlock the attached Myo for a short period of time.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">"\\UNLOCK_HOLD\\"</span> &rarr; Unlock the attached Myo until a Lock command is received.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">"\\VIBRATE_SHORT\\"</span> &rarr; Short vibrate the attached Myo.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">"\\VIBRATE_MID\\"</span> &rarr; Medium vibrate the attached Myo.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">"\\VIBRATE_LONG\\"</span> &rarr; Long vibrate the attached Myo.</p></li>
+                            </ul>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                This is a simple demo where if a button is pressed down, it will call the function <code>buttonDown()</code> and when the button is released, it will call <code>buttonUp()</code>.
+                            </p>
+                            <pre class="brush: python;">
+                            def forceServerDidReceiveData(self, deviceName, senderTag, data):
+                                if senderTag == "Button":
+                                    if data == "\\\\BUTTON DOWN////":
+                                        self.buttonDown()
+                                    else:
+                                        self.buttonUp()
+                            </pre>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Output</h1>
+                            <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
+            <div class="datatypeSection">
+
+                <p>Myo Connected &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Connected"</p></li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Disconnected &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Disconnected"</p></li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Unsynced &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                    <ul class="collectiontype">
+                        <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                        <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Unsynced"</p></li>
+                    </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Locked &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Locked"</p></li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Unlocked &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Unlocked"</p></li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Gyroscope Event &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                    <ul class="collectiontype">
+                        <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                        <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "GyroscopeEvent"</p></li>
+                        <li><p><span class="key">"Data"</span> : <span class="datatype">Dictionary</span> &rarr; {</p>
+                            <ul class="collectiontype">
+                                <li><p><span class="key">"X"</span> : <span class="datatype">Float</span></p></li>
+                                <li><p><span class="key">"Y"</span> : <span class="datatype">Float</span></p></li>
+                                <li><p><span class="key">"Z"</span> : <span class="datatype">Float</span></p></li>
+                                <li><p><span class="key">"Magnitude"</span> : <span class="datatype">Float</span></p></li>
+                            </ul>
+                            <p>}</p>
+                        </li>
+                    </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Accelerometer Event &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "AccelerometerEvent"</p></li>
+                    <li><p><span class="key">"Data"</span> : <span class="datatype">Dictionary</span> &rarr; {</p>
+                        <ul class="collectiontype">
+                            <li><p><span class="key">"X"</span> : <span class="datatype">Float</span></p></li>
+                            <li><p><span class="key">"Y"</span> : <span class="datatype">Float</span></p></li>
+                            <li><p><span class="key">"Z"</span> : <span class="datatype">Float</span></p></li>
+                            <li><p><span class="key">"Magnitude"</span> : <span class="datatype">Float</span></p></li>
+                        </ul>
+                        <p>}</p>
+                    </li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Orientation Event &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "OrientationEvent"</p></li>
+                    <li><p><span class="key">"Data"</span> : <span class="datatype">Dictionary</span> &rarr; {</p>
+                        <ul class="collectiontype">
+                            <li><p><span class="key">"Roll"</span> : <span class="datatype">Float</span></p></li>
+                            <li><p><span class="key">"Pitch"</span> : <span class="datatype">Float</span></p></li>
+                            <li><p><span class="key">"Yaw"</span> : <span class="datatype">Float</span></p></li>
+                        </ul>
+                        <p>}</p>
+                    </li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Synced &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Synced"</p></li>
+                    <li><p><span class="key">"Data"</span> : <span class="datatype">Dictionary</span> &rarr; {</p>
+                        <ul class="collectiontype">
+                            <li><p><span class="key">"Arm"</span> : <span class="datatype">String</span> &rarr; "Right" | "Left"</p></li>
+                            <li><p><span class="key">"Direction"</span> : <span class="datatype">String</span> &rarr; "Towards Wrist" | "Towards Elbow"</p></li>
+                        </ul>
+                        <p>}</p>
+                    </li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo EMG Data &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "EMG"</p></li>
+                    <li><p><span class="key">"Data"</span> : <span class="datatype">Array</span> &rarr; [</p>
+                        <ul class="collectiontype">
+                            <li><p>[0] : <span class="datatype">Float</span></p></li>
+                            <li><p>[1] : <span class="datatype">Float</span></p></li>
+                            <li><p>[2] : <span class="datatype">Float</span></p></li>
+                            <li><p>[3] : <span class="datatype">Float</span></p></li>
+                            <li><p>[4] : <span class="datatype">Float</span></p></li>
+                            <li><p>[5] : <span class="datatype">Float</span></p></li>
+                            <li><p>[6] : <span class="datatype">Float</span></p></li>
+                            <li><p>[7] : <span class="datatype">Float</span></p></li>
+                        </ul>
+                        <p>]</p>
+                    </li>
+                </ul>
+                <p>}</p>
+
+                <br/>
+
+                <p>Myo Pose Event &rarr; <span class="datatype">Dictionary</span> &rarr; {</p>
+                <ul class="collectiontype">
+                    <li><p><span class="key">"Myo Name"</span> : <span class="datatype">String</span></p></li>
+                    <li><p><span class="key">"Event"</span> : <span class="datatype">String</span> &rarr; "Pose"</p></li>
+                    <li><p><span class="key">"Data"</span> : <span class="datatype">String</span> &rarr; "Unknown" | "Rest" | "Fist" | "Fingers Spread" | "Double Tap" | "Wave In" | "Wave Out"</p></li>
+                </ul>
+                <p>}</p>
+
+            </div>
+            <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                This is a simple demo where if a button is pressed down, it will call the function <code>buttonDown()</code> and when the button is released, it will call <code>buttonUp()</code>.
+                            </p>
+                            <pre class="brush: python;">
+                            def forceServerDidReceiveData(self, deviceName, senderTag, data):
+                                if senderTag == "Button":
+                                    if data == "\\\\BUTTON DOWN////":
+                                        self.buttonDown()
+                                    else:
+                                        self.buttonUp()
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="../../../js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/bootstrap.js"></script>
+        <script src="../../../js/ios-global-elements.js"></script>
+    </body>
+</html>

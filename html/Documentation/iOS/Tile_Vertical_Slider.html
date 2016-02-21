@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="../../../../../favicon.ico">
+        <title>The Force Project | Documentation</title>
+        <!-- Bootstrap core CSS -->
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="../../../css/Documentation/main.css" rel="stylesheet">
+        <link href="../../../css/ios-documentation.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-default navbar-fixed-top nav-wrapper">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="Documentation.html">Documentation</a>
+                        </li>
+                        <li>
+                            <a href="Blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="Shop.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="Downloads.html">Downloads</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <header class="container-fluid header">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-text">
+                    <h1>Documentation</h1>
+                </div>
+            </div>
+        </header>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                            <h1>Overview</h1>
+                            <p>This tile is good for getting values that change linearly.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Settings</h1>
+                            <h3>Tag</h3>
+                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
+                            <h3>Size</h3>
+                            <p>This modifies the size of the button as it appears on your screen. Its units of measurement is tiles. Since each tile that can have its size modified is aware of its surroundings, the numeric steppers used to adjust the tile size will stop you from overlapping with other tiles or going over the edge of the screen.</p>
+                            <h3>Send On</h3>
+                            <p>This modifies when the data is sent. <em>Value Changed</em> will send the current value as the user swipes along the slider and the current value does not equal the previous value. <em>Slider Released</em> will only send the current value when the user takes their finger off the slider tile.</p>
+                            <h3>Stepper Settings</h3>
+                            <p>This sets how the slider responds by setting a maximum, a minimum, and a step value for the stepper. Step value is the amount the value of the tile increments or decrements by when the user slides along the slider.<br/><span class="note">This may cause a snapping effect, where the slider knob jumps to a part in the slider that corresponds to the step value.<br/>Also note that each field does not have to be an integer.</span></p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Input</h1>
+                            <p>You can set the position of the slider by sending a number within the range set in the tile's settings.</p>
+                            <ul>
+                                <li><p><span class="datatype">Integer</span> &rarr; <span class="data">Integer within range set in tile's settings</span> &rarr; Set the slider value.</p></li>
+                                <li><p><span class="datatype">Float</span> &rarr; <span class="data">Float within range set in tile's settings</span> &rarr; Set the slider value.</p></li>
+                            </ul>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                This is a simple demo where the script set the value of the slider with the tag <code>speedSlider</code> to 0 when it first connects, as a default value.
+                            </p>
+                            <pre class="brush: python;">
+                            def forceServerDeviceConnectedWithName(self, deviceName):
+                                self.force.sendMessage(deviceName, "speedSlider", 0)
+                            </pre>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Output</h1>
+                            <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
+                            <ul>
+                                <li><p>Slider Value Changed &rarr; <span class="datatype">Integer</span> &rarr; <span class="data">An Integer between set range. <span class="note">OR</span></span></li>
+                                <li><p>Slider Value Changed &rarr; <span class="datatype">Float</span> &rarr; <span class="data">A Float between set range.</span></li>
+                                <li><p>Slider Released &rarr; <span class="datatype">Integer</span> &rarr; <span class="data">An Integer between set range. <span class="note">OR</span></span></li>
+                                <li><p>Slider Released &rarr; <span class="datatype">Float</span> &rarr; <span class="data">A Float between set range.</span></li>
+                            </ul>
+                            <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                This is a simple demo where the script will set the speed of the motors to the data sent by the slider.
+                            </p>
+                            <pre class="brush: python;">
+                            def forceServerDidReceiveData(self, deviceName, senderTag, data):
+                                if senderTag == "speedSlider":
+                                    self.setMotorSpeed(data)
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="../../../js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/bootstrap.js"></script>
+        <script src="../../../js/ios-global-elements.js"></script>
+    </body>
+</html>

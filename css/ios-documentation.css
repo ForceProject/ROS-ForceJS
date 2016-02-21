@@ -1,0 +1,60 @@
+body {
+    background: rgb(255,255,255);
+    margin:0;
+}
+
+#topbar {
+    width:100%;
+    min-height: 10%;
+    background: rgb(91,172,230);
+    text-align: center;
+
+}
+
+#topbar #title {
+    vertical-align: middle
+}
+
+#content p {
+    margin-top: 0;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+.datatype {
+    font-weight: bold;
+}
+
+.data {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.note {
+    font-style: italic;
+    font-weight: bold;
+}
+
+ul {
+    font-family: 'Open Sans';
+    list-style: square;
+}
+
+ul li p {
+    margin: 0;
+}
+
+.collectiontype {
+    list-style: none;
+    margin: 0;
+}
+.collectiontype li {
+    margin: 0;
+}
+.collectiontype .key {
+    font-style: italic;
+    /*text-decoration: underline;*/
+}
+
+.datatypeSection p {
+    margin: 0;
+}

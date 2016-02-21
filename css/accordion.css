@@ -39,6 +39,8 @@
 
 .accordion .content {
     display: none;
+    max-height: 50vh;
+    overflow-y: scroll;
     padding: 5px;
     border-left-style: solid;
     border-bottom-style: solid;
