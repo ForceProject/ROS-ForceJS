@@ -1,7 +1,26 @@
 jQuery(function ($) {
     var head = $('head');
-    var links = $('');
+
+    var links = $('\
+    <!-- Side Bar Template -->\
+    <link href="../../../css/simple-sidebar.css" rel="stylesheet">\
+    <!-- Accordion -->\
+    <link href="../../../css/accordion.css" rel="stylesheet">\
+            ');
+
     head.add(links).appendTo(head);
+
+    // Add Other Scripts
+    function appendScript(pathToScript) {
+        var head = document.getElementsByTagName("head")[0];
+        var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = pathToScript;
+        head.appendChild(js);
+    }
+    appendScript("../../../js/sidebar-stick.js");
+    appendScript("../../../js/sidebar-toggle.js");
+    appendScript("../../../js/accordion.js");
 
     var body = $('#sidebar-wrapper');
     var sideNav = $('<ul class="sidebar-nav">\
