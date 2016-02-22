@@ -5,10 +5,10 @@ $(document).ready(function () {
         // Declare Variables
         var datatypeSection = $(this).parent();
         var colContainer = datatypeSection.parent();
-        var codeDiv = datatypeSection.find('.code');
+        var codeDiv = datatypeSection.find('.hidden-code');
 
         // Open and Close
-        codeDiv.toggleClass('code-toggled');
+        codeDiv.toggleClass('hidden-code-toggled');
 
         // Read Classes
         var colContainerClasses = colContainer.attr('class');

@@ -128,7 +128,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -150,7 +150,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -172,7 +172,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -194,7 +194,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -216,7 +216,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -256,7 +256,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -294,7 +294,7 @@
                                         <br/>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -329,7 +329,7 @@
                                         <br/>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -381,7 +381,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -421,7 +421,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -446,7 +446,7 @@
                                         <p>}</p>
                                     </div>
                                     <a href="#" class="btn btn-default" id="toggle-python">Show Python</a>
-                                    <div class="code">
+                                    <div class="hidden-code">
                                         <pre class="brush: python;">
                                     def forceServerDidReceiveData(self, deviceName, senderTag, data):
                                     </pre>
@@ -460,12 +460,12 @@
                                     This is a simple demo where if a button is pressed down, it will call the function <code>buttonDown()</code> and when the button is released, it will call <code>buttonUp()</code>.
                                 </p>
                                 <pre class="brush: python;">
-                                def forceServerDidReceiveData(self, deviceName, senderTag, data):
-                                    if senderTag == "Button":
-                                        if data == "\\\\BUTTON DOWN////":
-                                            self.buttonDown()
-                                        else:
-                                            self.buttonUp()
+def forceServerDidReceiveData(self, deviceName, senderTag, data):
+    if senderTag == "Button":
+        if data == "\\\\BUTTON DOWN////":
+            self.buttonDown()
+        else:
+            self.buttonUp()
                                 </pre>
                             </div>
                         </div>

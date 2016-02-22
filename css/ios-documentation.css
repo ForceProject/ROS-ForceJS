@@ -71,11 +71,11 @@ ul li p {
     margin-bottom: 10px;
 }
 
-.code {
+.hidden-code {
     display: none;
 }
 
-.code-toggled {
+.hidden-code-toggled {
     display: inline;
 }
 
