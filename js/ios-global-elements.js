@@ -21,6 +21,7 @@ jQuery(function ($) {
         js.src = pathToScript;
         head.appendChild(js);
     }
+    appendScript("/js/global-elements.js");
     appendScript("/js/sidebar-stick.js");
     appendScript("/js/sidebar-toggle.js");
     appendScript("/js/accordion.js");
