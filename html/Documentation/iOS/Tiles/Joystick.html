@@ -15,6 +15,10 @@
         <!-- Custom styles for this template -->
         <link href="/css/Documentation/main.css" rel="stylesheet">
         <link href="/css/ios-documentation.css" rel="stylesheet">
+
+        <link href="/css/SyntaxHighlighter_3-0-83.0/shThemeDefault.css" rel="stylesheet">
+        <script type="text/javascript" src="/js/SyntaxHighlighter_3-0-83.0/shCore.js"></script>
+        <script type=text/javascript src="/js/SyntaxHighlighter_3-0-83.0/shBrushPython.js"></script>
     </head>
     <body>
         <header class="container-fluid header">
@@ -36,51 +40,40 @@
                         <div class="col-lg-12">
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                             <h1>Overview</h1>
-                            <p>The switch is a simple tile which is best used for on/off functions.</p>
+                            <p>
+                            This tile is great for use when controlling something that moves. It can be configured to send data in the form of radians or degrees.
+                            </p>
                         </div>
                         <div class="col-lg-12">
                             <h1>Settings</h1>
                             <h3>Tag</h3>
-                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
-                        </div>
-
-                        <div class="col-lg-12">
-                            <h1>Input</h1>
-                            <p>This tile accepts input so you can use the send message function built into the server to send a value to this tile. This tile only accepts <span class="datatype">Boolean</span>. If you send <span class="data">False</span>, the switch will set to OFF and vice versa.</p>
-                            <ul>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">True</span> &rarr; Set switch to ON.</p></li>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">False</span> &rarr; Set switch to OFF.</p></li>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">0</span> &rarr; Set switch to OFF.</p></li>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">1</span> &rarr; Set switch to ON.</p></li>
-                            </ul>
-                            <h3>Usage Demo</h3>
-                            <p>
-                                Set the switch to the <b>ON</b> state.
-                            </p>
-                            <pre class="brush: python;">
-                            self.force.sendMessage("Jordan's iPhone", "lightSwitch", True)
-                            </pre>
+                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/>
+                                <span class="note">Note that this is case sensitive, and cannot contain any white space.</span></p>
+                            <h3>Size</h3>
+                            <p>This modifies the size of the button as it appears on your screen. Its units of measurement is tiles. Since each tile that can have its size modified is aware of its surroundings, the numeric steppers used to adjust the tile size will stop you from overlapping with other tiles or going over the edge of the screen.</p>
+                            <h3>Return Value</h3>
+                            <p>Here you can set the tile to send values in the form of either <b>Radians</b> or <b>Degrees</b>.</p>
                         </div>
 
                         <div class="col-lg-12">
                             <h1>Output</h1>
-                            <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
+                            <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <span class="datatype">Data Type</span> &rarr; <span class="data">Value</span></p>
                             <ul>
-                                <li><p>Switch ON &rarr; <span class="datatype">Boolean</span> &rarr; <span class="data">True</span></li>
-                                <li><p>Switch OFF &rarr; <b>Boolean</b> &rarr; <em>False</em></p></li>
+                                <li><p>Joystick Moved &rarr; <span class="datatype">Float</span> &rarr; <span class="data">Angle value from top</span></p></li>
+                                <li><p>Joystick Released &rarr; <span class="datatype">Integer</span> &rarr; <span class="data">-999</span></p></li>
                             </ul>
                             <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
                             <h3>Usage Demo</h3>
                             <p>
-                                Toggle the state of lights according to the input from the switch tile.
+                                Calls a function which will handle the data sent in from the joystick tile. If the data is <code>-999</code>, then the joystick has been released, so the program will call another function to handle this.
                             </p>
                             <pre class="brush: python;">
                             def forceServerDidReceiveData(self, deviceName, senderTag, data):
-                                if senderTag == "lightSwitch":
-                                    if data:
-                                        self.lightsOn()
+                                if senderTag == "Joystick":
+                                    if data != -999:
+                                        self.handleJoystick(data)
                                     else:
-                                        self.lightsOff()
+                                        self.joystickReleased()
                             </pre>
                         </div>
                     </div>
