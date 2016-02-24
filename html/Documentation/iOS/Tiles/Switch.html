@@ -8,13 +8,13 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="icon" href="../../../../../favicon.ico">
+        <link rel="icon" href="/../../favicon.ico">
         <title>The Force Project | Documentation</title>
         <!-- Bootstrap core CSS -->
-        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
-        <link href="../../../css/Documentation/main.css" rel="stylesheet">
-        <link href="../../../css/ios-documentation.css" rel="stylesheet">
+        <link href="/css/Documentation/main.css" rel="stylesheet">
+        <link href="/css/ios-documentation.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-default navbar-fixed-top nav-wrapper">
@@ -65,44 +65,51 @@
                         <div class="col-lg-12">
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                             <h1>Overview</h1>
-                            <p>
-                            This tile should be used to show single line strings. It can be used for showing that status of a task, or to simply label other UI elements on the screen.
-                            </p>
+                            <p>The switch is a simple tile which is best used for on/off functions.</p>
                         </div>
                         <div class="col-lg-12">
                             <h1>Settings</h1>
                             <h3>Tag</h3>
-            <p>This is a <em>unique</em> <span class="datatype">String</span> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/>
-                <span class="note">Note that this is case sensitive, and cannot contain any white space.</span></p>
-            <h3>Size</h3>
-            <p>This modifies the size of the label as it appears on your screen. Its units of measurement is tiles. Since each tile that can have its size modified is aware of its surroundings, the numeric steppers used to adjust the tile size will stop you from overlapping with other tiles or going over the edge of the screen.</p>
-            <h3>Value / Title</h3>
-            <p>This will set the value of the label. Data sent to this tile will not override this setting.<br/>This is an <em>optional</em> field.</p>
-            <h3>Text</h3>
-            <p>Here you can set the appearance of the text on the tile. You can set the font, the font size, and the text alignment.</p>
-            <h4>Text Alignment</h4>
-            <ul>
-                <li><p>Centre</p></li>
-                <li><p>Justified</p></li>
-                <li><p>Left</p></li>
-                <li><p>Natural</p></li>
-                <li><p>Right</p></li>
-            </ul>
-            <p><span class="note">Note that the font you choose may affect the performance of the app as it may take longer to render.<br/>Also note that the font size of the tile will automatically be adjusted to fit within the label.</span></p>
+                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
                         </div>
+
                         <div class="col-lg-12">
                             <h1>Input</h1>
-                            <p>
-                            This tile accepts input in the form of a <span class="datatype">String</span>. You can also send numbers and the tile will automatically convert it to be a string.
-                            </p>
+                            <p>This tile accepts input so you can use the send message function built into the server to send a value to this tile. This tile only accepts <span class="datatype">Boolean</span>. If you send <span class="data">False</span>, the switch will set to OFF and vice versa.</p>
+                            <ul>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">True</span> &rarr; Set switch to ON.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">False</span> &rarr; Set switch to OFF.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">0</span> &rarr; Set switch to OFF.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">1</span> &rarr; Set switch to ON.</p></li>
+                            </ul>
                             <h3>Usage Demo</h3>
                             <p>
-                                This is a simple demo where the script will make a label called <code>countDownLabel</code>'s value count down from 10.
+                                Set the switch to the <b>ON</b> state.
                             </p>
                             <pre class="brush: python;">
-                            for i in range(0,10):
-                                self.force.sendMessage("Jordan's iPhone", "countDownLabel", str(10 - i))
-                                sleep(1)
+                            self.force.sendMessage("Jordan's iPhone", "lightSwitch", True)
+                            </pre>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h1>Output</h1>
+                            <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
+                            <ul>
+                                <li><p>Switch ON &rarr; <span class="datatype">Boolean</span> &rarr; <span class="data">True</span></li>
+                                <li><p>Switch OFF &rarr; <b>Boolean</b> &rarr; <em>False</em></p></li>
+                            </ul>
+                            <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                Toggle the state of lights according to the input from the switch tile.
+                            </p>
+                            <pre class="brush: python;">
+                            def forceServerDidReceiveData(self, deviceName, senderTag, data):
+                                if senderTag == "lightSwitch":
+                                    if data:
+                                        self.lightsOn()
+                                    else:
+                                        self.lightsOff()
                             </pre>
                         </div>
                     </div>
@@ -112,10 +119,10 @@
         </div>
         <!-- /#wrapper -->
         <!-- jQuery -->
-        <script src="../../../js/jquery.js"></script>
+        <script src="/js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
-        <script src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/bootstrap.js"></script>
-        <script src="../../../js/ios-global-elements.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/ios-global-elements.js"></script>
     </body>
 </html>

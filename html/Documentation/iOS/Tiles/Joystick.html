@@ -8,13 +8,13 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="icon" href="../../../../../favicon.ico">
+        <link rel="icon" href="/../../favicon.ico">
         <title>The Force Project | Documentation</title>
         <!-- Bootstrap core CSS -->
-        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom styles for this template -->
-        <link href="../../../css/Documentation/main.css" rel="stylesheet">
-        <link href="../../../css/ios-documentation.css" rel="stylesheet">
+        <link href="/css/Documentation/main.css" rel="stylesheet">
+        <link href="/css/ios-documentation.css" rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-default navbar-fixed-top nav-wrapper">
@@ -65,58 +65,51 @@
                         <div class="col-lg-12">
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                             <h1>Overview</h1>
-                            <p>
-                                The Button is a versatile tile, which can be used to know when the button is pressed (down), when it is let go (up), and can send text from other tiles on the screen such as the Textfield or the TextBox. This inter-tile interactivity can be set without any coding on your behalf.
-                            </p>
+                            <p>The switch is a simple tile which is best used for on/off functions.</p>
                         </div>
                         <div class="col-lg-12">
                             <h1>Settings</h1>
-                            <h3>Actions</h3>
-                            <p>
-                                Here is where you configure what the button does when tapped. Multiple selection is allowed so a single tap may do several tasks such as: <br/>
-                                <ul>
-                                    <li>Send text from textfield 'message'</li>
-                                    <li>Send 'Button Down'</li>
-                                    <li>Clear text in textfield 'message'</li>
-                                </ul>
-                                <em>Note that 'message' is an example tile tag for a textfield.</em><br/>
-                                <span class="note">
-                                    Note that when sending text from other tiles. That text is sent with the respective tile's tag. E.G. 'message'.<br/>
-                                Also note that text will always be sent before cleared from a text input source if both actions are selected.
-                                </span>
-                            </p>
                             <h3>Tag</h3>
-                            <p>
-                                This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><span class="note">Note that this is case sensitive, and cannot contain any white space.</span>
-                        </p>
-                            <h3>Size</h3>
-                            <p>This modifies the size of the button as it appears on your screen. Its units of measurement is tiles. Since each tile that can have its size modified is aware of its surroundings, the numeric steppers used to adjust the tile size will stop you from overlapping with other tiles or going over the edge of the screen.</p>
-                            <h3>Title</h3>
-                            <p>This is the title that will appear on your button in your controller UI. It is completely independent of the tag and will not be sent to the server.</p>
+                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
                         </div>
+
+                        <div class="col-lg-12">
+                            <h1>Input</h1>
+                            <p>This tile accepts input so you can use the send message function built into the server to send a value to this tile. This tile only accepts <span class="datatype">Boolean</span>. If you send <span class="data">False</span>, the switch will set to OFF and vice versa.</p>
+                            <ul>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">True</span> &rarr; Set switch to ON.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">False</span> &rarr; Set switch to OFF.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">0</span> &rarr; Set switch to OFF.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">1</span> &rarr; Set switch to ON.</p></li>
+                            </ul>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                Set the switch to the <b>ON</b> state.
+                            </p>
+                            <pre class="brush: python;">
+                            self.force.sendMessage("Jordan's iPhone", "lightSwitch", True)
+                            </pre>
+                        </div>
+
                         <div class="col-lg-12">
                             <h1>Output</h1>
                             <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
                             <ul>
-                                <li>
-                                    <p>Button Down &rarr; <span class="datatype">String</span> &rarr; <code>\\\\BUTTON DOWN////</code></p>
-                                </li>
-                                <li>
-                                    <p>Button Up &rarr; <b>String</b> &rarr; <code>\\\\BUTTON UP////</code></p>
-                                </li>
+                                <li><p>Switch ON &rarr; <span class="datatype">Boolean</span> &rarr; <span class="data">True</span></li>
+                                <li><p>Switch OFF &rarr; <b>Boolean</b> &rarr; <em>False</em></p></li>
                             </ul>
                             <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
                             <h3>Usage Demo</h3>
                             <p>
-                                This is a simple demo where if a button is pressed down, it will call the function <code>buttonDown()</code> and when the button is released, it will call <code>buttonUp()</code>.
+                                Toggle the state of lights according to the input from the switch tile.
                             </p>
                             <pre class="brush: python;">
                             def forceServerDidReceiveData(self, deviceName, senderTag, data):
-                                if senderTag == "Button":
-                                    if data == "\\\\BUTTON DOWN////":
-                                        self.buttonDown()
+                                if senderTag == "lightSwitch":
+                                    if data:
+                                        self.lightsOn()
                                     else:
-                                        self.buttonUp()
+                                        self.lightsOff()
                             </pre>
                         </div>
                     </div>
@@ -126,10 +119,10 @@
         </div>
         <!-- /#wrapper -->
         <!-- jQuery -->
-        <script src="../../../js/jquery.js"></script>
+        <script src="/js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
-        <script src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/bootstrap.js"></script>
-        <script src="../../../js/ios-global-elements.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/bootstrap.js"></script>
+        <script src="/js/ios-global-elements.js"></script>
     </body>
 </html>
