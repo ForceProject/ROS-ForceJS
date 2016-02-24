@@ -79,6 +79,13 @@ ul li p {
     display: inline;
 }
 
+.hidden-code h3 {
+    margin-top: 0;
+}
+
+#toggle-python {
+
+}
 
 .col-lg-4 {
     -webkit-transition: all 0.5s ease;
