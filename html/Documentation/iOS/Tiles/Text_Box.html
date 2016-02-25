@@ -40,29 +40,90 @@
                         <div class="col-lg-12">
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                             <h1>Overview</h1>
-                            <p>The switch is a simple tile which is best used for on/off functions.</p>
+                            <p>This tile is good for collecting multiline text input or as a multiline text output to the user and/or displaying and editting multi-line strings.</p>
                         </div>
                         <div class="col-lg-12">
                             <h1>Settings</h1>
                             <h3>Tag</h3>
                             <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
+                            <h3>Size</h3>
+                            <p>This modifies the size of the button as it appears on your screen. Its units of measurement is tiles. Since each tile that can have its size modified is aware of its surroundings, the numeric steppers used to adjust the tile size will stop you from overlapping with other tiles or going over the edge of the screen.</p>
+                            <h3>Keyboard</h3>
+                            <p>Here you can set the keyboard type and the return key type for the tile.</p>
+                            <h4>Return Key Types</h4>
+                            <ul>
+                                <li><p>Done</p></li>
+                                <li><p>Emergency Call</p></li>
+                                <li><p>Go</p></li>
+                                <li><p>Google</p></li>
+                                <li><p>Join</p></li>
+                                <li><p>Next</p></li>
+                                <li><p>Return</p></li>
+                                <li><p>Route</p></li>
+                                <li><p>Search</p></li>
+                                <li><p>Send</p></li>
+                                <li><p>Yahoo</p></li>
+                            </ul>
+                            <h4>Keyboard Types</h4>
+                            <ul>
+                                <li><p>ASCII Capable</p></li>
+                                <li><p>Decimal Pad</p></li>
+                                <li><p>Default</p></li>
+                                <li><p>Email Address</p></li>
+                                <li><p>Name Phone Pad</p></li>
+                                <li><p>Number Pad</p></li>
+                                <li><p>Numbers and Punctuation</p></li>
+                                <li><p>Phone Pad</p></li>
+                                <li><p>Twitter</p></li>
+                                <li><p>URL</p></li>
+                                <li><p>Web Search</p></li>
+                            </ul>
+                            <h3>Text</h3>
+                            <p>Here you can set the appearance of the text on the tile. You can set the font, the font size, and the text alignment.</p>
+                            <h4>Text Alignment</h4>
+                            <ul>
+                                <li><p>Centre</p></li>
+                                <li><p>Justified</p></li>
+                                <li><p>Left</p></li>
+                                <li><p>Natural</p></li>
+                                <li><p>Right</p></li>
+                            </ul>
+                            <p><span class="note">Note that the font you choose may affect the performance of the app as it may take longer to render.</span></p>
+
+                            <h3>Action</h3>
+                            <p>Here you can set the action for the tile to take when the text value of the tile has changed or when the keyboard is dismissed. With this you can either:</p>
+                            <ul>
+                                <li><p>Clear Text</p></li>
+                                <li><p>Send Action &rarr; <span class="data">"\\\\VALUE CHANGED//" | "\\\\KEYBOARD DISMISSED//"</span></p></li>
+                                <li><p>Send Text</p></li>
+                            </ul>
+                            <p><span class="note">Note that you can pick more than one action. If clear and send are both picked. The data will be sent, then cleared.</span></p>
+                            <h3>Settings</h3>
+                            <p>Here there are four settings. They will affect how the tile reacts to your touch and input from the server.</p>
+                            <ul>
+                                <li><p>Scollable &rarr; <span class="data">YES | NO</span></p></li>
+                                <li><p>Default Input Action &rarr; <span class="data">Append | Replace</span></p></li>
+                                <li><p>Editable &rarr; <span class="data">YES | NO</span></p></li>
+                                <li><p>Selectable &rarr; <span class="data">YES | NO</span></p></li>
+                            </ul>
+                            <p><span class="note">Note that the Default Action can be overridden by appending either <span class="data">"\\Append\\"</span> or <span class="data">"\\Replace\\"</span> before the data you want to set the tile to.</span></p>
                         </div>
 
                         <div class="col-lg-12">
                             <h1>Input</h1>
-                            <p>This tile accepts input so you can use the send message function built into the server to send a value to this tile. This tile only accepts <span class="datatype">Boolean</span>. If you send <span class="data">False</span>, the switch will set to OFF and vice versa.</p>
+                            <p>You can modify the value of the tile by simply sending a string to the tile.</p>
                             <ul>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">True</span> &rarr; Set switch to ON.</p></li>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">False</span> &rarr; Set switch to OFF.</p></li>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">0</span> &rarr; Set switch to OFF.</p></li>
-                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">1</span> &rarr; Set switch to ON.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">Just String Data</span> &rarr; Do default action with String.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">\\Append\\Just String Data</span> &rarr; Add String data to the end of the current tile value.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">\\Append_New\\Just String Data</span> &rarr; Add String data to a new line at the end of the current tile value.</p></li>
+                                <li><p><span class="datatype">String</span> &rarr; <span class="data">\\Replace\\Just String Data</span> &rarr; Replace the tile value with the String data.</p></li>
                             </ul>
                             <h3>Usage Demo</h3>
                             <p>
-                                Set the switch to the <b>ON</b> state.
+                                Set the message thread text box to <code>Welcome to the Force Chat</code>.
                             </p>
                             <pre class="brush: python;">
-                            self.force.sendMessage("Jordan's iPhone", "lightSwitch", True)
+                            self.force.sendMessage("Jordan's iPhone", "messageThread", "\\Replace\\Welcome to the Force Chat")
                             </pre>
                         </div>
 
@@ -70,21 +131,20 @@
                             <h1>Output</h1>
                             <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
                             <ul>
-                                <li><p>Switch ON &rarr; <span class="datatype">Boolean</span> &rarr; <span class="data">True</span></li>
-                                <li><p>Switch OFF &rarr; <b>Boolean</b> &rarr; <em>False</em></p></li>
+                                <li><p>Textbox Value Changed (Send Text)&rarr; <span class="datatype">String</span> &rarr; <span class="data">Tile's String Value</span></li>
+                                <li><p>Textbox Value Changed (Send Action) &rarr; <span class="datatype">String</span> &rarr; <span class="data">"\\\\VALUE CHANGED//"</span></li>
+                                <li><p>Textbox Keyboard Dismissed (Send Text)&rarr; <span class="datatype">String</span> &rarr; <span class="data">Tile's String Value</span></li>
+                                <li><p>Textbox Keyboard Dismissed (Send Action) &rarr; <span class="datatype">String</span> &rarr; <span class="data">"\\\\KEYBOARD DISMISSED//"</span></li>
                             </ul>
                             <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
                             <h3>Usage Demo</h3>
                             <p>
-                                Toggle the state of lights according to the input from the switch tile.
+                                Pass the data received to a function to handle it.
                             </p>
                             <pre class="brush: python;">
                             def forceServerDidReceiveData(self, deviceName, senderTag, data):
-                                if senderTag == "lightSwitch":
-                                    if data:
-                                        self.lightsOn()
-                                    else:
-                                        self.lightsOff()
+                                if senderTag == "messageThread":
+                                    self.handleTextBoxInput(data)
                             </pre>
                         </div>
                     </div>
