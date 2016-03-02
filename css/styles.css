@@ -12,7 +12,7 @@ h1,h2,h3,h4 {
 }
 
 .full {
-  background: url("../images/background.jpg") no-repeat center center fixed;
+  background: url("/img/background.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -20,7 +20,7 @@ h1,h2,h3,h4 {
 }
 
 .container #img {
-    background: url("../images/iphone6force_home.png") no-repeat center center fixed;
+    background: url("/img/iphone6force_home.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -53,7 +53,7 @@ h1,h2,h3,h4 {
     background-size: contain;
     background-repeat: no-repeat;
     background-origin: content-box;
-    background-image:url("../images/iphone6force_home.png");
+    background-image:url("/img/iphone6force_home.png");
   }
 
   .landing .title .itunesLink {
