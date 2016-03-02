@@ -6,14 +6,14 @@ $.fn.followTo = function (pos) {
         if ($window.scrollTop() < pos) {
             $this.css({
                 position: 'absolute',
-                top: $('header').height()
+                top: $('header').height() + 150
 
                 //($window.height() / 2)
             });
         } else {
             $this.css({
                 position: 'fixed',
-                top: 48,
+                top: 0,
 
                 "-webkit-transition": "all 0.0s ease",
                 "-moz-transition": "all 0.0s ease",
@@ -24,5 +24,6 @@ $.fn.followTo = function (pos) {
         }
     });
 };
-
-$('#sidebar-wrapper').followTo($('header').height() - 48);
+var topBarHeight = 150; // 48
+console.log($('section#header').height())
+$('#sidebar-wrapper').followTo($('header').height() + 150);

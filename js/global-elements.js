@@ -1,6 +1,14 @@
 jQuery(function ($) {
     var head = $('head');
 
+    $.ajax({
+            url : "/html/links.html",
+            dataType: "text",
+            success : function (data) {
+                head.add(data).appendTo(head);
+            }
+        });
+
     var body = $('body');
     //var sideNav = $('');
 
@@ -12,5 +20,13 @@ jQuery(function ($) {
             }
         });
 
-   // body.add(sideNav).appendTo(body);
+   // Add Other Scripts
+    function appendScript(pathToScript) {
+        var head = document.getElementsByTagName("head")[0];
+        var js = document.createElement("script");
+        js.type = "text/javascript";
+        js.src = pathToScript;
+        head.appendChild(js);
+    }
+    appendScript("/js//vendor/modernizr-2.6.2.min.js");
 });
