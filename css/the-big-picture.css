@@ -5,13 +5,13 @@
  */
 
 body {
-	margin-top: 25px;
-	margin-bottom: 50px;
-	background: none;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    background: none;
 }
 
 .full {
-  background: url("../images/background.jpg") no-repeat center center fixed;
+  background: url("/img/background.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -19,10 +19,10 @@ body {
 }
 
 .container #img {
-	background: url("../images/iphone6force_home.png") no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+    background: url("/img/iphone6force_home.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
 }
