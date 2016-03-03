@@ -332,7 +332,7 @@ h1, h2, h3, h4, h5, h6 {font-weight:normal;margin:0 0 15px;}
 ===========================*/
 
 /*=========================
-	2)header Start
+    2)header Start
 ===========================*/
 
 #header{padding: 40px 0px}
@@ -353,14 +353,14 @@ h1, h2, h3, h4, h5, h6 {font-weight:normal;margin:0 0 15px;}
 
 
 /*=========================
-	header close
+    header close
 ===========================*/
 
 /*=========================
-	3) slider Start
+    3) slider Start
 ===========================*/
 
-#slider{background: url(../img/slider.jpg) no-repeat; background-size: cover; background-position: center center; padding-bottom: 255px;padding-top: 180px;}
+#slider{background: url(/img/slider.jpg) no-repeat; background-size: cover; background-position: center center; padding-bottom: 255px;padding-top: 180px;}
 #slider .block{}
 #slider .block h2{color: #fff;font-family: 'Raleway', sans-serif; font-weight: 700; margin:0px; font-size: 36px}
 .slider-text-area{}
@@ -369,12 +369,18 @@ h1, h2, h3, h4, h5, h6 {font-weight:normal;margin:0 0 15px;}
 .edit-button-1{background: none; border: 3px solid #91B1B5;  color: #FFF; font-family: 'Raleway', sans-serif; font-weight: 700; border-radius: 30px;padding: 10px 52px; display: block; overflow: heidden; margin-top: 50px}
 .edit-button-1:hover{background: none; color: #fff; border: 3px solid #91B1B5;}
 
+@media(max-width:768px) {
+    #slider{
+        background-position: left center;
+    }
+}
+
 /*=========================
-	  slider close
+      slider close
 ===========================*/
 
 /*=========================
-	4) Service Start
+    4) Service Start
 ===========================*/
 
 #service{ padding: 96px 0px;}
@@ -384,11 +390,11 @@ h1, h2, h3, h4, h5, h6 {font-weight:normal;margin:0 0 15px;}
 #service .service-header p{color:#AFB8B8; font-size: 16px; font-family: 'Raleway', sans-serif; font-weight: 400; line-height: 24px}
 
 /*=========================
-	  Service closes
+      Service closes
 ===========================*/
 
 /*=========================
-	5) contant Start
+    5) contant Start
 ===========================*/
 
 #contant-1{background: #F2F9FE;padding: 80px 0px}
@@ -410,11 +416,11 @@ width: 102px;}
 #contant-1 .block-right-img img{}
 
 /*=========================
-		contant close
+        contant close
 ===========================*/
 
 /*=========================
-	6) Gallery Start
+    6) Gallery Start
 ===========================*/
 
 #gallery{padding-top: 100px ; padding-bottom: 120px}
@@ -428,7 +434,7 @@ width: 102px;}
 .gallery-img{}
 .gallery-items-text{}
 .gallery-items-text p{color: #9ea5a5; font-size: 14px; margin: 0; padding-top: 45px;font-family: 'Raleway', sans-serif; font-weight: 400;}
-#gallery .owl-carousel .owl-controls{left: 0; margin-top: -40px; position: absolute; text-align: left; top: 50%; 
+#gallery .owl-carousel .owl-controls{left: 0; margin-top: -40px; position: absolute; text-align: left; top: 50%;
 width: 100%;}
 #gallery .owl-carousel .owl-controls .owl-buttons{}
 #gallery .owl-carousel .owl-controls .owl-buttons div{color: #9fa9a9;font-size: 50px; display: inline-block}
@@ -441,11 +447,11 @@ width: 100%;}
 #owl-demo .item img{display: block;width: 100%;height: auto;}
 
 /*=========================
-	 Gallery close
+     Gallery close
 ===========================*/
 
 /*=========================
-	7) Contant-2 Start
+    7) Contant-2 Start
 ===========================*/
 
 #contant-2{background: #F2F9FE;padding: 80px 0px}
@@ -467,11 +473,11 @@ width: 102px;}
 .edit-button-3:hover{background: none;border: 3px solid #AAB2B5; color: #636c6c;}
 
 /*=========================
-	 Contant-2 close
+     Contant-2 close
 ===========================*/
 
 /*=========================
-	8) testimonial Start
+    8) testimonial Start
 ===========================*/
 
 #testimonial{text-align: center;padding-bottom: 110px;padding-top: 100px;}
@@ -498,11 +504,11 @@ width: 11px;}
 #testimonial .owl-carousel .owl-controls .owl-pagination  div.active{background: #5DCA88}
 
 /*=========================
-	 testimonial CLOSE
+     testimonial CLOSE
 ===========================*/
 
 /*=========================
-	9) Submit Start
+    9) Submit Start
 ===========================*/
 
 #submit-area{ background: #F3F5F5; padding-top: 90px; padding-bottom: 120px}
@@ -520,13 +526,13 @@ margin-left: 24px;
 font-size: 14px; color:#8C9494; font-family: 'Raleway', sans-serif; font-weight: 400;
 background: #FFFFFF; width: 555px;}
 .submit-bottom form input[type=submit]{border: none; padding: 21px 55px; background: #5DCA88; color:#fff; font-size: 20px;font-family: 'Proxima Nova Regular'; font-weight: 700; text-transform: uppercase;border-radius: 40px;}
-	
+
 /*=========================
-	 Submit CLOSE
+     Submit CLOSE
 ===========================*/
 
 /*=========================
-	9) footer Start
+    9) footer Start
 ===========================*/
 
 #footer{background: #2D312F;text-align: center; padding-top: 75px; padding-bottom: 50px;}
@@ -548,7 +554,7 @@ width: 42px;}
 .support-link ul li a{display: inline-block; color: #8C9494; font-size: 14px}
 
 /*=========================
-	 footer CLOSE
+     footer CLOSE
 ===========================*/
 
 
