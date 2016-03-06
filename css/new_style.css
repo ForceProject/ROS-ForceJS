@@ -1237,3 +1237,103 @@ h1, h2, h3, h4, h5, h6 {
     padding-right: 15px;
   }
 }
+
+
+
+
+
+#fh5co-faqs {
+  position: relative;
+  padding: 7em 0;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-faqs {
+    padding: 4em 0;
+  }
+}
+#fh5co-faqs {
+  background: #fafafa;
+}
+
+
+#fh5co-faqs .faq-accordion {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding: 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-faqs .faq-accordion {
+    padding: 15px;
+  }
+}
+#fh5co-faqs .faq-accordion .faq-accordion-icon-toggle {
+  position: absolute;
+  top: 27px;
+  right: 30px;
+  -webkit-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+@media screen and (max-width: 480px) {
+  #fh5co-faqs .faq-accordion .faq-accordion-icon-toggle {
+    top: 17px;
+  }
+}
+#fh5co-faqs .faq-accordion .faq-accordion-icon-toggle i {
+  font-size: 20px;
+  color: #4fd2c2;
+}
+#fh5co-faqs .faq-accordion h3 {
+  font-size: 26px;
+  line-height: 1.5;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  color: #4fd2c2;
+  cursor: pointer;
+  position: relative;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  #fh5co-faqs .faq-accordion h3 {
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 400;
+    width: 80%;
+    float: left;
+  }
+}
+#fh5co-faqs .faq-accordion .faq-body {
+  clear: both;
+  display: none;
+  padding: 30px 0 0px 0;
+  color: #444;
+  font-size: 16px;
+  line-height: 30px;
+  overflow: hidden;
+}
+#fh5co-faqs .faq-accordion.active {
+  background: #fff;
+  -webkit-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  -ms-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+}
+#fh5co-faqs .faq-accordion.active h3 {
+  color: #4fd2c2;
+}
+#fh5co-faqs .faq-accordion.active .faq-accordion-icon-toggle {
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}

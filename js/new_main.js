@@ -485,6 +485,82 @@
     };
 
 
+    //  Faqs Accordion
+    var faqsAccordion = function() {
+
+        var faqAcc = $('.faq-accordion h3');
+
+        // Click
+        faqAcc.on('click', function(event){
+            var $this = $(this);
+
+            $('.faq-accordion').removeClass('active');
+            $('.faq-accordion').find('.faq-body').slideUp(400, 'easeInOutExpo');
+
+            if ( !$this.closest('.faq-accordion').find('.faq-body').is(':visible')) {
+                $this.closest('.faq-accordion').addClass('active');
+                $this.closest('.faq-accordion').find('.faq-body').slideDown(400, 'easeInOutExpo');
+            } else {
+                $this.closest('.faq-accordion').removeClass('active');
+                $this.closest('.faq-accordion').find('.faq-body').slideUp(400, 'easeInOutExpo');
+            }
+
+
+            setTimeout(function(){
+                // alert($this.closest('.faq-accordion.active').innerHeight());
+                $('html, body').animate({
+                    scrollTop: $this.closest('.faq-accordion.active').offset().top - 90
+                }, 500);
+            }, 700);
+
+
+            event.preventDefault();
+            return false;
+
+        });
+
+    };
+
+    // Features 3 Animate
+    var faqsAnimate = function() {
+        if ( $('#fh5co-faqs').length > 0 ) {
+            $('#fh5co-faqs .to-animate').each(function( k ) {
+
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+
+            });
+        }
+    };
+    var faqsWayPoint = function() {
+        if ( $('#fh5co-faqs').length > 0 ) {
+            $('#fh5co-faqs').waypoint( function( direction ) {
+
+                if( direction === 'down' && !$(this).hasClass('animated') ) {
+
+
+
+
+                    setTimeout(function(){
+                        $('.faqs-animate-1').addClass('fadeIn animated');
+                    }, 200);
+
+                    setTimeout(function(){
+                        $('.faqs-animate-2').addClass('fadeIn animated');
+                    }, 400);
+
+                    setTimeout(faqsAnimate, 800);
+
+
+                    $(this.element).addClass('animated');
+
+                }
+            } , { offset: '75%' } );
+        }
+    };
 
     // Document on load.
     $(function(){
@@ -504,7 +580,8 @@
         pressWayPoint();
 
         features2WayPoint();
-
+        faqsWayPoint();
+        faqsAccordion();
     });
 
 
