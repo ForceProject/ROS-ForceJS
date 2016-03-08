@@ -123,7 +123,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #2185d5;
+  background-color: #ffffff; /*#2185d5*/
   visibility: hidden;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
@@ -184,6 +184,11 @@ h1, h2, h3, h4, h5, h6 {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
+
+#fh5co-header.navbar-fixed-top #navbar li a span:before {
+    background-color: #2185d5;
+}
+
 #fh5co-header.navbar-fixed-top #navbar li a:hover {
   color: #2185d5;
 }

@@ -37,6 +37,7 @@
                 $(elem.target).find(".owl-item").eq(current).find(".to-animate-2").addClass('fadeInUp animated');
             }, 900);
          });
+
         owl.owlCarousel({
             items: 1,
             loop: true,
@@ -46,7 +47,7 @@
             dots: true,
             autoHeight: true,
             smartSpeed: 500,
-            autoplay: true,
+            autoplay: 3000,
             autoplayTimeout: 5000,
             autoplayHoverPause: true,
             navText: [
