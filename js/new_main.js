@@ -329,7 +329,7 @@
     };
 
 
-    // testimonials
+    // anywhere
     var anywhereAnimate = function() {
 
         if ( $('#fh5co-anywhere').length > 0 ) {
