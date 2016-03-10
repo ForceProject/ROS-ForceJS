@@ -1532,24 +1532,24 @@ h1, h2, h3, h4, h5, h6 {
     4) Service Start
 ===========================*/
 
-#service{ padding: 96px 0px;}
-#service .block-top{text-align: center;}
-#service .service-header{margin: 0px}
-#service .service-header h1{color:#636C6C; font-size: 36px; font-family: 'Raleway', sans-serif; font-weight: 700; }
-#service .service-header p{color:#AFB8B8; font-size: 16px; font-family: 'Raleway', sans-serif; font-weight: 400; line-height: 24px}
+#fh5co-anywhere{ padding: 96px 0px;}
+#fh5co-anywhere .block-top{text-align: center;}
+#fh5co-anywhere .service-header{margin: 0px}
+#fh5co-anywhere .service-header h1{color:#636C6C; font-size: 36px; font-family: 'Raleway', sans-serif; font-weight: 700; }
+#fh5co-anywhere .service-header p{color:#AFB8B8; font-size: 16px; font-family: 'Raleway', sans-serif; font-weight: 400; line-height: 24px}
 
 /*=========================
       Service closes
 ===========================*/
 
-#service .block-bottom{}
-#service .service-tab{}
-#service .service-tab ul{float: left;list-style: outside none none;padding: 0;margin-right: 150px;}
-#service .service-tab ul li{ border-right: 1px solid #DBE2E2;}
-#service .service-tab ul li a{color: #9FA9A9; padding-top: 23px; padding-bottom: 17px;font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 400;display: block; padding-right: 60px}
-#service .service-tab ul li a i{font-size: 45px; margin-right: 40px; position: relative;top: 10px;}
-#service .service-tab ul li a:hover{border-right: 10px solid #5DCA88;padding-right: 50px; text-decoration: none;}
-#service .service-tab ul li a:hover i{color: #5DCA88}
+#fh5co-anywhere .block-bottom{}
+#fh5co-anywhere .service-tab{}
+#fh5co-anywhere .service-tab ul{float: left;list-style: outside none none;padding: 0;margin-right: 150px;}
+#fh5co-anywhere .service-tab ul li{ border-right: 1px solid #DBE2E2;}
+#fh5co-anywhere .service-tab ul li a{color: #9FA9A9; padding-top: 23px; padding-bottom: 17px;font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 400;display: block; padding-right: 60px}
+#fh5co-anywhere .service-tab ul li a i{font-size: 45px; margin-right: 40px; position: relative;top: 10px;}
+#fh5co-anywhere .service-tab ul li a:hover{border-right: 10px solid #5DCA88;padding-right: 50px; text-decoration: none;}
+#fh5co-anywhere .service-tab ul li a:hover i{color: #5DCA88}
 
 .edit-tab{overflow: hidden;}
 .edit-tab h1{color: #636C6C; font-size: 24px; font-family: 'Raleway', sans-serif; font-weight: 700; margin: 0px;margin: 0px;padding-bottom: 30px; padding-top:50px;}

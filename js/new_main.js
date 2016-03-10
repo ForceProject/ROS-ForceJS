@@ -330,6 +330,82 @@
 
 
     // testimonials
+    var anywhereAnimate = function() {
+
+        if ( $('#fh5co-anywhere').length > 0 ) {
+            $('#fh5co-anywhere .to-animate').each(function( k ) {
+
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+
+            });
+
+            $('div#PersonalProjects.to-animate').each(function( k ) {
+                var el = $(this);
+                    setTimeout ( function () {
+                        el.addClass('fadeInRight animated');
+                    },  k * 200, 'easeInOutExpo' );
+            })
+
+            $('#fh5co-anywhere a#PersonalProjects.to-animate').each(function( k ) {
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+            })
+            $('#fh5co-anywhere a#PrimaryEducation.to-animate').each(function( k ) {
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+            })
+            $('#fh5co-anywhere a#SecondaryEducation.to-animate').each(function( k ) {
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+            })
+            $('#fh5co-anywhere a#University.to-animate').each(function( k ) {
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+            })
+            $('#fh5co-anywhere a#Business.to-animate').each(function( k ) {
+                var el = $(this);
+
+                setTimeout ( function () {
+                    el.addClass('fadeInUp animated');
+                },  k * 200, 'easeInOutExpo' );
+            })
+        }
+
+    };
+    var anywhereWayPoint = function() {
+
+        if ( $('#fh5co-anywhere').length > 0 ) {
+            $('#fh5co-anywhere').waypoint( function( direction ) {
+
+
+                    setTimeout(anywhereAnimate, 200);
+
+
+                    $(this.element).addClass('animated');
+
+
+            } , { offset: '95%' } );
+        }
+
+    };
+
+    // testimonials
     var testimonialsAnimate = function() {
 
         if ( $('#fh5co-testimonials').length > 0 ) {
@@ -632,6 +708,7 @@
         testimonialsWayPoint();
         pricingWayPoint();
         pressWayPoint();
+        anywhereWayPoint();
 
         features2WayPoint();
         faqsWayPoint();
