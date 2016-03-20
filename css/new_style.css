@@ -1558,3 +1558,42 @@ h1, h2, h3, h4, h5, h6 {
 .edit-tab-content{padding-top: 30px}
 .teb-icon-edit{ height: 170px;width: 170px; margin: 0 auto; color:#5DCA88;}
 .teb-icon-edit i{font-size: 170px}
+
+
+
+
+
+
+
+#fh5co-contact {
+  padding-bottom: 0;
+}
+#fh5co-contact .fh5co-contact-info {
+  padding: 0;
+  margin: 0 0 1.5em 0;
+}
+#fh5co-contact .fh5co-contact-info li {
+  position: relative;
+  padding: 0;
+  margin: 0 0 1.5em 0;
+  padding-left: 50px;
+  list-style: none;
+}
+#fh5co-contact .fh5co-contact-info li i {
+  position: absolute;
+  top: .2em;
+  left: 0;
+}
+
+
+
+#map {
+  width: 100%;
+  height: 500px;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  #map {
+    height: 200px;
+  }
+}
