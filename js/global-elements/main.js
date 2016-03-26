@@ -28,5 +28,5 @@ jQuery(function ($) {
         js.src = pathToScript;
         head.appendChild(js);
     }
-    appendScript("/js/vendor/modernizr-2.6.2.min.js");
+    appendScript("/js/modernizr-2.6.2.min.js");
 });
