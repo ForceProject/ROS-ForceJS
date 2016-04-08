@@ -552,6 +552,10 @@
                         $('.features-2-animate-4').addClass('fadeInRight animated');
                         $('.features-2-animate-6').addClass('fadeInLeft animated');
                     }, 1400);
+                    setTimeout(function(){
+                        $('.features-2-animate-7').addClass('fadeInRight animated');
+                        $('.features-2-animate-8').addClass('fadeInLeft animated');
+                    }, 1600);
 
 
                     $(this.element).addClass('animated');

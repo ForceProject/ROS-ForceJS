@@ -455,7 +455,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-our-services,
 #fh5co-press {
-  background: #f4f4f4;
+  background: /*#f4f4f4*/ #ffffff;
 }
 
 #fh5co-our-services .box {
@@ -1257,7 +1257,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 #fh5co-faqs {
-  background: #fafafa;
+  background: /*#fafafa*/ #ffffff;
 }
 
 
@@ -1266,13 +1266,13 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   width: 100%;
   padding: 30px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
 }
 @media screen and (max-width: 768px) {
   #fh5co-faqs .faq-accordion {
@@ -1307,6 +1307,9 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   display: block;
 }
+#fh5co-faqs .faq-accordion:hover {
+background: #f0f0f0;
+}
 @media screen and (max-width: 768px) {
   #fh5co-faqs .faq-accordion h3 {
     font-size: 20px;
@@ -1327,10 +1330,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 #fh5co-faqs .faq-accordion.active {
   background: #fff;
-  -webkit-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
-  -moz-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
-  -ms-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
-  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
+  -ms-box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
 }
 #fh5co-faqs .faq-accordion.active h3 {
   color: #4fd2c2;
@@ -1544,8 +1547,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-anywhere .block-bottom{}
 #fh5co-anywhere .service-tab{}
-#fh5co-anywhere .service-tab ul{float: left;list-style: outside none none;padding: 0;margin-right: 150px;}
-#fh5co-anywhere .service-tab ul li{ border-right: 1px solid #DBE2E2;}
+#fh5co-anywhere .service-tab ul{float: left;list-style: outside none none;padding: 0;margin-right: 0px;/*150*/border-right: 1px solid #DBE2E2;}
+#fh5co-anywhere .service-tab ul li{border-right: 1px solid #DBE2E2;}
+@media (max-width: 992px) {
+    #fh5co-anywhere .service-tab ul {border-right-width: 0px; width:100%;}
+    #fh5co-anywhere .service-tab ul li {border-right-width: 0px; border-bottom: 1px solid #DBE2E2;}
+}
 #fh5co-anywhere .service-tab ul li a{color: #9FA9A9; padding-top: 23px; padding-bottom: 17px;font-size: 20px; font-family: 'Raleway', sans-serif; font-weight: 400;display: block; padding-right: 60px}
 #fh5co-anywhere .service-tab ul li a i{font-size: 45px; margin-right: 40px; position: relative;top: 10px;}
 #fh5co-anywhere .service-tab ul li a:hover{border-right: 10px solid #5DCA88;padding-right: 50px; text-decoration: none;}
@@ -1596,4 +1603,35 @@ h1, h2, h3, h4, h5, h6 {
   #map {
     height: 200px;
   }
+}
+
+
+
+
+
+.banner-summary {
+    padding: 1em;
+    background-color: #2185d5;
+}
+.banner-summary .section-heading {
+    padding: 0;
+    margin: 0;
+}
+.banner-summary h2 {
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+.banner-summary .link-container {
+    padding: 0.5em;
+}
+
+.banner-summary .link-container .btn {
+    background-color: white;
+    color: #2185d5;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+.banner-summary .link-container a.btn:hover {
+    color: white;
 }
