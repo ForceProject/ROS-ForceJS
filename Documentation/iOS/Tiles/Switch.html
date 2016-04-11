@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="/../../favicon.ico">
+    <title>Force | iOS Documentation</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/css/Documentation/main.css" rel="stylesheet">
+        <link href="/css/ios-documentation.css" rel="stylesheet">
+
+        <link href="/css/SyntaxHighlighter_3-0-83.0/shThemeDefault.css" rel="stylesheet">
+        <script type="text/javascript" src="/js/SyntaxHighlighter_3-0-83.0/shCore.js"></script>
+        <script type=text/javascript src="/js/SyntaxHighlighter_3-0-83.0/shBrushPython.js"></script>
+    </head>
+    <body>
+        <header class="container-fluid header">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-text">
+                    <h1>Documentation</h1>
+                </div>
+            </div>
+        </header>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                            <h1>Switch</h1>
+                            <p>The switch is a simple tile which is best used for on/off functions.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Settings</h1>
+                            <h3>Tag</h3>
+                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h1>Input</h1>
+                            <p>This tile accepts input so you can use the send message function built into the server to send a value to this tile. This tile only accepts <span class="datatype">Boolean</span>. If you send <span class="data">False</span>, the switch will set to OFF and vice versa.</p>
+                            <ul>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">True</span> &rarr; Set switch to ON.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">False</span> &rarr; Set switch to OFF.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">0</span> &rarr; Set switch to OFF.</p></li>
+                                <li><p><span class="datatype">Boolean</span> &rarr; <span class="data">1</span> &rarr; Set switch to ON.</p></li>
+                            </ul>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                Set the switch to the <b>ON</b> state.
+                            </p>
+                            <pre class="brush: python;">
+                            self.force.sendMessage("Jordan's iPhone", "lightSwitch", True)
+                            </pre>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h1>Output</h1>
+                            <p>The following is what data is sent from this tile to the server/your script. It is in the format:<br/>Action &rarr; <b>Data Type</b> &rarr; <em>Value</em></p>
+                            <ul>
+                                <li><p>Switch ON &rarr; <span class="datatype">Boolean</span> &rarr; <span class="data">True</span></li>
+                                <li><p>Switch OFF &rarr; <b>Boolean</b> &rarr; <em>False</em></p></li>
+                            </ul>
+                            <p><span class="note">Note that a tile's tag is always sent to the server for identification purposes.</span></p>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                Toggle the state of lights according to the input from the switch tile.
+                            </p>
+                            <pre class="brush: python;">
+                            def forceServerDidReceiveData(self, deviceName, senderTag, data):
+                                if senderTag == "lightSwitch":
+                                    if data:
+                                        self.lightsOn()
+                                    else:
+                                        self.lightsOff()
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="/js/foundation/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.js"></script>
+        <script src="/js/global-elements/ios.js"></script>
+    </body>
+</html>

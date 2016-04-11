@@ -1,102 +1,754 @@
 <!DOCTYPE html>
-<html class="full" lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>The Force Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+        <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+        <meta name="author" content="FREEHTML5.CO" />
 
-<head>
+        <!-- Begin Favicon -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/img/favicon/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/img/favicon/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/img/favicon/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/img/favicon/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/img/favicon/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="/img/favicon/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/img/favicon/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/img/favicon/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <!-- End Favicon -->
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <!--
+            //////////////////////////////////////////////////////
 
-    <title>The Force Project</title>
+            FREE HTML5 TEMPLATE
+            DESIGNED & DEVELOPED by FREEHTML5.CO
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+            Website: 		http://freehtml5.co/
+            Email: 			info@freehtml5.co
+            Twitter: 		http://twitter.com/fh5co
+            Facebook: 		https://www.facebook.com/fh5co
 
-    <!-- Custom CSS -->
-    <link href="css/styles.css" rel="stylesheet">
+            //////////////////////////////////////////////////////
+             -->
+        <!-- Facebook and Twitter integration -->
+        <meta property="og:title" content=""/>
+        <meta property="og:image" content=""/>
+        <meta property="og:url" content=""/>
+        <meta property="og:site_name" content=""/>
+        <meta property="og:description" content=""/>
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:image" content="" />
+        <meta name="twitter:url" content="" />
+        <meta name="twitter:card" content="" />
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="/css/foundation/animate.css">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="/css/fonts+icons/icomoon.css">
+        <!-- Simple Line Icons -->
+        <link rel="stylesheet" href="/css/fonts+icons/simple-line-icons.css">
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="/css/owl/owl.carousel.min.css">
+        <link rel="stylesheet" href="/css/owl/owl.theme.default.min.css">
+        <!-- Bootstrap  -->
+        <!--<link rel="stylesheet" href="/libs/crew/css/bootstrap/bootstrap.css">-->
+        <link rel="stylesheet" href="/css/bootstrap/bootstrap.css">
+        <link rel="stylesheet" href="/css/fonts+icons/font-awesome.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/App.html">Force</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="Documentation.html">Documentation</a>
-                    </li>
-                    <li>
-                        <a href="blog.html">Blog</a>
-                    </li>
-                    <li>
-                        <a href="Shop.html">Shop</a>
-                    </li>
-                    <li>
-                        <a href="Downloads.html">Downloads</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container landing">
-        <div class="row title">
-            <div class="col-md-6 col-sm-12 ">
-                <h1>Force</h1>
-                  <p>The Force Project is an initiative to give the 'Force' to the average developer. The app and companion server make it super easy to create, share, and control using custom interfaces you make your self!</p>
-                  <img src="images/icon.png" class="icon"></img>
-                <div class"col-md-6 col-sm-12" id="linkwrap">
-                  <center>
-                    <button type="button" class="btn btn-default itunesLink">
-                      <div class="row">
-                        <div class="col-md-12 button-title">Download Force Now</div>
+        <link rel="stylesheet" href="/css/style.css">
+        <!-- Modernizr JS -->
+        <script src="/js/foundation/modernizr-2.6.2.min.js"></script>
+        <!-- FOR IE9 below -->
+        <!--[if lt IE 9]>
+        <script src="js/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header role="banner" id="fh5co-header">
+            <div class="container">
+                <!-- <div class="row"> -->
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <!-- Mobile Toggle Menu Button -->
+                        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                        <a class="navbar-brand" href="index.html">Force</a>
                     </div>
-                    </button>
-                    <p id="version">version 1.0 | requires iOS7 or above</p>
-                  </center>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
+                            <li><a href="#" data-nav-section="about"><span>About</span></a></li>
+                            <li><a href="#" data-nav-section="design"><span>Design</span></a></li>
+                            <li><a href="#" data-nav-section="funfacts"><span>Fun Facts</span></a></li>
+                            <li><a href="#" data-nav-section="anywhere"><span>Anywhere</span></a></li>
+                            <li><a href="#" data-nav-section="projects"><span>Projects</span></a></li>
+                            <li><a href="#" data-nav-section="faqs"><span>FAQs</span></a></li>
+                            <li><a href="#" data-nav-section="contact"><span>Contact Us</span></a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- </div> -->
+            </div>
+        </header>
+
+
+
+
+        <div id="slider" data-section="home">
+            <div class="owl-carousel owl-carousel-fullwidth">
+                <!-- You may change the background color here. -->
+                <div class="item">
+                    <div class="blue-gradient"></div>
+                    <div class="container" style="position: relative;">
+                        <div class="row">
+                            <div class="col-md-7 col-sm-7">
+                                <div class="fh5co-owl-text-wrap">
+                                    <div class="fh5co-owl-text">
+                                        <h1 class="fh5co-lead to-animate">The Force App</h1>
+                                        <h2 class="fh5co-sub-lead to-animate">
+                                            An innovative, modular universal controller for your projects. Compatible with iPhone, iPad, and iPod touch running iOS 8 and above.
+                                        </h2>
+                                        <p class="to-animate-2"><a href="#" class="btn btn-primary btn-lg">Coming soon to the AppStore</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 iphone-image">
+                                <div class="iphone to-animate-2"><img src="/img/banner-carousel/slide-1.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- You may change the background color here.  -->
+                <div class="item">
+                    <div class="green-gradient"></div>
+                    <div class="container" style="position: relative;">
+                        <div class="row">
+                            <div class="col-md-8 col-md-push-6 col-sm-8 col-sm-push-4">
+                                <div class="fh5co-owl-text-wrap">
+                                    <div class="fh5co-owl-text">
+                                        <h1 class="fh5co-lead to-animate">The Force Server</h1>
+                                        <h2 class="fh5co-sub-lead to-animate">
+                                            Super easy to integrate and use with your project.<br/>Requires Python v2.7 or above and networking capabilities.
+                                        </h2>
+                                        <p class="to-animate-2"><a href="#" target="_blank" class="btn btn-primary btn-lg">Server Coming Soon</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-md-pull-7 col-sm-1 col-sm-pull-5 iphone-image col-xs-0">
+                                <!--<div class="iphone to-animate-2"><img src="/img/banner-carousel/slide-2.png" alt="Free HTML5 Template by FREEHTML5.co"></div>-->
+                                <div class="iphone to-animate-2"><i class="icon-wifi" style="color:white; text-align:center; font-size:50em; opacity:1.0;"></i></div> <!-- 30m also looks good, but Josh said 50 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="red-gradient"></div>
+                    <div class="container" style="position: relative;">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 text-center">
+                                <div class="fh5co-owl-text-wrap">
+                                    <div class="fh5co-owl-text">
+                                        <h1 class="fh5co-lead to-animate">Detailed Documentation</h1>
+                                        <h2 class="fh5co-sub-lead to-animate">
+                                            View our in-depth, easy to understand documentation, including tutorials and examples on how to setup controllers and process input on the server.
+                                        </h2>
+                                        <p class="to-animate-2"><a href="/Documentation.html" class="btn btn-primary btn-lg">View Documentation</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12 ">
-              <div class="phone"></div>
+        </div>
+
+
+        <div class="banner-summary">
+            <div class="col-md-12 section-heading text-center">
+                <h2>Quick Links</h2>
+            </div>
+            <div class="row">
+                <div class="link-container col-md-3 col-sm-6">
+                    <a href="#" target="_blank" class="btn btn-primary btn-lg col-xs-12">App Coming Soon</a>
+                </div>
+                <div class="link-container col-md-3 col-sm-6">
+                    <a href="#" target="_blank" class="btn btn-primary btn-lg col-xs-12">Server Coming Soon</a>
+                </div>
+                <div class="link-container col-md-3 col-sm-6">
+                    <a href="/Documentation.html" class="btn btn-primary btn-lg col-xs-12">View Documentation</a>
+                </div>
+                <div class="link-container col-md-3 col-sm-6">
+                    <a href="https://github.com/ForceProject" target="_blank" class="btn btn-primary btn-lg col-xs-12">Visit Github</a>
+                </div>
             </div>
         </div>
-        <!-- /.row -->
+
+
+        <div id="fh5co-about-us" data-section="about" style="padding-bottom:0;">
+            <div class="container">
+                <div class="row row-bottom-padded-lg" id="about-us">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="to-animate">About Us</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 to-animate">
+                                <h3>Gone are the days of running web-apps and reading complex 3rd-party documentations just to add remote control functionality.</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 to-animate">
+                        <img src="/img/posters/Use-the-Force-2.jpg" class="img-responsive img-rounded" alt="Free HTML5 Template">
+                    </div>
+                    <div class="col-md-4 to-animate">
+                        <h2>How we got started</h2>
+                        <p>The Force Project was envisioned and developed to be a tool to give anyone and everyone access to an incredibly easy to use, drag and drop framework to add wireless capabilities to their personal projects. In doing this, we realised the potential of our project and pushed forward to make it even more seamless and give your final product a professional touch.</p>
+                        <p>With our product, we do not want a seperation between us and our customers, which is why we are more than happy to take suggestions and constructive critisism to further improve the Force. This includes suggestions for new tiles, features, and most importantly, bugs.</p>
+                        <p><a href="#" data-nav-section="contact" class="btn btn-primary">Contact Us</a></p>
+                    </div>
+                </div>
+                <div class="row" id="team">
+                    <div class="col-md-12 section-heading text-center to-animate">
+                        <h2>Team</h2>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row row-bottom-padded-lg">
+                            <div class="col-md-4 text-center to-animate">
+                                <div class="person">
+                                    <img src="/img/team/lewis_jordan/profile.jpg" class="img-responsive img-rounded" alt="Person">
+                                    <h3 class="name">Jordan Lewis</h3>
+                                    <div class="position">Founder & Creator</div>
+                                    <p>Began programming at 13 from Youtube videos and reading tutorials. Currently writes apps as a hobby while completing the HSC at St Joseph's College Hunters Hill. Focus in iOS application development, but branches in Raspberry Pi with Python and 3D Modelling & Printing.</p>
+                                    <ul class="social social-circle">
+                                        <li><a target="_blank" href="https://twitter.com/JordanJJLewis"><i class="icon-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://au.linkedin.com/in/jordanjlewis"><i class="icon-linkedin"></i></a></li>
+                                        <li><a target="_blank" href="https://www.instagram.com/jordan_j_lewis/"><i class="icon-instagram"></i></a></li>
+                                        <li><a target="_blank" href="https://github.com/JJLewis"><i class="icon-github"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center to-animate">
+                                <div class="person">
+                                    <img src="/img/team/agostino_joshua/profile.jpg" class="img-responsive img-rounded" alt="Person">
+                                    <h3 class="name">Joshua Agostino</h3>
+                                    <div class="position">Graphic Designer</div>
+                                    <p>Amateur in graphic design, however maintains professional work ethic and specialises in pixel perfection. He hopes to rule the world someday, but he has to learn his rights and lefts first.<br/><br/>
+                                    Accepts food as payment.</p>
+                                    <ul class="social social-circle">
+                                        <li><a target="_blank" href="https://twitter.com/thiccgravy"><i class="icon-twitter"></i></a></li>
+                                        <li><a target="_blank" href="https://www.instagram.com/joshua_agostino/"><i class="icon-instagram"></i></a></li>
+                                        <li><a target="_blank" href="https://github.com/joshua-agostino"><i class="icon-github"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center to-animate">
+                                <div class="person">
+                                    <img src="/img/team/you/profile/1.png" class="img-responsive img-rounded" alt="Person" id="you-profile">
+                                    <h3 class="name">You</h3>
+                                    <div class="position">The User</div>
+                                    <p>You are the user, is the person that dreams up of the infinite potential of the Force. You create innovations in projects we have never dreamed of before. You are the core of the Force, without you the Force will not be what it is.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-features-2" data-section="design">
+            <div class="fh5co-features-2-content">
+                <div class="container">
+                    <div class="row">
+                       <div class="col-md-12 section-heading text-center to-animate" style="margin-bottom:0;">
+                        <h2>Innovative Design</h2>
+                        </div>
+                        <div class="col-md-8 col-md-offset-2 fh5co-section-heading text-center" style="margin-bottom:0;">
+                            <!--<h2 class="fh5co-lead to-animate">Better design</h2>-->
+                            <p class="fh5co-sub to-animate">The innovative tile design allows near infinite customisation making the Force a true drag & drop solution for adding High-Speed remote control and/or communication to your personal projects.</p>
+                        </div>
+                        <div class="col-md-4 fh5co-text-wrap">
+                            <div class="row text-center">
+                                <div class="col-md-12 col-sm-4 col-xs-4 col-xxs-12 fh5co-text animate-object features-2-animate-3 to-animate">
+                                    <span class="fh5co-icon"><i class="icon-gears"></i></span>
+                                    <h4 class="fh5co-uppercase-sm">Fully modular</h4>
+                                    <p>Simply drag & drop the tiles to create your controller. Resize, and customise the look and feel of the tiles to suit your needs.</p>
+                                </div>
+                                <div class="col-md-12 col-sm-4 col-xs-4 col-xxs-12 fh5co-text animate-object features-2-animate-4 to-animate">
+                                    <span class="fh5co-icon"><i class="icon-copy"></i></span>
+                                    <h4 class="fh5co-uppercase-sm">Countless Controllers</h4>
+                                    <p>Create as many controllers as you want. There are no limits to what you can make with the Force.</p>
+                                </div>
+                                <div class="col-md-12 col-sm-4 col-xs-4 col-xxs-12 fh5co-text animate-object features-2-animate-7 to-animate">
+                                    <span class="fh5co-icon"><i class="icon-rocket"></i></span>
+                                    <h4 class="fh5co-uppercase-sm">Super fast</h4>
+                                    <p>Built on top of the TCP/IP protocol there is little overhead in communication performance allowing for instant data transmission.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md-push-4 fh5co-text-wrap">
+                            <div class="row text-center">
+                                <div class="col-md-12 col-sm-4 col-xs-4 col-xxs-12 fh5co-text animate-object features-2-animate-5 to-animate">
+                                    <span class="fh5co-icon"><i class="icon-square-o"></i></span>
+                                    <h4 class="fh5co-uppercase-sm">Powerful tiles</h4>
+                                    <p>Each tile is a fully customisable UIKit object allowing for native performance. There are also additional tiles and more to come.</p>
+                                </div>
+                                <div class="col-md-12 col-sm-4 col-xs-4 col-xxs-12 fh5co-text animate-object features-2-animate-6 to-animate">
+                                    <span class="fh5co-icon"><i class="icon-clone"></i></span>
+                                    <h4 class="fh5co-uppercase-sm">Numerous Tiles</h4>
+                                    <p>There are currently 15 unqiue tiles to choose from, with more to come! Each tile with its own documentation.</p>
+                                </div>
+                                <div class="col-md-12 col-sm-4 col-xs-4 col-xxs-12 fh5co-text animate-object features-2-animate-8 to-animate">
+                                    <span class="fh5co-icon"><i class="icon-people"></i></span>
+                                    <h4 class="fh5co-uppercase-sm">Sharing & Community</h4>
+                                    <p>The Force app allows sharing of controllers so more people can enjoy the joy of creating something.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md-pull-4 fh5co-image animate-object features-2-animate-2" style="">
+                            <p class="text-center">
+                                <img src="/img/design.png" class="" alt="Outline Free HTML5 Responsive Bootstrap Template">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-counters" data-section="funfacts" style="background-image: url(/img/backgrounds/counter.jpg);" data-stellar-background-ratio="0.5">
+            <div class="fh5co-overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center to-animate">
+                        <h2>Fun Facts</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="fh5co-counter to-animate">
+                            <i class="fh5co-counter-icon icon-clock-o to-animate-2"></i>
+                            <span class="fh5co-counter-number js-counter" data-from="0" data-to="7605" data-speed="5000" data-refresh-interval="50">7605</span>
+                            <span class="fh5co-counter-label">Total minutes coding</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="fh5co-counter to-animate">
+                            <i class="fh5co-counter-icon icon-code to-animate-2"></i>
+                            <span class="fh5co-counter-number js-counter" data-from="0" data-to="8032" data-speed="5000" data-refresh-interval="50">8032</span>
+                            <span class="fh5co-counter-label">Handwritten lines of code</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="fh5co-counter to-animate">
+                            <i class="fh5co-counter-icon icon-file-code-o to-animate-2"></i>
+                            <span class="fh5co-counter-number js-counter" data-from="0" data-to="63" data-speed="5000" data-refresh-interval="50">63</span>
+                            <span class="fh5co-counter-label">Handmade files of code</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="fh5co-counter to-animate">
+                            <i class="fh5co-counter-icon icon-bitbucket to-animate-2"></i>
+                            <span class="fh5co-counter-number js-counter" data-from="0" data-to="263" data-speed="5000" data-refresh-interval="50">263</span>
+                            <span class="fh5co-counter-label">Git commits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service Start
+            ============================================================= -->
+        <div id="fh5co-anywhere" data-section="anywhere">
+            <div class="container">
+                <div class="row">
+                   <div class="col-md-12 section-heading text-center to-animate">
+                            <h2>Use the Force Anywhere</h2>
+                        <div class="col-md-8 col-md-offset-2 subtext"><!--<div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">-->
+                                <h3>The Force app was designed from the ground up to be extremely flexible and customisable for many use cases.</h3>
+                            </div>
+                        </div>
+                        <!--
+                       <div class="col-md-12">
+                        <div class="block-top">
+                            <div class="service-header">
+                                <h1>Use the Force Anywhere</h1>
+                                <p>The Force app was designed from the ground up to be extremely flexible and customisable for many use cases.</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- .col-md-12 close -->
+                </div>
+                <!-- row close -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block-bottom">
+                            <div class="service-tab">
+                                <!-- Nav tabs -->
+                                <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12">
+                                    <ul class="badhon-tab" role="tablist">
+                                        <li class="active"><a href="#PersonalProjects" aria-controls="PersonalProjects" class="to-animate" role="tab" data-toggle="tab">
+                                            <i class="fa fa-home"></i>
+                                            Personal Projects
+                                            </a>
+                                        </li>
+                                        <li><a href="#PrimaryEducation" aria-controls="PrimaryEducation" class="to-animate" role="tab" data-toggle="tab">
+                                            <i class="fa fa-pencil"></i>
+                                            Primary Education
+                                            </a>
+                                        </li>
+                                        <li><a href="#SecondaryEducation" aria-controls="SecondaryEducation" class="to-animate" role="tab" data-toggle="tab">
+                                            <i class="fa fa-book"></i>
+                                            Secondary Education
+                                            </a>
+                                        </li>
+                                        <li><a href="#University" aria-controls="University" role="tab" class="to-animate" data-toggle="tab">
+                                            <i class="fa fa-university"></i>
+                                            University
+                                            </a>
+                                        </li>
+                                        <li><a href="#Business" aria-controls="Business" role="tab" class="to-animate" data-toggle="tab">
+                                            <i class="fa fa-briefcase"></i>
+                                            Business
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Tab panes -->
+                                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12">
+                                <div class="tab-content edit-tab-content">
+                                    <div class="tab-pane active edit-tab to-animate" id="PersonalProjects">
+                                        <div class="teb-icon-edit">
+                                            <i class="fa fa-home"></i>
+                                        </div>
+                                        <h1>Force for Personal Projects</h1>
+                                        <p>Why write your own native app for use some slow and complicated web-based control system when you can quickly and easily create a native controller with instant data transmission over TCP/IP using the Force app?<br/>The Force is so versatile that it can be used for almost any personal project, whether it be robotics or connected home.</p>
+                                    </div>
+                                    <div class="tab-pane edit-tab to-animate" id="PrimaryEducation">
+                                        <div class="teb-icon-edit">
+                                            <i class="fa fa-pencil"></i>
+                                        </div>
+                                        <h1>Force for Primary Education</h1>
+                                        <p>Get your students quickly engaged with the possibilities of technology using the Force. Setup fun robots and Force powered toys to interactively teach students the basics of a user interface and possibly even programming with Python.</p>
+                                    </div>
+                                    <div class="tab-pane edit-tab to-animate" id="SecondaryEducation">
+                                        <div class="teb-icon-edit">
+                                            <i class="fa fa-book"></i>
+                                        </div>
+                                        <h1>Force for Secondary Education</h1>
+                                        <p>Practically teach your students about data types, control structures, user interface design, 3D Printing, robotics, electronics and more with the Force. Setup base simple robotics base kits and get your students to create their own robot from scratch, this is a very fun and interactive way of learning and will appeal to many students interested in technology.</p>
+                                    </div>
+                                    <div class="tab-pane edit-tab to-animate" id="University">
+                                        <div class="teb-icon-edit">
+                                            <i class="fa fa-university"></i>
+                                        </div>
+                                        <h1>Force for University</h1>
+                                        <p>Use the Force as a quick tool for easily adding remote control to a project or assignment that has Wi-Fi capabilities. Maximise the time you spend on actual algorithms rather than creating a remote control app and server.</p>
+                                    </div>
+                                    <div class="tab-pane edit-tab to-animate" id="Business">
+                                        <div class="teb-icon-edit">
+                                            <i class="fa fa-briefcase"></i>
+                                        </div>
+                                        <h1>Force for Businesses</h1>
+                                        <p>Quickly prototype and test user interface designs for new toys or products, or even release a new product and a controller file so that it can be controlled using the Force app. Force also removes the need for creating custom apps for toys and provides a centralised location to store all Force enabled toy controllers to the users.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .col-md-12 close -->
+                </div>
+                <!-- row close -->
+            </div>
+            <!-- .container close -->
+        </div>
+        <!-- #service close -->
+        <div id="fh5co-press" data-section="projects">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center">
+                        <h2 class="single-animate animate-press-1">Awesome Projects</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
+                                <h3>Here are some of the greatest projects which use the Force that have been shared with us. Click on one of them to view a tutorial and be inspired.</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Press Item -->
+                        <div class="fh5co-press-item to-animate">
+                            <div class="fh5co-press-img" style="background-image: url(/img/projects/drogerdy.jpg)">
+                            </div>
+                            <div class="fh5co-press-text">
+                                <h3 class="h2 fh5co-press-title">The Drogerdy <span class="fh5co-border"></span></h3>
+                                <p>A remote controlled, 3D Printed Tankbot controlled by a Raspberry Pi. It has a webcam which outputs a MJPEG stream which is viewed on the Force app alongside the controls so you don't have to see the robot to control it.</p>
+                                <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+                            </div>
+                        </div>
+                        <!-- Press Item -->
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Press Item -->
+                        <div class="fh5co-press-item to-animate">
+                            <div class="fh5co-press-img" style="background-image: url(/img/projects/eboard.jpg)">
+                            </div>
+                            <div class="fh5co-press-text">
+                                <h3 class="h2 fh5co-press-title">An Electronic Skateboard<span class="fh5co-border"></span></h3>
+                                <p>An iPhone controlled electronic skateboard, so that you don't have to carry a seperate remote for the eBoard.<br/><br/><br/><br/></p>
+                                <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+                            </div>
+                        </div>
+                        <!-- Press Item -->
+                    </div>
+                    <!--
+                    <div class="col-md-6">
+
+                        <div class="fh5co-press-item to-animate">
+                            <div class="fh5co-press-img" style="background-image: url(/libs/crew/images/img_9.jpg);">
+                            </div>
+                            <div class="fh5co-press-text">
+                                <h3 class="h2 fh5co-press-title">Aesthetic <span class="fh5co-border"></span></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+                                <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="fh5co-press-item to-animate">
+                            <div class="fh5co-press-img" style="background-image: url(/libs/crew/images/img_10.jpg);">
+                            </div>
+                            <div class="fh5co-press-text">
+                                <h3 class="h2 fh5co-press-title">Creative <span class="fh5co-border"></span></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis eius quos similique suscipit dolorem cumque vitae qui molestias illo accusantium...</p>
+                                <p><a href="#" class="btn btn-primary btn-sm">Learn more</a></p>
+                            </div>
+                        </div>
+
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+        <div id="fh5co-faqs"  data-section="faqs">
+            <div class="col-md-12 section-heading text-center">
+                        <h2 class="single-animate animate-press-1">Frequently Ask Questions</h2>
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 subtext single-animate animate-press-2">
+                                <h3>Some commonly asked questions about the Force Project, including the app and the Python Server.</h3>
+                            </div>
+                        </div>
+                    </div>
+            <div class="container">
+                <div class="faq-accordion active to-animate">
+                    <span class="faq-accordion-icon-toggle active"><i class="icon-arrow-down"></i></span>
+                    <h3>What is the Force project?</h3>
+                    <div class="faq-body" style="display: block;">
+                        <p>The Force Project is an an app for iPhone, iPad, and iPod touch and at the moment a Python companion server, which together will make it super easy to add fast, native remote controllability to any personal electronics project. The goal of the Force Project is to make the wireless control of robots, etc very easy to do and to spread the joy of creating something new. We believe the Force can suit many fields, but in particular in the Secondary Education field, where new, practical, and interactive methods of learning about technology is always sought after.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>Is Force Free?</h3>
+                    <div class="faq-body">
+                        <p>The Force app will likely not be free, but we will provide discounts to bulk educational purchases. TBD</p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>I would like to request a new tile/feature.</h3>
+                    <div class="faq-body">
+                        <p>
+                            Great! Please contact us using the form below or by emailing us <a href="mailto:dev_jordanlewis@icloud.com?subject=Force:%20Request%20new%20tile%20/%20feature">here</a>.
+                            <br/>
+                            Please include the following for a tile:
+                        </p>
+                        <ul>
+                            <li>The name of the tile.</li>
+                            <li>A brief description of the tile in terms of its looks and customisability.</li>
+                            <li>Its acceptable inputs/outputs.</li>
+                            <li>Why this tile we should add it. (Just a brief justification is enough)</li>
+                        </ul>
+                        <p>
+                            Please include the following for a feature:
+                        </p>
+                        <ul>
+                            <li>A brief desciption of the feature.</li>
+                            <li>Why it is we should add it. (Just a brief justification is enough)</li>
+                            <li>What was missing (if applicable).</li>
+                        </ul>
+                        <p>
+                            You don't have to put too much detail into the request, but more is generally better.<br/>
+                            We appreciate your support for the Force Project and hope that our implementation of the tile is what you wanted and will benefit everyone.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>Which version of iOS do your apps support?</h3>
+                    <div class="faq-body">
+                        <p>The Force app supports iOS 8.0 and above on iPhone, iPad, and iPod touch.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>What can the Force Server run on?</h3>
+                    <div class="faq-body">
+                        <p>The Force Server is written in Python, and hence is platform independent. The only requirements being, that the computer be somehow connected to a Wi-Fi network and be capable of running Python v2.7+. We highly recommend using Raspbery Pis, as it is a great DIY platform which supports connecting to a network via either Ethernet or Wi-Fi and runs Python v2.7+.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>What languages are available?</h3>
+                    <div class="faq-body">
+                        <p>Currently, the only supported language is English, but most of the content is designed to be intuitive and self-explanatory so only a very basic understanding of English is necessary to use the app.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>Can you feature my project?</h3>
+                    <div class="faq-body">
+                        <p>We are actively checking out new projects on Instructables with the tag <b>TheForceProject</b> and will find the best documented and most interesting, innovative projects and feature them on our website. In addition to this, you can email us a link to your project <a href="mailto:dev_jordanlewis@icloud.com?subject=Force:%20Get%20Featured">here</a> on Instructables and we will be happy to review it.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion to-animate">
+                    <span class="faq-accordion-icon-toggle"><i class="icon-arrow-down"></i></span>
+                    <h3>I have technical problem, who do I email?</h3>
+                    <div class="faq-body">
+                        <p>Use the Contact Us form below or email us <a href="mailto:dev_jordanlewis@icloud.com?subject=Force:%20Support">here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div id="fh5co-contact" data-section="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center">
+                    <h2 class="to-animate">Get In Touch</h2>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 subtext to-animate">
+                            <h3>Have something you want to ask, say, or request? Shoot us an email by filling out the form below.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-bottom-padded-md">
+                <div class="col-md-6 to-animate">
+                    <h3>Contact Info</h3>
+                    <ul class="fh5co-contact-info">
+                        <!--<li class="fh5co-contact-address ">
+                            <i class="icon-home"></i>
+                            5555 Love Paradise 56 New Clity 5655, <br>Excel Tower United Kingdom
+                        </li>-->
+                        <!--<li><i class="icon-phone"></i> (123) 465-6789</li>-->
+                        <li><i class="icon-envelope"></i><a href="mailto:dev_jordanlewis@icloud.com?subject=Force: ">dev_jordanlewis@icloud.com</a></li>
+                        <li><i class="icon-globe"></i> <a href="http://forceproject.github.io/" target="_blank">forceproject.github.io</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 to-animate" id="contact-form">
+                    <h3>Contact Form</h3>
+                    <div class="form-group ">
+                        <label for="name" class="sr-only">Name</label>
+                        <input id="name" class="form-control" placeholder="Name" type="text">
+                    </div>
+                    <div class="form-group ">
+                        <label for="email" class="sr-only">Email</label>
+                        <input id="email" class="form-control" placeholder="Preferred Email (Optional)" type="email">
+                    </div>
+                    <div class="form-group ">
+                        <label for="phone" class="sr-only">Phone</label>
+                        <input id="phone" class="form-control" placeholder="Phone (Optional)" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="Reason" class="sr-only">Reason</label>
+                        <select id="reason" class="col-xs-12" style="margin-bottom:1em;">
+                            <option value="---">---</option>
+                            <option value="Support">Support</option>
+                            <option value="Request new tile / feature">Request new tile / feature</option>
+                            <option value="Get Featured">Get Featured</option>
+                            <option value="Bug Report">Report a Bug</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea name="" id="message" cols="30" rows="5" class="form-control" placeholder="Message"></textarea>
+                    </div>
+                    <div class="form-group ">
+                        <input class="btn btn-primary btn-lg" value="Send Message" type="submit" id="send-message">
+                    </div>
+                    </div>
+                </div>
+
+            </div>
+        <div id="map" class="to-animate"></div>
     </div>
-    <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+        <footer id="footer" role="contentinfo">
+            <div class="container">
+                <div class="row row-bottom-padded-sm">
+                    <div class="col-md-12">
+                        <p class="copyright text-center">&copy; 2016 Jordan Lewis. All Rights Reserved.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="social social-circle">
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-youtube"></i></a></li>
+                            <li><a href="#"><i class="icon-pinterest"></i></a></li>
+                            <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                            <li><a href="#"><i class="icon-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- jQuery -->
+        <script src="/js/foundation/jquery.min.js"></script>
+        <script src="js/misc/randYouProfilePic.js"></script>
+        <script src="/js/misc/mail_generator.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.js"></script>
+        <!-- jQuery Easing -->
+        <script src="/js/foundation/jquery.easing.1.3.js"></script>
+        <!-- Bootstrap -->
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
+        <!-- Waypoints -->
+        <script src="/js/foundation/jquery.waypoints.min.js"></script>
+        <!-- Owl Carousel -->
+        <script src="/js/foundation/owl.carousel.min.js"></script>
+        <script src="/js/foundation/jquery.countTo.js"></script>
 
-</body>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+        <script src="/js/google/google_map.js"></script>
 
+        <!-- Main JS (Do not remove) -->
+        <script src="/js/main.js"></script>
+
+        <script src="/js/google/google-analytics.js"></script>
+    </body>
 </html>

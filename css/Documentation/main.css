@@ -1,5 +1,5 @@
 /* Import Fonts */
-@import url("../fonts.css");
+@import url("fonts.css");
 
 .nav-wrapper .navbar-header .navbar-brand {
   display:inline;
@@ -16,7 +16,7 @@
   height: 25vh;
   width:100;
 
-  background-image: url("../../images/background-placeholder.jpg");
+  background-image: url("/img/backgrounds/documentation.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -63,7 +63,7 @@
   height: 50vh;
   width: 100%;
 
-  background-image: url("../../images/background-placeholder.jpg");
+  background-image: url("/img/backgrounds/documentation.jpg");
   background-position: center;
   background-size: cover;
 }

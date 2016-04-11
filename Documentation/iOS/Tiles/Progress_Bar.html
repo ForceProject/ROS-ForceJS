@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link rel="icon" href="/../../favicon.ico">
+    <title>Force | iOS Documentation</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="/css/Documentation/main.css" rel="stylesheet">
+        <link href="/css/ios-documentation.css" rel="stylesheet">
+
+        <link href="/css/SyntaxHighlighter_3-0-83.0/shThemeDefault.css" rel="stylesheet">
+        <script type="text/javascript" src="/js/SyntaxHighlighter_3-0-83.0/shCore.js"></script>
+        <script type=text/javascript src="/js/SyntaxHighlighter_3-0-83.0/shBrushPython.js"></script>
+    </head>
+    <body>
+        <header class="container-fluid header">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-text">
+                    <h1>Documentation</h1>
+                </div>
+            </div>
+        </header>
+        <div id="wrapper">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                            <h1>Progress Bar</h1>
+                            <p>This tile is good for displaying the progress of a task.</p>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Settings</h1>
+                            <h3>Tag</h3>
+                            <p>This is a <em>unique</em> <b>String</b> ID assigned to this tile and is used (by you) to identify what tile sent what data by your script.<br/><b><em>Note that this is case sensitive, and cannot contain any white space.</em></b></p>
+                            <h3>Size</h3>
+                            <p>This modifies the size of the button as it appears on your screen. Its units of measurement is tiles. Since each tile that can have its size modified is aware of its surroundings, the numeric steppers used to adjust the tile size will stop you from overlapping with other tiles or going over the edge of the screen.</p>
+                            <h3>Progress</h3>
+                            <p>Here you can set the type of data that should be reflected on the progress bar. Either a Percentage <span class="note">0 &rarr; 100</span> or a Decimal <span class="note">0.0 &rarr; 1.0</span>.</p>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <h1>Input</h1>
+                            <p>You can set the value of the progress bar by sending a integer or a float.</p>
+                            <ul>
+                                <li><p><span class="datatype">Integer</span> &rarr; <span class="data">0 &rarr; 100</span> &rarr; Set progress.</p></li>
+                                <li><p><span class="datatype">Float</span> &rarr; <span class="data">0.0 &rarr; 1.0</span> &rarr; Set progress.</p></li>
+                            </ul>
+                            <h3>Usage Demo</h3>
+                            <p>
+                                Set the switch to the <b>ON</b> state.
+                            </p>
+                            <pre class="brush: python;">
+                            def updateBatteryPowerLeft(self, batteryPowerLeft):
+                                self.force.sendMessage("Jordan's iPhone", "BatteryBar", batteryPowerLeft)
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="/js/foundation/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.js"></script>
+        <script src="/js/global-elements/ios.js"></script>
+    </body>
+</html>
