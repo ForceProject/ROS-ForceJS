@@ -16,7 +16,7 @@
   height: 25vh;
   width:100;
 
-  background-image: url("/img/background-placeholder.jpg");
+  background-image: url("/img/backgrounds/documentation.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -63,7 +63,7 @@
   height: 50vh;
   width: 100%;
 
-  background-image: url("/img/background-placeholder.jpg");
+  background-image: url("/img/backgrounds/documentation.jpg");
   background-position: center;
   background-size: cover;
 }
