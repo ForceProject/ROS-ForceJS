@@ -1,3 +1,4 @@
+$(document).ready(function(){
 $.fn.followTo = function (pos) {
     var $this = this,
         $window = $(window);
@@ -25,5 +26,6 @@ $.fn.followTo = function (pos) {
     });
 };
 var topBarHeight = 150; // 48
-console.log($('section#header').height())
+//console.log($('section #header').height())
 $('#sidebar-wrapper').followTo($('header').height() + 150);
+})

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Force | Python Documentation</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/Documentation/main.css" rel="stylesheet">
+
+    <!-- Side Bar Template -->
+    <link href="/css/documentation/sidebar.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header class="container-fluid header">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-text">
+          <h1>Documentation</h1>
+        </div>
+        </div>
+    </header>
+
+    <div id="wrapper">
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+               <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Overview</h1>
+                    <p>
+                        The Python Force Server is designed to be run on almost any computer with networking capabilities and has Python version 2.7 or above.<br/>
+                        This Python Force Server was designed from the ground up to slip quietly into the background of your code, with easily installation, implementation and self documenting functions and delegate calls.<br/>
+                        It will handle all client connections and will guarantee that all data sent from the tiles on the Force app are of the relevant data type when you access it. For example, if a slider sends data, the data type in Python will either be a Integer or a Float, if it is a Textfield, the data will be a String.
+                    </p>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Installation</h1>
+                    <h3>Install Python</h3>
+                    <p>
+                        The Force Server requires that Python version 2.7 or newer is installed on the device it will run on.<br/>
+                        To check if you device has the correct version of Python installed, open a Command Prompt, or Terminal of your choice and type in the command: <code>python</code><br/>
+                        If you have Python installed, you should get an output similar to the following:<br/>
+                        <code>
+                            Python 2.7.10 (default, Oct 23 2015, 19:19:21)<br/>
+                            [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin<br/>
+                            Type "help", "copyright", "credits" or "license" for more information.<br/>
+                        </code>
+                        <b>Note</b> on the first line there is a version number, make sure that it is greater than 2.7.0.<br/>
+                        If that does not come up, and you get an error like <em>Command does not exist</em>, then you must install Python on your computer.<br/>
+                        There are many ways to do this, but the standard way is to download an installer from Python's official website <a href="https://www.python.org/downloads/">here</a> and follow their instructions on installing Python onto your computer.<br/>
+                        <b>Also note</b> that the Force Server requires the following Python frameworks:
+                    </p>
+                    <ul>
+                        <li>time</li>
+                        <li>socket</li>
+                        <li>thread</li>
+                        <li>base64</li>
+                    </ul>
+                    <p>These are all standard Python frameworks, so should be isntalled by default by the Python installer.</p>
+                    <h3>Install the Force Server</h3>
+                    <p>
+                        Currently there is no setup.py or install script available for the Force Server to be installed globally on a device.<br/>
+                        However, installing and using the Force Server is as easy as following the steps below:
+                    </p>
+                    <ol>
+                        <li>Create a project folder on you device.</li>
+                        <li>Download the source code from the GitHub repository <a href="#">here</a>.</li>
+                        <li>Copy or Move both <b>ForceServer.py</b> and <b>template.py</b> into the project folder you created in step 1.</li>
+                        <li>Open template.py to get started.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/js/foundation/jquery.js"></script>
+
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.js"></script>
+    <script src="/js/global-elements/python.js"></script>
+  </body>
+</html>

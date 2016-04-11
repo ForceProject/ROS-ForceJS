@@ -3,9 +3,9 @@ jQuery(function ($) {
 
     var links = $('\
     <!-- Side Bar Template -->\
-    <link href="/css/simple-sidebar.css" rel="stylesheet">\
+    <link href="/css/documentation/sidebar.css" rel="stylesheet">\
     <!-- Accordion -->\
-    <link href="/css/accordion.css" rel="stylesheet">\
+    <link href="/css/foundation/accordion.css" rel="stylesheet">\
     <!-- Syntax Highlighter -->\
     <link href="/css/SyntaxHighlighter_3-0-83.0/shCore.css" rel="stylesheet">\
     <link href="/css/SyntaxHighlighter_3-0-83.0/shThemeDefault.css" rel="stylesheet">\
@@ -21,19 +21,19 @@ jQuery(function ($) {
         js.src = pathToScript;
         head.appendChild(js);
     }
-    appendScript("/js/global-elements.js");
-    appendScript("/js/sidebar-stick.js");
-    appendScript("/js/sidebar-toggle.js");
-    appendScript("/js/accordion.js");
+    appendScript("/js/global-elements/main.js");
+    appendScript("/js/documentation/sidebar/sidebar-stick.js");
+    appendScript("/js/documentation/sidebar/sidebar-toggle.js");
+    appendScript("/js/documentation/sidebar/accordion.js");
     appendScript("/js/SyntaxHighlighter_3-0-83.0/shCore.js");
     appendScript("/js/SyntaxHighlighter_3-0-83.0/shBrushPython.js");
-    appendScript("/js/start-syntaxhighlighter.js");
+    appendScript("/js/documentation/code/start-syntaxhighlighter.js");
 
     var body = $('#sidebar-wrapper');
     //var sideNav = $('');
 
     $.ajax({
-            url : "/html/Documentation/iOS/sidenav.html",
+            url : "/Documentation/iOS/sidenav.html",
             dataType: "text",
             success : function (data) {
                 body.add(data).appendTo(body);
