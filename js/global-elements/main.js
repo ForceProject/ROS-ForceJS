@@ -29,4 +29,5 @@ jQuery(function ($) {
         head.appendChild(js);
     }
     appendScript("/js/foundation/modernizr-2.6.2.min.js");
+    appendScript("/js/google/google-analytics.js");
 });
