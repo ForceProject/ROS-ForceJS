@@ -10,7 +10,7 @@ $(document).ready(function(){
         } else if (subject == "---") {
             alert("Please pick a subject.");
         } else {
-            var href =  "mailto:dev_jordanlewis@icloud.com"
+            var href =  "mailto:forceproject@icloud.com"
                         + "?subject=Force: " + subject
                         + "&body="          + message
                         + "%0D--------------------"
