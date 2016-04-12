@@ -1,5 +1,5 @@
 /* Import Fonts */
-@import url("fonts.css");
+@import url("/css/documentation/fonts.css");
 
 .nav-wrapper .navbar-header .navbar-brand {
   display:inline;
