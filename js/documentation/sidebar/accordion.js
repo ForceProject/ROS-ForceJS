@@ -2,10 +2,6 @@ $(document).ready(function () {
     $('.accordion .acc-header').click(function (e) {
         e.preventDefault();
 
-        // Anything Necessary
-        //$(this).closest('li').find('img').elevateZoom({scrollZoom : true}); // For Images in the Article Accordion
-        //$('aside img').elevateZoom({zoomWindowPosition: 10, zoomWindowOffetx: -10, scrollZoom : true}); // For Images in the Aside Accordion
-
         var clear = $('<div class="clear"></div>');
         var content = $(this).closest('li').find('.content');
         content.add(clear).appendTo(content);
