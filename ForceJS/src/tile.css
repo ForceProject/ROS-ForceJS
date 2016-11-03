@@ -3,6 +3,10 @@
     height: 80px;
     background-color: #8cdb57;
     position: absolute;
+    border-color: white;
+    border-width: 10px;
+    border-style: line;
+    padding: 0px;
 }
 
 .circle {
@@ -13,4 +17,8 @@
     border-radius: 50%;
     position: relative;
     top: 15.625%;
+}
+
+.ui-tile {
+    
 }

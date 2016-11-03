@@ -3,6 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import './controller-styles.css';
 import BGTile from './BGTile.jsx';
+//import Button from './ControllerTiles/Tile_Button.jsx'
+import RaisedButton from 'material-ui/RaisedButton';
+import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+var userTiles = [
+  {tileID:1, tag:"", location:{tl:[1,1], br:[2,2]}}
+]
 
 class App extends Component {
 
@@ -23,13 +31,26 @@ class App extends Component {
     return tiles
   }
 
+  getChildContext() {
+    return { muiTheme: getMuiTheme(baseTheme) };
+  }
+
   render() {
 
     var width = 1280
     var height = 720
     var size = 80
     var bgtiles = this.createBGTiles(width, height, size)
-    console.log(bgtiles)
+
+    const style = {
+      margin: 12,
+    };
+
+    var button = (
+      <div>
+      <RaisedButton label="Default" style={style} />
+      </div>
+      );
 
     return (
       <div className="App">
@@ -39,10 +60,15 @@ class App extends Component {
         </div>
         <div className="controller-container">
           {bgtiles}
+          {button}
         </div>
       </div>
     );
   }
 }
+
+App.childContextTypes = {
+            muiTheme: React.PropTypes.object.isRequired,
+        };
 
 export default App;
