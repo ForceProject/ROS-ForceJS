@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Slider from 'material-ui/Slider'
+import '../tile.css'
 
 class SliderTile extends Component {
 
@@ -17,14 +18,14 @@ class SliderTile extends Component {
 		var axis = (isHorizontal ? "x":"y") + (reversed ? "-reversed":"")
 
 		var style = {
-			'margin-left': 5,
-			'margin-right': 5,
-			width: 'auto',
-			'background-color': 'white'
+			marginLeft: '5%',
+			width: '90%',
+			height: '100%',
+			backgroundColor: 'white'
 		}
 
 		return (
-				<Slider defaultValue={defaultValue} step={step} min={min} max={max} axis={axis} style={style} />
+				<Slider defaultValue={defaultValue} step={step} min={min} max={max} axis={axis} style={style} className={'vertically-centered'} />
 			)
 	}
 }

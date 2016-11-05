@@ -7,6 +7,7 @@ import ControllerTile from './ControllerTiles/ControllerTile.jsx'
 
 import Button from './ControllerTiles/Tile_Button.jsx' // 1
 import Slider from './ControllerTiles/Tile_Slider.jsx'
+import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
 
 class App extends Component {
 
@@ -52,6 +53,8 @@ class App extends Component {
             isHorizontal={parameters.isHorizontal} 
             reversed={parameters.reversed} />
           break
+          case 3:
+          uiElement = <Switch title={parameters.title} labelSideLeft={parameters.labelSideLeft} on={parameters.on} />
           default:
           break;
         }
@@ -80,7 +83,12 @@ class App extends Component {
         max:100,
         isHorizontal:true,
         reversed:false
-      }, locations:[{x:3, y:2}, {x:4, y:2}]}
+      }, locations:[{x:3, y:2}, {x:4, y:2}]},
+      {tileID:3, tag:"justASwitch", parameters:{
+        title:"Swtich",
+        labelSideLeft:true,
+        on: false,
+      }, locations:[{x:4, y:4}, {x:5, y:4}]}
     ]
 
     var customTiles = this.createTilesFromArray(userTiles, size)

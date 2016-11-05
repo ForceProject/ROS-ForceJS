@@ -23,3 +23,13 @@
     position: absolute;
     background-color: red;
 }
+
+.vertically-centered {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.horizontally-centered {
+    margin: 0 auto;
+}
