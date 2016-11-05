@@ -20,5 +20,6 @@
 }
 
 .ui-tile {
-    
+    position: absolute;
+    background-color: red;
 }
