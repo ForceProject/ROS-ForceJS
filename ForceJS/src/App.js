@@ -8,6 +8,7 @@ import ControllerTile from './ControllerTiles/ControllerTile.jsx'
 import Button from './ControllerTiles/Tile_Button.jsx' // 1
 import Slider from './ControllerTiles/Tile_Slider.jsx'
 import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
+import NumericStepper from './ControllerTiles/Tile_NumericStepper.jsx'
 
 class App extends Component {
 
@@ -32,34 +33,40 @@ class App extends Component {
       var uiTiles = []
       var i = 0
       for (i in allTileData) {
-        var tileDict = allTileData[i]
+        if (i < allTileData.length) {
+          var tileDict = allTileData[i]
 
-        var tileID = tileDict.tileID
-        var tag = tileDict.tag
-        var location = tileDict.locations
-        var parameters = tileDict.parameters
+          var tileID = tileDict.tileID
+          var tag = tileDict.tag
+          var location = tileDict.locations
+          var parameters = tileDict.parameters
 
-        var uiElement
-        switch (tileID) {
-          case 1:
-            uiElement = <Button key={i} tag={tag} title={parameters["title"]} />
-          break
-          case 2:
-            uiElement = <Slider 
-            defaultValue={parameters.defaultValue} 
-            step={parameters.step} 
-            min={parameters.min} 
-            max={parameters.max} 
-            isHorizontal={parameters.isHorizontal} 
-            reversed={parameters.reversed} />
-          break
-          case 3:
-          uiElement = <Switch title={parameters.title} labelSideLeft={parameters.labelSideLeft} on={parameters.on} />
-          default:
-          break;
+          var uiElement
+          switch (tileID) {
+            case 1:
+              uiElement = <Button key={i} tag={tag} title={parameters["title"]} height={location[1].y - location[0].y + 1} size={size} />
+            break
+            case 2:
+              uiElement = <Slider 
+              defaultValue={parameters.defaultValue} 
+              step={parameters.step} 
+              min={parameters.min} 
+              max={parameters.max} 
+              isHorizontal={parameters.isHorizontal} 
+              reversed={parameters.reversed} />
+            break
+            case 3:
+              uiElement = <Switch title={parameters.title} labelSideLeft={parameters.labelSideLeft} on={parameters.on} />
+            break
+            case 4:
+              uiElement = <NumericStepper initial={parameters.initial} min={parameters.min} max={parameters.max} incr={parameters.incr} />
+            break
+            default:
+            break;
+          }
+
+          uiTiles.push(<ControllerTile key={i} location={location} size={size} subview={uiElement} />)
         }
-
-        uiTiles.push(<ControllerTile key={i} location={location} size={size} subview={uiElement} />)
       }
 
       return uiTiles
@@ -85,10 +92,16 @@ class App extends Component {
         reversed:false
       }, locations:[{x:3, y:2}, {x:4, y:2}]},
       {tileID:3, tag:"justASwitch", parameters:{
-        title:"Swtich",
+        title:"Switch",
         labelSideLeft:true,
         on: false,
-      }, locations:[{x:4, y:4}, {x:5, y:4}]}
+      }, locations:[{x:4, y:4}, {x:5, y:4}]},
+      {tileID:4, tag:"aStepper", parameters: {
+        initial:0,
+        min: 0,
+        max: 10,
+        incr: 1
+      }, locations:[{x:5, y:1}, {x:7, y:1}]}
     ]
 
     var customTiles = this.createTilesFromArray(userTiles, size)

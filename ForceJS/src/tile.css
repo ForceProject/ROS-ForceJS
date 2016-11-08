@@ -33,3 +33,24 @@
 .horizontally-centered {
     margin: 0 auto;
 }
+
+
+
+
+
+.numericStepper {
+    padding: 5px;
+}
+
+.numericStepper p {
+    margin: 2px;
+    color: blue;
+    font-size: 20px;
+    font-weight: 40;
+}
+
+.numericStepper-button {
+    display: block;
+    width: 45%;
+    margin: 5px;
+}

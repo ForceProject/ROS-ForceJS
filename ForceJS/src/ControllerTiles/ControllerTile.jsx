@@ -21,8 +21,6 @@ class ControllerTile extends Component {
 		var tileWidth = bottomRight[x] - topLeft[x] + 1
 		var tileHeight = bottomRight[y] - topLeft[y] + 1
 
-		console.log(tileWidth)
-
 		var style = {
 			top: topLeft[y] * size,
 			left: topLeft[x] * size,
