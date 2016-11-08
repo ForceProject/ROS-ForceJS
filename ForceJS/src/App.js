@@ -9,6 +9,7 @@ import Button from './ControllerTiles/Tile_Button.jsx' // 1
 import Slider from './ControllerTiles/Tile_Slider.jsx'
 import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
 import NumericStepper from './ControllerTiles/Tile_NumericStepper.jsx'
+import Textfield from './ControllerTiles/Tile_Textfield.jsx' // 5
 
 class App extends Component {
 
@@ -61,6 +62,9 @@ class App extends Component {
             case 4:
               uiElement = <NumericStepper initial={parameters.initial} min={parameters.min} max={parameters.max} incr={parameters.incr} />
             break
+            case 5:
+              uiElement = <Textfield placeHolder={parameters.placeHolder} labelText={parameters.labelText} defaultValue={parameters.defaultValue} />
+            break
             default:
             break;
           }
@@ -70,6 +74,25 @@ class App extends Component {
       }
 
       return uiTiles
+  }
+
+  /**
+
+  @param startLoc Array [x,y]
+  @param width Integer
+  @param height Integer
+  */
+  createLocations(startLoc, width, height) {
+    return [
+    {
+      x:startLoc[0], 
+      y:startLoc[1]
+    }, 
+    {
+      x:startLoc[0] + width - 1, 
+      y:startLoc[1] + height - 1
+    }
+      ]
   }
 
   render() {
@@ -101,7 +124,12 @@ class App extends Component {
         min: 0,
         max: 10,
         incr: 1
-      }, locations:[{x:5, y:1}, {x:7, y:1}]}
+      }, locations:[{x:5, y:1}, {x:7, y:1}]},
+      {tileID:5, tag:"text", parameters: {
+        placeHolder: "this is placeholder",
+        labelText: "This is a label",
+        defaultValue: "a"
+      }, locations:this.createLocations([6,0], 3, 1)}
     ]
 
     var customTiles = this.createTilesFromArray(userTiles, size)
