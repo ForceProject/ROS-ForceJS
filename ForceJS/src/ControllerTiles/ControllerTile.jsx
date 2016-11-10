@@ -1,12 +1,6 @@
 import React, {Component} from 'react'
-import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class ControllerTile extends Component {
-
-		getChildContext() {
-	    return { muiTheme: getMuiTheme(baseTheme) };
-	}
 
 	render() {
 
@@ -35,9 +29,5 @@ class ControllerTile extends Component {
 			)
 	}
 }
-
-ControllerTile.childContextTypes = {
-    muiTheme: React.PropTypes.object.isRequired,
-};
 
 export default ControllerTile;
