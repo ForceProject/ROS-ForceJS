@@ -1,34 +1,30 @@
-#!/usr/bin/env node
-var WebSocketClient = require('websocket').client;
+var W3CWebSocket = require('websocket').w3cwebsocket;
  
-var client = new WebSocketClient();
+var client = new W3CWebSocket('ws://localhost:8000/', '');
  
-client.on('connectFailed', function(error) {
-    console.log('Connect Error: ' + error.toString());
-});
+client.onerror = function() {
+    console.log('Connection Error');
+};
  
-client.on('connect', function(connection) {
+client.onopen = function() {
     console.log('WebSocket Client Connected');
-    connection.on('error', function(error) {
-        console.log("Connection Error: " + error.toString());
-    });
-    connection.on('close', function() {
-        console.log('echo-protocol Connection Closed');
-    });
-    connection.on('message', function(message) {
-        if (message.type === 'utf8') {
-            console.log("Received: '" + message.utf8Data + "'");
-        }
-    });
-    
+ 
     function sendNumber() {
-        if (connection.connected) {
+        if (client.readyState === client.OPEN) {
             var number = Math.round(Math.random() * 0xFFFFFF);
-            connection.sendUTF(number.toString());
+            client.send(number.toString());
             setTimeout(sendNumber, 1000);
         }
     }
     sendNumber();
-});
+};
  
-client.connect('ws://localhost:8080/', 'echo-protocol');
+client.onclose = function() {
+    console.log('echo-protocol Client Closed');
+};
+ 
+client.onmessage = function(e) {
+    if (typeof e.data === 'string') {
+        console.log("Received: '" + e.data + "'");
+    }
+};
