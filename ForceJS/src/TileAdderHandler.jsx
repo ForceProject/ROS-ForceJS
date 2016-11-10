@@ -14,10 +14,41 @@ import Textfield from './ControllerTiles/Tile_Textfield.jsx' // 5
 
 export class TileAdderHandler {
 
-	addTile = function (name) {
-		var tileID = this.tileIDFromName(name)
-		// tell grid to start listening to click/taps
-		// listen for a start and finish
+	/**
+
+  @param startLoc Array [x,y]
+  @param width Integer
+  @param height Integer
+  */
+  createLocations = function (startLoc, width, height) {
+    return [
+    {
+      x:startLoc[0], 
+      y:startLoc[1]
+    }, 
+    {
+      x:startLoc[0] + width - 1, 
+      y:startLoc[1] + height - 1
+    }
+      ]
+  }
+
+
+  finishAddTileProcess = function () {
+
+  }
+
+  clickBuffer = []
+  getClickInput = function (x, y) {
+  	this.clickBuffer.push((x,y))
+  	if (this.clickBuffer.length === 2) {
+  		this.acceptingClicks = false
+  	}
+  }
+
+	startAddTileProcess = function (name) {
+		this.tileID = this.tileIDFromName(name)
+		this.acceptingClicks = true
 	}
 
 	createAt = function (startLocation, endLocation) {
