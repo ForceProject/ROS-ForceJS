@@ -14,6 +14,95 @@ import Textfield from './ControllerTiles/Tile_Textfield.jsx' // 5
 
 export class TileAdderHandler {
 
+	addTile = function (name) {
+		var tileID = this.tileIDFromName(name)
+		// tell grid to start listening to click/taps
+		// listen for a start and finish
+	}
+
+	createAt = function (startLocation, endLocation) {
+		
+	}
+
+	defaultParametersForTileID = function (id) {
+		var lookUp = [
+			{ // Button
+	      title:"PR2"
+	    },
+	    { // Slider
+				defaultValue:0,
+				step:1,
+				min:0,
+				max:100,
+				isHorizontal:true,
+				reversed:false
+	    },
+			{ // Switch
+				title:"Switch",
+				labelSideLeft:true,
+				on: false,
+			},
+			{ // Numeric Stepper
+				initial:0,
+				min: 0,
+				max: 10,
+				incr: 1
+			},
+			{ // Textfield
+				placeHolder: "this is placeholder",
+				labelText: "This is a label",
+				defaultValue: "a"
+			},
+		]
+		return lookUp[ id - 1 ]
+	}
+
+	tileIDFromName = function (name) {
+		var lookUp = {
+			Button: 1,
+			Slider: 2,
+			Switch: 3,
+			NumericStepper: 4,
+			Textfield: 5
+		}
+		return lookUp[name]
+	}
+
+	createTileWithID = function (tileID, tileDict, key, size) {
+		var tag = tileDict.tag
+    var location = tileDict.locations
+    var parameters = tileDict.parameters
+
+    var uiElement
+    switch (tileID) {
+      case 1:
+        uiElement = <Button key={key} tag={tag} title={parameters["title"]} height={location[1].y - location[0].y + 1} size={size} />
+      break
+      case 2:
+        uiElement = <Slider 
+        defaultValue={parameters.defaultValue} 
+        step={parameters.step} 
+        min={parameters.min} 
+        max={parameters.max} 
+        isHorizontal={parameters.isHorizontal} 
+        reversed={parameters.reversed} />
+      break
+      case 3:
+        uiElement = <Switch title={parameters.title} labelSideLeft={parameters.labelSideLeft} on={parameters.on} />
+      break
+      case 4:
+        uiElement = <NumericStepper initial={parameters.initial} min={parameters.min} max={parameters.max} incr={parameters.incr} />
+      break
+      case 5:
+        uiElement = <Textfield placeHolder={parameters.placeHolder} labelText={parameters.labelText} defaultValue={parameters.defaultValue} />
+      break
+      default:
+      break;
+    }
+
+    return (<ControllerTile key={key} location={location} size={size} subview={uiElement} />)
+	}
+
 	createBGTiles = function (width, height, size) {
     var numHor = width / size
     var numVert = height / size
@@ -37,53 +126,13 @@ export class TileAdderHandler {
       for (i in allTileData) {
         if (i < allTileData.length) {
           var tileDict = allTileData[i]
-
           var tileID = tileDict.tileID
-          var tag = tileDict.tag
-          var location = tileDict.locations
-          var parameters = tileDict.parameters
-
-          var uiElement
-          switch (tileID) {
-            case 1:
-              uiElement = <Button key={i} tag={tag} title={parameters["title"]} height={location[1].y - location[0].y + 1} size={size} />
-            break
-            case 2:
-              uiElement = <Slider 
-              defaultValue={parameters.defaultValue} 
-              step={parameters.step} 
-              min={parameters.min} 
-              max={parameters.max} 
-              isHorizontal={parameters.isHorizontal} 
-              reversed={parameters.reversed} />
-            break
-            case 3:
-              uiElement = <Switch title={parameters.title} labelSideLeft={parameters.labelSideLeft} on={parameters.on} />
-            break
-            case 4:
-              uiElement = <NumericStepper initial={parameters.initial} min={parameters.min} max={parameters.max} incr={parameters.incr} />
-            break
-            case 5:
-              uiElement = <Textfield placeHolder={parameters.placeHolder} labelText={parameters.labelText} defaultValue={parameters.defaultValue} />
-            break
-            default:
-            break;
-          }
-
-          uiTiles.push(<ControllerTile key={i} location={location} size={size} subview={uiElement} />)
+          uiTiles.push(this.createTileWithID(tileID, tileDict, i, size))
         }
       }
 
       return uiTiles
   	}
-
-	addTile = function (id) {
-	
-	}
-
-	createAt = function (startLocation, endLocation) {
-		
-	}
 
 	constructor(mainView) {
 		this.gridView = mainView

@@ -51,6 +51,11 @@ class NavBar extends Component {
     }
   }
 
+  constructor(props) {
+    super(props);
+    this.tileAdderHandler = props.adderHandler
+  }
+
   render() {
     return (
       <div>

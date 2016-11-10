@@ -51,53 +51,31 @@ class App extends Component {
         tileID:1,
         tag:"hello",
         locations:[{x:1, y:1}, {x:2, y:2}],
-        parameters: {
-          title:"PR2"
-        }
+        parameters: this.tileAdder.defaultParametersForTileID(1),
       },
       {
         tileID:2,
         tag:"hello2",
         locations:[{x:3, y:2}, {x:4, y:2}],
-        parameters: {
-          defaultValue:0,
-          step:1,
-          min:0,
-          max:100,
-          isHorizontal:true,
-          reversed:false
-        },
+        parameters: this.tileAdder.defaultParametersForTileID(2),
       },
       {
         tileID:3,
         tag:"justASwitch",
         locations:[{x:4, y:4}, {x:5, y:4}],
-        parameters:{
-          title:"Switch",
-          labelSideLeft:true,
-          on: false,
-        }
+        parameters: this.tileAdder.defaultParametersForTileID(3),
       },
       {
         tileID:4,
         tag:"aStepper",
         locations:[{x:5, y:1}, {x:7, y:1}],
-        parameters: {
-          initial:0,
-          min: 0,
-          max: 10,
-          incr: 1
-        },
+        parameters: this.tileAdder.defaultParametersForTileID(4),
       },
       {
         tileID:5,
         tag:"text",
         locations:this.createLocations([6,0], 3, 1),
-        parameters: {
-          placeHolder: "this is placeholder",
-          labelText: "This is a label",
-          defaultValue: "a"
-        },
+        parameters: this.tileAdder.defaultParametersForTileID(5),
       }
       ],
       tiles: [],
@@ -112,7 +90,7 @@ class App extends Component {
 
     return (
       <div className="App">
-          <NavBar />
+          <NavBar adderHandler={this.tileAdder} />
         <div className="controller-container">
           <div>
             {bgtiles}
