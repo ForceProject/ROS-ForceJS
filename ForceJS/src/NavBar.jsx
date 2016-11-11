@@ -48,6 +48,7 @@ class NavBar extends Component {
     var selectionName = child.props.primaryText
     if (selectionName !== 'Close') {
       console.log(selectionName)
+      this.tileAdderHandler.startAddTileProcess(selectionName)
     }
   }
 
@@ -64,7 +65,7 @@ class NavBar extends Component {
           iconElementLeft={
             <div>
               <FlatButton {...this.props} label={this.state.editting ? "Save" : "Edit"} onClick={this.toggleEdit.bind(this)} />
-              {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected}/> : ''}
+              {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/> : ''}
             </div>
           }
           iconElementRight={

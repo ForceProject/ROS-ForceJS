@@ -33,26 +33,45 @@ export class TileAdderHandler {
       ]
   }
 
-
-  finishAddTileProcess = function () {
-
-  }
-
   clickBuffer = []
   getClickInput = function (x, y) {
-  	this.clickBuffer.push((x,y))
-  	if (this.clickBuffer.length === 2) {
-  		this.acceptingClicks = false
+  	if (this.acceptingClicks) {
+  		console.log("Got Click Input")
+  		this.clickBuffer.push({'x':x, 'y':y})
+  		if (this.clickBuffer.length === 2) {
+  				this.acceptingClicks = false
+  				this.createAt(this.tileID, this.clickBuffer[0], this.clickBuffer[1]) // This should check which one is top left and which one isn't
+  				this.clickBuffer = []
+  		}
   	}
   }
 
 	startAddTileProcess = function (name) {
+		console.log("Accepting Click Inputs")
 		this.tileID = this.tileIDFromName(name)
 		this.acceptingClicks = true
 	}
 
-	createAt = function (startLocation, endLocation) {
-		
+	createAt = function (tileID, startLocation, endLocation) {
+		var tileDataDictionary = this.createTileDataDictionary(
+			"tag",
+			this.defaultParametersForTileID(tileID),
+			startLocation,
+			endLocation
+			)
+
+		var newTile = this.createTileWithID(tileID, tileDataDictionary, this.keyIncr, this.size)
+		this.keyIncr ++
+		console.log("Adding Tile")
+		this.gridViewParent.addTile(newTile)
+	}
+
+	createTileDataDictionary = function (tag, parameters, startLocation, endLocation) {
+		return {
+			'tag': tag,
+			'locations': [startLocation, endLocation],
+			'parameters': parameters
+		}
 	}
 
 	defaultParametersForTileID = function (id) {
@@ -93,8 +112,8 @@ export class TileAdderHandler {
 			Button: 1,
 			Slider: 2,
 			Switch: 3,
-			NumericStepper: 4,
-			Textfield: 5
+			'Numeric Stepper': 4,
+			TextField: 5
 		}
 		return lookUp[name]
 	}
@@ -165,8 +184,9 @@ export class TileAdderHandler {
       return uiTiles
   	}
 
-	constructor(mainView) {
-		this.gridView = mainView
-
+	constructor(mainView, size) {
+		this.gridViewParent = mainView
+		this.size = size
+		this.keyIncr = 0
 	}
 }

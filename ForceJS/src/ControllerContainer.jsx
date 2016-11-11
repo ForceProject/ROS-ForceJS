@@ -25,14 +25,16 @@ class ControllerContainer extends Component {
   	return {x:tile_x, y:tile_y}
   }
 
-  mouseClick = function (event) {
-  	
-  }
-
-  mouseMoved = function (event) {
+  getTileLocationFromMouseEvent = function (event) {
   	var corrected = this.correctCoordinatesToContainer(event.pageX, event.pageY)
   	var tile = this.tileCoordinateAtLocation(corrected.x, corrected.y)
+  	return tile
+  }
+
+  mouseClick = function (event) {
+  	var tile = this.getTileLocationFromMouseEvent(event)
   	console.log(tile.x, tile.y)
+  	this.tileAdder.getClickInput(tile.x, tile.y)
   }
 
 	 constructor(props) {
@@ -40,15 +42,8 @@ class ControllerContainer extends Component {
     
     this.tileAdder = props.adderHandler
 
-    this.state = {
-      listeningForCurserLocation: false,
-      dimensions: {
-        width:1280, 
-        height:720
-      },
-      tileSize: 80,
-
-      tileData: [
+    var indTileSize = 80
+    var tileDataArr = [
       {
         tileID:1,
         tag:"hello",
@@ -79,23 +74,34 @@ class ControllerContainer extends Component {
         locations:this.tileAdder.createLocations([6,0], 3, 1),
         parameters: this.tileAdder.defaultParametersForTileID(5),
       }
-      ],
-      tiles: []
+      ]
+    var uiTiles = this.tileAdder.createTilesFromArray(tileDataArr, indTileSize)
+
+
+    this.state = {
+      listeningForCurserLocation: false,
+      dimensions: {
+        width:1280, 
+        height:720
+      },
+      tileSize: indTileSize,
+
+      tileData: tileDataArr,
+      tiles: uiTiles
     }
   }
 
   render() {
 
   	var bgtiles = this.tileAdder.createBGTiles(this.state.dimensions.width, this.state.dimensions.height, this.state.tileSize)
-    var tiles = this.tileAdder.createTilesFromArray(this.state.tileData, this.state.tileSize)
 
   	return (
-  			<div className="controller-container" onMouseMove={this.mouseMoved.bind(this)} onClick={this.mouseClick.bind(this)} >
+  			<div className="controller-container" onClick={this.mouseClick.bind(this)} >
           <div>
             {bgtiles}
           </div>
           <div>
-            {tiles}
+            {this.props.tiles}
           </div>
         </div>
   		)

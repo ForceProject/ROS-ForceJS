@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
-class ButtonTile extends React.Component {
+class ButtonTile extends Component {
 
 	buttonPressed = function (func) {
 		console.log("hello")
