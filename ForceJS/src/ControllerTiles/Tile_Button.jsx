@@ -6,7 +6,7 @@ class ButtonTile extends Component {
 
 	buttonPressed = function (func) {
 		console.log("hello")
-		MessageHandler.getInstance().sendMessage("Button", "Pressed")
+		MessageHandler.getInstance().sendMessage(this.props.tag, "Pressed")
 	}
 
 	render() {
