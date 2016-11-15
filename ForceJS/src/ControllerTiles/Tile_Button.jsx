@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
+import MessageHandler from '../MessageHandler.js'
 
 class ButtonTile extends Component {
 
 	buttonPressed = function (func) {
 		console.log("hello")
+		MessageHandler.getInstance().sendMessage("Button", "Pressed")
 	}
 
 	render() {

@@ -54,7 +54,7 @@ export class TileAdderHandler {
 
 	createAt = function (tileID, startLocation, endLocation) {
 		var tileDataDictionary = this.createTileDataDictionary(
-			"tag",
+			this.gridViewParent.state.tiles.length,
 			this.defaultParametersForTileID(tileID),
 			startLocation,
 			endLocation
