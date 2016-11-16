@@ -5,7 +5,7 @@ import MessageHandler from '../MessageHandler.js'
 class ButtonTile extends Component {
 
 	buttonPressed = function (func) {
-		this.props.sendCallBack("Clicked")
+		this.props.sendCallback("Clicked")
 	}
 
 	render() {

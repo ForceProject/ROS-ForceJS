@@ -4,8 +4,8 @@ import '../tile.css'
 
 class SliderTile extends Component {
 
-	handleSliderValueChanged = (event, value) => {
-		console.log(value)
+	handleSliderValueChanged = function (event, value) {
+		this.props.sendCallback(value)
 	}
 
 	render() {
@@ -25,7 +25,15 @@ class SliderTile extends Component {
 		}
 
 		return (
-				<Slider defaultValue={defaultValue} step={step} min={min} max={max} axis={axis} style={style} className={'vertically-centered'} />
+				<Slider
+				defaultValue={defaultValue}
+				step={step}
+				min={min}
+				max={max}
+				axis={axis}
+				style={style}
+				className={'vertically-centered'}
+				onChange={this.handleSliderValueChanged.bind(this)} />
 			)
 	}
 }

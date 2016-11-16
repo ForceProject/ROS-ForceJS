@@ -28,7 +28,7 @@ class NumericStepper extends Component {
 				current: newNum
 			})
 		}
-		console.log(this.state.current)
+		this.props.sendCallback(this.state.current)
 	}
 
 	constructor(props) {

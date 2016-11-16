@@ -72,7 +72,7 @@ class ControllerTile extends Component {
 		var constantProps = {
 			key: tag,
 			tag: tag,
-			sendCallBack: this.sendMessage.bind(this)
+			sendCallback: this.sendMessage.bind(this)
 		}
 
 		return this.mergeDictionaries(parameters, constantProps)
