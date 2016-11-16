@@ -5,8 +5,7 @@ import MessageHandler from '../MessageHandler.js'
 class ButtonTile extends Component {
 
 	buttonPressed = function (func) {
-		console.log("hello")
-		MessageHandler.getInstance().sendMessage(this.props.tag, "Pressed")
+		this.props.sendCallBack("Clicked")
 	}
 
 	render() {
@@ -19,7 +18,7 @@ class ButtonTile extends Component {
 					height: height * size
 				}
 		return (
-				<RaisedButton label={title} style={style} onClick={this.buttonPressed}/>
+				<RaisedButton label={title} style={style} onClick={this.buttonPressed.bind(this)}/>
 			)
 	}
 }

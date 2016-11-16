@@ -8,6 +8,10 @@ import Textfield from '../ControllerTiles/Tile_Textfield.jsx' // 5
 
 class ControllerTile extends Component {
 
+	sendMessage = function (data) {
+		console.log("Tag: " + this.state.tag + " sent: " + data)
+	}
+
 	createTileDataDictionary = function (tag, parameters, startLocation, endLocation) {
 		return {
 			'tag': tag,
@@ -49,47 +53,53 @@ class ControllerTile extends Component {
 		return lookUp[ id - 1 ]
 	}
 
-	createChildElement = function (tileID) {
+	/**
+	 * SOURCE: http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
+	 * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
+	 * @param obj1
+	 * @param obj2
+	 * @returns obj3 a new object based on obj1 and obj2
+	 */
+	mergeDictionaries = function (obj1,obj2){
+	    var obj3 = {};
+	    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+	    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+	    return obj3;
+	}
 
+	tileParameters = function (tag, tileID) {
 		var parameters = this.defaultParametersForTileID(tileID)
+		var constantProps = {
+			key: tag,
+			tag: tag,
+			sendCallBack: this.sendMessage.bind(this)
+		}
+
+		return this.mergeDictionaries(parameters, constantProps)
+	}
+
+	createChildElement = function (tileID) {
+		var params = this.tileParameters(this.state.tag, tileID)
 
 		var uiElement
     switch (tileID) {
       case 1:
         uiElement = <Button
-        key={this.state.tag}
-        tag={this.state.tag}
-        title={parameters["title"]}
+        {...params}
         height={this.state.location[1].y - this.state.location[0].y + 1}
         size={this.state.size} />
       break
       case 2:
-        uiElement = <Slider 
-        defaultValue={parameters.defaultValue} 
-        step={parameters.step} 
-        min={parameters.min} 
-        max={parameters.max} 
-        isHorizontal={parameters.isHorizontal} 
-        reversed={parameters.reversed} />
+        uiElement = <Slider {...params}/>
       break
       case 3:
-        uiElement = <Switch
-        title={parameters.title}
-        labelSideLeft={parameters.labelSideLeft}
-        on={parameters.on} />
+        uiElement = <Switch {...params} />
       break
       case 4:
-        uiElement = <NumericStepper
-        initial={parameters.initial}
-        min={parameters.min}
-        max={parameters.max}
-        incr={parameters.incr} />
+        uiElement = <NumericStepper {...params} />
       break
       case 5:
-        uiElement = <Textfield
-        placeHolder={parameters.placeHolder}
-        labelText={parameters.labelText}
-        defaultValue={parameters.defaultValue} />
+        uiElement = <Textfield {...params} />
       break
       default:
       break;
