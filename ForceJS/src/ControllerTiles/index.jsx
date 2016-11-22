@@ -8,8 +8,27 @@ import Textfield from '../ControllerTiles/Tile_Textfield.jsx' // 5
 
 class ControllerTile extends Component {
 
+	setData = function (value) {
+		console.log("No Override", this)
+	}
+
+	setChildSetFunction = function (child) {
+		this.childSetFunction = child
+	}
+
 	sendMessage = function (data) {
 		console.log("Tag: " + this.state.tag + " sent: " + data)
+		setTimeout(() => {
+			this.messageRecieved(data + 30)
+		}, 150)
+		
+	}
+
+	messageRecieved = function (data) {
+		var newData = this.changeDataToType(data, this.dataTypeForTileID(this.state.tileID))
+		// Now pass the data onto the child element by updating the 
+		this.childSetFunction(data)
+
 	}
 
 	createTileDataDictionary = function (tag, parameters, startLocation, endLocation) {
@@ -18,6 +37,49 @@ class ControllerTile extends Component {
 			'locations': [startLocation, endLocation],
 			'parameters': parameters
 		}
+	}
+
+	changeDataToType = function (data, type) {
+		var newData = data
+		switch (type) {
+			case "float":
+				newData = parseFloat(data)
+			break
+			case "integer":
+				newData = parseInt(data)
+			break
+			case "string":
+				// Do nothing, since the data is already a string
+			break
+			case "boolean":
+				newData = data === 'true' || data === '1'
+			break
+			default:
+				alert(this.state.tag + " does not accept input")
+			break
+		}
+		return newData
+	}
+
+	dataKeyForTileID = function (id) {
+		var lookUp = [
+			"n/a",
+			"defaultValue",
+			"toggled",
+			"value",
+			"defaultValue",
+		]
+	}
+
+	dataTypeForTileID = function (id) {
+		var lookUp = [
+			"n/a",
+			"float",
+			"boolean",
+			"integer",
+			"string",
+		]
+		return lookUp[ id - 1 ]
 	}
 
 	defaultParametersForTileID = function (id) {
@@ -36,10 +98,10 @@ class ControllerTile extends Component {
 			{ // Switch
 				title:"Switch",
 				labelSideLeft:true,
-				on: false,
+				toggled: true,
 			},
 			{ // Numeric Stepper
-				initial:0,
+				value:0,
 				min: 0,
 				max: 10,
 				incr: 1
@@ -72,6 +134,7 @@ class ControllerTile extends Component {
 		var constantProps = {
 			key: tag,
 			tag: tag,
+			parent: this,
 			sendCallback: this.sendMessage.bind(this)
 		}
 
@@ -80,6 +143,9 @@ class ControllerTile extends Component {
 
 	createChildElement = function (tileID) {
 		var params = this.tileParameters(this.state.tag, tileID)
+		if (this.state.childElementParams === undefined) {
+			this.state.childElementParams = params
+		}
 
 		var uiElement
     switch (tileID) {
@@ -93,7 +159,7 @@ class ControllerTile extends Component {
         uiElement = <Slider {...params}/>
       break
       case 3:
-        uiElement = <Switch {...params} />
+        uiElement = <Switch {...this.state.childElementParams} />
       break
       case 4:
         uiElement = <NumericStepper {...params} />
@@ -129,11 +195,11 @@ class ControllerTile extends Component {
 		super(props);
 		
 		this.state = this.props.dataDict
+
+		this.state.childElement = this.createChildElement(this.state.tileID)
 	}
 
 	render() {
-
-		var childElement = this.createChildElement(this.state.tileID)
 
 		var location = this.state.location
 		var size = this.state.size
@@ -142,7 +208,7 @@ class ControllerTile extends Component {
 
 		return (
 				<div className="ui-tile" style={style}>
-					{childElement}
+					{this.state.childElement}
 				</div>
 			)
 	}

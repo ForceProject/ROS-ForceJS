@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import ControllerTile from './ControllerTiles/ControllerTile.jsx'
+import ControllerTile from './ControllerTiles'
 
 import BGTile from './BGTile.jsx';
 

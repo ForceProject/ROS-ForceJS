@@ -16,6 +16,18 @@ class NumericStepper extends Component {
 		return min <= num && num <= max
 	}
 
+	isValidNumber = function (number) {
+		return this.isInBounds(this.state.min, number, this.state.max)
+	}
+
+	setValue = function (value) {
+		if (this.isValidNumber(value)) {
+			this.setState({
+				current: value
+			})
+		}
+	}
+
 	/**
 	* Thanks to Sam Pfeiffer for his expert debugging skills in debuggin the bullshit nature of order of arguments in the below function.
 	*/
@@ -23,7 +35,7 @@ class NumericStepper extends Component {
 
 		var newNum = func(this.state.current, this.state.increment)
 
-		if (this.isInBounds(this.state.min , newNum, this.state.max)) {
+		if (this.isValidNumber(newNum)) {
 			this.setState({
 				current: newNum
 			})
@@ -34,11 +46,14 @@ class NumericStepper extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			current: props.initial,
+			current: props.value,
 			min: props.min,
 			max: props.max,
 			increment: props.incr
 		}
+
+		var parent = this.props.parent
+		parent.setChildSetFunction(this.setValue.bind(this))
 	}
 
 	render() {

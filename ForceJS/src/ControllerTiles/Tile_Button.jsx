@@ -4,6 +4,10 @@ import MessageHandler from '../MessageHandler.js'
 
 class ButtonTile extends Component {
 
+	buttonRef = function (button) {
+
+	}
+
 	buttonPressed = function (func) {
 		this.props.sendCallback("Clicked")
 	}
@@ -18,7 +22,7 @@ class ButtonTile extends Component {
 					height: height * size
 				}
 		return (
-				<RaisedButton label={title} style={style} onClick={this.buttonPressed.bind(this)}/>
+				<RaisedButton ref={this.buttonRef.bind(this)} label={title} style={style} onClick={this.buttonPressed.bind(this)}/>
 			)
 	}
 }

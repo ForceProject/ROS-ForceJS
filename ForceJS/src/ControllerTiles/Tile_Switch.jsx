@@ -6,22 +6,37 @@ class Switch extends Component {
 	
 	switchToggled = function (event, value) {
 		this.props.sendCallback(value)
+		this.setState({
+			toggled: value
+		})
+	}
+
+	setValue = function (value) {
+		this.setState({
+			toggled: value
+		})
+		console.log(this.state.toggled)
+	}
+
+	constructor(props) {
+		super(props);
+		this.state = this.props
+
+		var parent = this.props.parent
+		parent.setChildSetFunction(this.setValue.bind(this))
+		//this.setData = this.setValue.bind(this)
 	}
 
 	render() {
-		var label = this.props.title
-		var labelSideLeft = this.props.labelSideLeft
-		var on = this.props.on
-
 		var style = {
 
 		}
 
 		return (
 				<Toggle
-				label={label}
-				labelPosition={labelSideLeft ? "left":"right"}
-				defaultToggled={on}
+				label={this.state.title}
+				labelPosition={this.state.labelSideLeft ? "left":"right"}
+				toggled={this.state.toggled}
 				style={style}
 				className={"vertically-centered"}
 				onToggle={this.switchToggled.bind(this)} />
