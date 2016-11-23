@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ros from '../ros'
 
 import Button from '../ControllerTiles/Tile_Button.jsx' // 1
 import Slider from '../ControllerTiles/Tile_Slider.jsx'
@@ -8,6 +9,35 @@ import Textfield from '../ControllerTiles/Tile_Textfield.jsx' // 5
 
 class ControllerTile extends Component {
 
+	// BEGIN ROS data flow
+	
+	// The 
+	// @param type should be a string with the first character capitalised 
+	createTopic = function (type) {
+		this.topic = ros.Topic({
+        name: '/ForceJS/toBot/' + this.state.tag,
+        messageType: 'std_msgs/' + type
+    });
+	}
+
+	stopTopic = function () {
+		this.topic.unadvertise()
+	}
+
+	pushData = function (data) {
+		this.topic.publish({
+			data: data
+		})
+	}
+
+	subscribeToIncoming = function () {
+		var toSubscribeTopic = '/ForceJS/toController/' + this.state.tag
+		
+	}
+
+	// END ROS data flow
+
+	// BEGIN data flow between parent and child tile
 	setData = function (value) {
 		console.log("No Override", this)
 	}
@@ -19,7 +49,7 @@ class ControllerTile extends Component {
 	sendMessage = function (data) {
 		console.log("Tag: " + this.state.tag + " sent: " + data)
 		setTimeout(() => {
-			this.messageRecieved(data + 30)
+			this.messageRecieved(data + "a")
 		}, 150)
 		
 	}
@@ -30,14 +60,7 @@ class ControllerTile extends Component {
 		this.childSetFunction(data)
 
 	}
-
-	createTileDataDictionary = function (tag, parameters, startLocation, endLocation) {
-		return {
-			'tag': tag,
-			'locations': [startLocation, endLocation],
-			'parameters': parameters
-		}
-	}
+	// END data flow between parent and child tile
 
 	changeDataToType = function (data, type) {
 		var newData = data
@@ -69,6 +92,8 @@ class ControllerTile extends Component {
 			"value",
 			"defaultValue",
 		]
+
+		return lookUp[ id - 1 ]
 	}
 
 	dataTypeForTileID = function (id) {
@@ -78,39 +103,6 @@ class ControllerTile extends Component {
 			"boolean",
 			"integer",
 			"string",
-		]
-		return lookUp[ id - 1 ]
-	}
-
-	defaultParametersForTileID = function (id) {
-		var lookUp = [
-			{ // Button
-	      title:"PR2"
-	    },
-	    { // Slider
-				defaultValue:0,
-				step:1,
-				min:0,
-				max:100,
-				isHorizontal:true,
-				reversed:false
-	    },
-			{ // Switch
-				title:"Switch",
-				labelSideLeft:true,
-				toggled: true,
-			},
-			{ // Numeric Stepper
-				value:0,
-				min: 0,
-				max: 10,
-				incr: 1
-			},
-			{ // Textfield
-				placeHolder: "this is placeholder",
-				labelText: "This is a label",
-				defaultValue: "a"
-			},
 		]
 		return lookUp[ id - 1 ]
 	}
@@ -127,51 +119,6 @@ class ControllerTile extends Component {
 	    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
 	    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
 	    return obj3;
-	}
-
-	tileParameters = function (tag, tileID) {
-		var parameters = this.defaultParametersForTileID(tileID)
-		var constantProps = {
-			key: tag,
-			tag: tag,
-			parent: this,
-			sendCallback: this.sendMessage.bind(this)
-		}
-
-		return this.mergeDictionaries(parameters, constantProps)
-	}
-
-	createChildElement = function (tileID) {
-		var params = this.tileParameters(this.state.tag, tileID)
-		if (this.state.childElementParams === undefined) {
-			this.state.childElementParams = params
-		}
-
-		var uiElement
-    switch (tileID) {
-      case 1:
-        uiElement = <Button
-        {...params}
-        height={this.state.location[1].y - this.state.location[0].y + 1}
-        size={this.state.size} />
-      break
-      case 2:
-        uiElement = <Slider {...params}/>
-      break
-      case 3:
-        uiElement = <Switch {...this.state.childElementParams} />
-      break
-      case 4:
-        uiElement = <NumericStepper {...params} />
-      break
-      case 5:
-        uiElement = <Textfield {...params} />
-      break
-      default:
-      break;
-    }
-
-    return uiElement
 	}
 
 	locationStyle = function (location, size) {
@@ -195,8 +142,6 @@ class ControllerTile extends Component {
 		super(props);
 		
 		this.state = this.props.dataDict
-
-		this.state.childElement = this.createChildElement(this.state.tileID)
 	}
 
 	render() {
@@ -207,9 +152,7 @@ class ControllerTile extends Component {
 		var style = this.locationStyle(location, size)
 
 		return (
-				<div className="ui-tile" style={style}>
-					{this.state.childElement}
-				</div>
+				<div className="ui-tile" style={style}></div>
 			)
 	}
 }

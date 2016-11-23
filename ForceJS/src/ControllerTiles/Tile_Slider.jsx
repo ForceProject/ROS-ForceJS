@@ -40,14 +40,6 @@ class SliderTile extends Component {
 	}
 
 	render() {
-		var defaultValue = this.props.defaultValue
-		var step = this.props.step
-		var min = this.props.min
-		var max = this.props.max
-		var isHorizontal = this.props.isHorizontal
-		var reversed = this.props.reversed
-		var axis = (isHorizontal ? "x":"y") + (reversed ? "-reversed":"")
-
 		var style = {
 			marginLeft: '5%',
 			width: '90%',
