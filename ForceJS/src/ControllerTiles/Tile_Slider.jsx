@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
 import Slider from 'material-ui/Slider'
 import '../tile.css'
+import ControllerTile from '.'
 
-class SliderTile extends Component {
+class SliderTile extends ControllerTile {
 
 	handleSliderValueChanged = function (event, value) {
-		this.props.sendCallback(value)
+		this.sendMessage(value)
 	}
 
 	isInBounds = function (min, num, max) {
@@ -26,17 +27,10 @@ class SliderTile extends Component {
 
 	constructor(props) {
 		super(props)
-
-		this.state = {
-			value: this.props.defaultValue,
-			step: this.props.step,
-			min: this.props.min,
-			max: this.props.max,
-			axis: (this.props.isHorizontal ? "x":"y") + (this.props.reversed ? "-reversed":"")
-		}
-
-		var parent = this.props.parent
-		parent.setChildSetFunction(this.setValue.bind(this))
+		this.setState({
+			axis: (this.state.isHorizontal ? "x":"y") + (this.state.reversed ? "-reversed":"")
+		})
+		this.setData = this.setValue
 	}
 
 	render() {
@@ -46,14 +40,14 @@ class SliderTile extends Component {
 			height: '100%',
 			backgroundColor: 'white'
 		}
-
-		return (
-				<Slider
+		var childElement = (
+			<Slider
 				{...this.state}
 				style={style}
 				className={'vertically-centered'}
 				onChange={this.handleSliderValueChanged.bind(this)} />
 			)
+		return this.embedInContainerTile(childElement)
 	}
 }
 

@@ -9,7 +9,7 @@ var CopyPlugin = require('copy-webpack-plugin');
 var packageInfo = require('./package');
 var env = {
     NODE_ENV: 'development',
-    ROSBRIDGE_URI: 'ws://192.168.99.100:9090',
+    ROSBRIDGE_URI: 'ws://pr2:9090',//138.25.61.21 PINGED
     PACKAGE_NAME: packageInfo.name,
     PACKAGE_VERSION: packageInfo.version
 };

@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import Toggle from 'material-ui/Toggle'
-import '../tile.css'
+import ControllerTile from '.'
 
-class Switch extends Component {
+class Switch extends ControllerTile {
 	
 	switchToggled = function (event, value) {
-		this.props.sendCallback(value)
+		this.sendMessage(value)
 		this.setState({
 			toggled: value
 		})
@@ -19,28 +19,21 @@ class Switch extends Component {
 	}
 
 	constructor(props) {
-		super(props);
-		this.state = this.props
-
-		var parent = this.props.parent
-		parent.setChildSetFunction(this.setValue.bind(this))
-		//this.setData = this.setValue.bind(this)
+		super(props)
+		this.setData = this.setValue.bind(this)
 	}
 
 	render() {
-		var style = {
+		var childElement = (					
+			<Toggle
+			label={this.state.title}
+			labelPosition={this.state.labelSideLeft ? "left":"right"}
+			toggled={this.state.toggled}
+			className={"vertically-centered"}
+			onToggle={this.switchToggled.bind(this)} />
+		)
 
-		}
-
-		return (
-				<Toggle
-				label={this.state.title}
-				labelPosition={this.state.labelSideLeft ? "left":"right"}
-				toggled={this.state.toggled}
-				style={style}
-				className={"vertically-centered"}
-				onToggle={this.switchToggled.bind(this)} />
-			)
+		return this.embedInContainerTile(childElement)
 	}
 }
 

@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import TextField from 'material-ui/TextField'
+import ControllerTile from '.'
 
-class Textfield extends Component {
+class Textfield extends ControllerTile {
 
 	textValueChanged = function (event, value) {
-		this.props.sendCallback(value)
+		this.sendMessage(value)
 	}
 
 	setTextValue = function (value) {
@@ -15,21 +16,21 @@ class Textfield extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = this.props
-
-		var parent = this.props.parent
-		parent.setChildSetFunction(this.setTextValue.bind(this))
+		this.setData = this.setTextValue
 	}
 
 	render() {
-		return (
-				<TextField
+
+		var childElement = (
+			<TextField
 				floatingLabelText={this.state.labelText}
 				hintText={this.state.placeHolder}
 				value={this.state.defaultValue}
 				onChange={this.textValueChanged.bind(this)}
-				/>
-			)
+			/>
+		)
+
+		return this.embedInContainerTile(childElement)
 	}
 }
 

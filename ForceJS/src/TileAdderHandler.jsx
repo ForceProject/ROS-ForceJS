@@ -6,13 +6,22 @@ import ControllerTile from './ControllerTiles'
 
 import BGTile from './BGTile.jsx';
 
-
+import Button from './ControllerTiles/Tile_Button.jsx' // 1
+import Slider from './ControllerTiles/Tile_Slider.jsx'
+import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
+import NumericStepper from './ControllerTiles/Tile_NumericStepper.jsx'
+import Textfield from './ControllerTiles/Tile_Textfield.jsx' // 5
+                      
+// TILE Creation Process
 // startAddTileProcess
 //  tileIDFromName
 // getClickInput * 2
 //  createAt
 //    createTileWithID
-//      c
+//      tileParameters
+//        defaultParametersForTileID
+//        mergeDictionaries
+//      mergeDictionaries
 export class TileAdderHandler {
 
   createBGTiles = function (width, height, size) {
@@ -32,10 +41,6 @@ export class TileAdderHandler {
     return tiles
   }
 
-
-
-
-
   createTilesFromArray = function (allTileData, size) {
     var uiTiles = []
     var i = 0
@@ -52,32 +57,7 @@ export class TileAdderHandler {
 
 
 
-
-  /**
-
-  @param startLoc Array [x,y]
-  @param width Integer
-  @param height Integer
-  */
-  createLocations = function (startLoc, width, height) {
-    return [
-    {
-      x:startLoc[0], 
-      y:startLoc[1]
-    }, 
-    {
-      x:startLoc[0] + width - 1, 
-      y:startLoc[1] + height - 1
-    }
-      ]
-  }
-
-
-
-
-
-
-
+  // BEGIN Creating and Adding the Tile
   startAddTileProcess = function (name) {
     console.log("Accepting Click Inputs")
     this.tileID = this.tileIDFromName(name)
@@ -115,34 +95,59 @@ export class TileAdderHandler {
   }
 
   createTileWithID = function (tileID, tag, location, size) {
+    var params = this.tileParameters(tag, tileID)
     var dataDictionary = {
       'tag': tag,
       'tileID': tileID,
       'location': location,
       'size': size
     }
-    return (
-      <ControllerTile key={tag} dataDict={dataDictionary}>
-        {this.createChildElement(tileID)}
-      </ControllerTile>
-      )
+    params = this.mergeDictionaries(params, dataDictionary)
+
+    var uiElement
+    switch (tileID) {
+      case 1:
+        uiElement = <Button
+        {...params}
+        height={location[1].y - location[0].y + 1}
+        size={size} />
+      break
+      case 2:
+        uiElement = <Slider {...params}/>
+      break
+      case 3:
+        uiElement = <Switch {...params} />
+      break
+      case 4:
+        uiElement = <NumericStepper {...params} />
+      break
+      case 5:
+        uiElement = <Textfield {...params} />
+      break
+      default:
+      break;
+    }
+
+    return uiElement
   }
 
+  tileParameters = function (tag, tileID) {
+    var parameters = this.defaultParametersForTileID(tileID)
+    var constantProps = {
+      key: tag,
+      tag: tag,
+    }
 
+    return this.mergeDictionaries(parameters, constantProps)
+  }
 
-
-
-
-
-
-  // BEGIN Creating the sub element
   defaultParametersForTileID = function (id) {
     var lookUp = [
       { // Button
         title:"PR2"
       },
       { // Slider
-        defaultValue:0,
+        value:0,
         step:1,
         min:0,
         max:100,
@@ -169,60 +174,20 @@ export class TileAdderHandler {
     return lookUp[ id - 1 ]
   }
 
-  createTileDataDictionary = function (tag, parameters, startLocation, endLocation) {
-    return {
-      'tag': tag,
-      'locations': [startLocation, endLocation],
-      'parameters': parameters
-    }
+  /**
+   * SOURCE: http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
+   * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
+   * @param obj1
+   * @param obj2
+   * @returns obj3 a new object based on obj1 and obj2
+  */
+  mergeDictionaries = function (obj1,obj2){
+      var obj3 = {};
+      for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+      for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+      return obj3;
   }
-
-  tileParameters = function (tag, tileID) {
-    var parameters = this.defaultParametersForTileID(tileID)
-    var constantProps = {
-      key: tag,
-      tag: tag,
-      parent: this,
-      sendCallback: this.sendMessage.bind(this)
-    }
-
-    return this.mergeDictionaries(parameters, constantProps)
-  }
-
-  createChildElement = function (tileID) {
-    var params = this.tileParameters(this.state.tag, tileID)
-    if (this.state.childElementParams === undefined) {
-      this.state.childElementParams = params
-    }
-
-    var uiElement
-    switch (tileID) {
-      case 1:
-        uiElement = <Button
-        {...params}
-        height={this.state.location[1].y - this.state.location[0].y + 1}
-        size={this.state.size} />
-      break
-      case 2:
-        uiElement = <Slider {...params}/>
-      break
-      case 3:
-        uiElement = <Switch {...this.state.childElementParams} />
-      break
-      case 4:
-        uiElement = <NumericStepper {...params} />
-      break
-      case 5:
-        uiElement = <Textfield {...params} />
-      break
-      default:
-      break;
-    }
-
-    return uiElement
-  }
-  // END Creating the sub element
-
+  // END Creating and Adding the Tile
 
 	constructor(mainView, size) {
 		this.gridViewParent = mainView

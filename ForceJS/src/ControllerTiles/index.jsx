@@ -1,11 +1,6 @@
 import React, {Component} from 'react'
 import ros from '../ros'
-
-import Button from '../ControllerTiles/Tile_Button.jsx' // 1
-import Slider from '../ControllerTiles/Tile_Slider.jsx'
-import Switch from '../ControllerTiles/Tile_Switch.jsx' // 3
-import NumericStepper from '../ControllerTiles/Tile_NumericStepper.jsx'
-import Textfield from '../ControllerTiles/Tile_Textfield.jsx' // 5
+import '../tile.css'
 
 class ControllerTile extends Component {
 
@@ -42,10 +37,6 @@ class ControllerTile extends Component {
 		console.log("No Override", this)
 	}
 
-	setChildSetFunction = function (child) {
-		this.childSetFunction = child
-	}
-
 	sendMessage = function (data) {
 		console.log("Tag: " + this.state.tag + " sent: " + data)
 		setTimeout(() => {
@@ -57,8 +48,7 @@ class ControllerTile extends Component {
 	messageRecieved = function (data) {
 		var newData = this.changeDataToType(data, this.dataTypeForTileID(this.state.tileID))
 		// Now pass the data onto the child element by updating the 
-		this.childSetFunction(data)
-
+		this.setData(data)
 	}
 	// END data flow between parent and child tile
 
@@ -107,20 +97,6 @@ class ControllerTile extends Component {
 		return lookUp[ id - 1 ]
 	}
 
-	/**
-	 * SOURCE: http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
-	 * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
-	 * @param obj1
-	 * @param obj2
-	 * @returns obj3 a new object based on obj1 and obj2
-	 */
-	mergeDictionaries = function (obj1,obj2){
-	    var obj3 = {};
-	    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-	    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
-	    return obj3;
-	}
-
 	locationStyle = function (location, size) {
 		var x = 'x'
 		var y = 'y'
@@ -138,22 +114,28 @@ class ControllerTile extends Component {
 		return style
 	}
 
-	constructor(props) {
-		super(props);
-		
-		this.state = this.props.dataDict
-	}
-
-	render() {
-
+	embedInContainerTile = function (child) {
 		var location = this.state.location
 		var size = this.state.size
 
 		var style = this.locationStyle(location, size)
 
 		return (
-				<div className="ui-tile" style={style}></div>
+				<div className="ui-tile" style={style}>
+					{child}
+				</div>
 			)
+	}
+
+	constructor(props) {
+		super(props);
+		this.state = this.props
+	}
+
+	render() {
+		console.log("Render was not overwritten.")
+		alert("YOU DIDN'T OVERRIDE RENDER FOR:" + this.state.tag)
+		return null
 	}
 }
 

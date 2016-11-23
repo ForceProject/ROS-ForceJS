@@ -1,29 +1,33 @@
 import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
-import MessageHandler from '../MessageHandler.js'
+import ControllerTile from '.'
 
-class ButtonTile extends Component {
+class ButtonTile extends ControllerTile {
 
 	buttonRef = function (button) {
 
 	}
 
 	buttonPressed = function (func) {
-		this.props.sendCallback("Clicked")
+		this.sendMessage("Clicked")
+	}
+
+	constructor(props) {
+		super(props)
 	}
 
 	render() {
-		var title = this.props.title
-		var height = this.props.height
-		var size = this.props.size
+		var title = this.state.title
+		var height = this.state.height
+		var size = this.state.size
 
 		var style = {
 					width: '100%',
 					height: height * size
 				}
-		return (
-				<RaisedButton ref={this.buttonRef.bind(this)} label={title} style={style} onClick={this.buttonPressed.bind(this)}/>
-			)
+
+		var childElement = (<RaisedButton label={title} style={style} onClick={this.buttonPressed.bind(this)}/>)
+		return this.embedInContainerTile(childElement)
 	}
 }
 

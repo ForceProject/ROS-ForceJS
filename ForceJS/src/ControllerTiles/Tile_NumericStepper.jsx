@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import '../tile.css'
+import ControllerTile from '.'
 
-class NumericStepper extends Component {
+class NumericStepper extends ControllerTile {
 
 	add = function (x, y) {
 		return x + y
@@ -23,7 +24,7 @@ class NumericStepper extends Component {
 	setValue = function (value) {
 		if (this.isValidNumber(value)) {
 			this.setState({
-				current: value
+				value: value
 			})
 		}
 	}
@@ -33,37 +34,31 @@ class NumericStepper extends Component {
 	*/
 	buttonPressed = function (func, event) {
 
-		var newNum = func(this.state.current, this.state.increment)
+		var newNum = func(this.state.value, this.state.incr)
 
 		if (this.isValidNumber(newNum)) {
 			this.setState({
-				current: newNum
+				value: newNum
 			})
 		}
-		this.props.sendCallback(this.state.current)
+		this.sendMessage(this.state.value)
 	}
 
 	constructor(props) {
 		super(props)
-		this.state = {
-			current: props.value,
-			min: props.min,
-			max: props.max,
-			increment: props.incr
-		}
-
-		var parent = this.props.parent
-		parent.setChildSetFunction(this.setValue.bind(this))
+		this.setData = this.setValue
 	}
 
 	render() {
-		return (
-				<div className="numericStepper">
-					<p>{this.state.current}</p>
+		var childElement = (
+			<div className="numericStepper">
+					<p>{this.state.value}</p>
 					<RaisedButton className='numericStepper-button' label="-" onClick={this.buttonPressed.bind(this, this.subtract)} />
 					<RaisedButton className='numericStepper-button' label="+" onClick={this.buttonPressed.bind(this, this.add)} />
 				</div>
-			)
+		)
+
+		return this.embedInContainerTile(childElement)
 	}
 }
 
