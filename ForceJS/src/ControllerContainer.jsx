@@ -41,8 +41,8 @@ class ControllerContainer extends Component {
     this.state = {
       listeningForCurserLocation: false,
       dimensions: {
-        width:1280, 
-        height:720
+        width:720, 
+        height:1280
       },
       tileSize: indTileSize,
     }

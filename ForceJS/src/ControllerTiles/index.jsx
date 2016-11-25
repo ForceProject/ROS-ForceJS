@@ -4,6 +4,21 @@ import '../tile.css'
 
 class ControllerTile extends Component {
 
+	// React Component LifeCycle
+	componentDidMount() {
+		var type = this.dataTypeForTileID(this.state.tileID)
+		if (type !== "n/a") {
+			this.createTopic(type)
+		}
+	}
+
+	componentWillUnmount() {
+		var type = this.dataTypeForTileID(this.state.tileID)
+		if (type !== "n/a") {
+			this.stopTopic()
+		}
+	}
+
 	// BEGIN ROS data flow
 	
 	// The 
@@ -55,16 +70,16 @@ class ControllerTile extends Component {
 	changeDataToType = function (data, type) {
 		var newData = data
 		switch (type) {
-			case "float":
+			case "Float64":
 				newData = parseFloat(data)
 			break
-			case "integer":
+			case "Int64":
 				newData = parseInt(data)
 			break
-			case "string":
+			case "String":
 				// Do nothing, since the data is already a string
 			break
-			case "boolean":
+			case "Bool":
 				newData = data === 'true' || data === '1'
 			break
 			default:
@@ -89,10 +104,10 @@ class ControllerTile extends Component {
 	dataTypeForTileID = function (id) {
 		var lookUp = [
 			"n/a",
-			"float",
-			"boolean",
-			"integer",
-			"string",
+			"Float64",
+			"Bool",
+			"Int64",
+			"String",
 		]
 		return lookUp[ id - 1 ]
 	}
