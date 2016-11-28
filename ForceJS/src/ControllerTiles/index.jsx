@@ -8,7 +8,7 @@ class ControllerTile extends Component {
 	componentDidMount() {
 		var type = this.dataTypeForTileID(this.state.tileID)
 		if (type !== "n/a") {
-			this.createTopic(type)
+			this.createTopic(type, this.state.tag)
 		}
 	}
 
@@ -23,11 +23,14 @@ class ControllerTile extends Component {
 	
 	// The 
 	// @param type should be a string with the first character capitalised 
-	createTopic = function (type) {
+	createTopic = function (type, tag) {
+		var rosTopicName = '/ForceJS/toBot/' + tag
+		console.log(rosTopicName)
 		this.topic = ros.Topic({
-        name: '/ForceJS/toBot/' + this.state.tag,
-        messageType: 'std_msgs/' + type
+        name: '/l_gripper_controller/command',//rosTopicName,
+        messageType: 'pr2_controller_msgs/Pr2GripperCommand' //'std_msgs/' + type
     });
+    this.topic.advertise()
 	}
 
 	stopTopic = function () {
@@ -54,9 +57,17 @@ class ControllerTile extends Component {
 
 	sendMessage = function (data) {
 		console.log("Tag: " + this.state.tag + " sent: " + data)
-		setTimeout(() => {
-			this.messageRecieved(data + "a")
-		}, 150)
+
+		var toSend = {
+            position: parseFloat(data)/1000,
+            max_effort: -1.0
+        }
+
+		this.topic.publish(toSend);
+		console.log(toSend)
+		// setTimeout(() => {
+		// 	this.messageRecieved(data + "a")
+		// }, 150)
 		
 	}
 

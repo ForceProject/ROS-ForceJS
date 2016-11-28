@@ -4,7 +4,6 @@ import './App.css';
 import NavBar from './NavBar.jsx'
 import ControllerContainer from './ControllerContainer.jsx'
 import {TileAdderHandler} from './TileAdderHandler.jsx'
-import {messageHandler} from './MessageHandler.js'
 
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
