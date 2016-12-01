@@ -1,0 +1,42 @@
+{
+	"controller":[
+		{
+			"tag":"tag0",
+			"type":1,
+			"locations":{
+				"topleft":{
+					"x":1,
+					"y":2
+				},
+				"bottomright":{
+					"x":1,
+					"y":2
+				}
+			},
+			"parameters":{
+
+			},
+			"ros":{
+				"topic":{
+					"name": "/l_gripper_controller/command",
+					"messageType": "pr2_controller_msgs/Pr2GripperCommand"
+				},
+				"send":{
+					"variableValue":{
+						"key":"position",
+						"transform":""
+					},
+					"linkedValues":[
+						{
+							"sourceTag":"tag1",
+							"key":"xxx"
+						}
+					],
+					"staticValues":{
+						"max_effort":-1.0
+					}
+				}
+			}
+		}
+	]
+}

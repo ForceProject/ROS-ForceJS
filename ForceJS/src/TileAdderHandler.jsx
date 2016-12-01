@@ -11,7 +11,9 @@ import Slider from './ControllerTiles/Tile_Slider.jsx'
 import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
 import NumericStepper from './ControllerTiles/Tile_NumericStepper.jsx'
 import Textfield from './ControllerTiles/Tile_Textfield.jsx' // 5
-                      
+
+import GF from './GlobalFunctions.js'
+
 // TILE Creation Process
 // startAddTileProcess
 //  tileIDFromName
@@ -41,22 +43,6 @@ export class TileAdderHandler {
     return tiles
   }
 
-  createTilesFromArray = function (allTileData, size) {
-    var uiTiles = []
-    var i = 0
-    for (i in allTileData) {
-      if (i < allTileData.length) {
-        var tileDict = allTileData[i]
-        var tileID = tileDict.tileID
-        uiTiles.push(this.createTileWithID(tileID, tileDict, i, size))
-      }
-    }
-
-    return uiTiles
-  }
-
-
-
   // BEGIN Creating and Adding the Tile
   startAddTileProcess = function (name) {
     console.log("Accepting Click Inputs")
@@ -75,6 +61,7 @@ export class TileAdderHandler {
     return lookUp[name]
   }
 
+  // This is so impure it a drug addict wouldn't even inject it
   clickBuffer = []
   getClickInput = function (x, y) {
     if (this.acceptingClicks) {
@@ -82,28 +69,25 @@ export class TileAdderHandler {
       this.clickBuffer.push({'x':x, 'y':y})
       if (this.clickBuffer.length === 2) {
           this.acceptingClicks = false
-          this.createAt(this.tileID, this.clickBuffer[0], this.clickBuffer[1]) // This should check which one is top left and which one isn't
+          var tag = this.gridViewParent.state.tiles.length.toString()
+          this.createAt(tag, this.tileID, this.clickBuffer, this.size) // This should check which one is top left and which one isn't
           this.clickBuffer = []
       }
     }
   }
 
-  createAt = function (tileID, startLocation, endLocation) {
-    var newTile = this.createTileWithID(tileID, this.gridViewParent.state.tiles.length.toString(), [startLocation, endLocation], this.size)
+  createAt = function (tag, tileID, locations, size) {
+    var params = this.tileParameters(tag, tileID, [startLocation, endLocation], size)
+    var newTile = this.createTileWithIDAndParameters(tileID, params)
     console.log("Adding Tile")
-    this.gridViewParent.addTile(newTile)
+    this.addTileToView(newTile)
   }
 
-  createTileWithID = function (tileID, tag, location, size) {
-    var params = this.tileParameters(tag, tileID)
-    var dataDictionary = {
-      'tag': tag,
-      'tileID': tileID,
-      'location': location,
-      'size': size
-    }
-    params = this.mergeDictionaries(params, dataDictionary)
+  addTileToView = function (tile) {
+    this.gridViewParent.addTile(tile)
+  }
 
+  createTileWithIDAndParameters = function (tileID, params) {
     var uiElement
     switch (tileID) {
       case 1:
@@ -131,14 +115,20 @@ export class TileAdderHandler {
     return uiElement
   }
 
-  tileParameters = function (tag, tileID) {
+  /*
+   * Location format [{x:0,y:0}, {x:1,y:1}]
+   */
+  tileParameters = function (tag, tileID, location, size) {
     var parameters = this.defaultParametersForTileID(tileID)
     var constantProps = {
       key: tag,
       tag: tag,
+      tileID: tileID,
+      location: location,
+      size: size
     }
 
-    return this.mergeDictionaries(parameters, constantProps)
+    return GF.mergeDictionaries(parameters, constantProps)
   }
 
   defaultParametersForTileID = function (id) {
@@ -174,19 +164,6 @@ export class TileAdderHandler {
     return lookUp[ id - 1 ]
   }
 
-  /**
-   * SOURCE: http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
-   * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
-   * @param obj1
-   * @param obj2
-   * @returns obj3 a new object based on obj1 and obj2
-  */
-  mergeDictionaries = function (obj1,obj2){
-      var obj3 = {};
-      for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-      for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
-      return obj3;
-  }
   // END Creating and Adding the Tile
 
 	constructor(mainView, size) {

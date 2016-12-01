@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import ros from '../ros'
 import '../tile.css'
+import math from 'mathjs'
+import GF from '../GlobalFunctions.js'
 
 class ControllerTile extends Component {
 
@@ -27,8 +29,8 @@ class ControllerTile extends Component {
 		var rosTopicName = '/ForceJS/toBot/' + tag
 		console.log(rosTopicName)
 		this.topic = ros.Topic({
-        name: '/l_gripper_controller/command',//rosTopicName,
-        messageType: 'pr2_controller_msgs/Pr2GripperCommand' //'std_msgs/' + type
+        name: this.state.ros.topic.name,//rosTopicName,
+        messageType: this.state.ros.topic.messageType //'std_msgs/' + type
     });
     this.topic.advertise()
 	}
@@ -57,11 +59,13 @@ class ControllerTile extends Component {
 
 	sendMessage = function (data) {
 		console.log("Tag: " + this.state.tag + " sent: " + data)
+		var key = this.state.ros.send.variableValue.key
 
 		var toSend = {
-            position: parseFloat(data)/1000,
-            max_effort: -1.0
-        }
+			[key]: parseFloat(data)/1000
+		}
+
+		toSend = GF.mergeDictionaries(toSend, this.state.ros.send.staticValues)
 
 		this.topic.publish(toSend);
 		console.log(toSend)
@@ -156,6 +160,7 @@ class ControllerTile extends Component {
 	constructor(props) {
 		super(props);
 		this.state = this.props
+		this.isEditting = false
 	}
 
 	render() {

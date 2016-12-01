@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+import ControllerLoader from './ControllerLoader.js'
 import {TileAdderHandler} from './TileAdderHandler.jsx'
 import './controller-styles.css';
 
@@ -46,6 +47,10 @@ class ControllerContainer extends Component {
       },
       tileSize: indTileSize,
     }
+    
+    setTimeout(() => {
+     var loader = new ControllerLoader(this.tileAdder, 'DemoController')
+    }, 150)
   }
 
   render() {

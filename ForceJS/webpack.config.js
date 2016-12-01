@@ -37,7 +37,7 @@ var config = {
         filename: '[name]-bundle.js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js', '.jsx', '.json']
     },
     resolveLoader: {
         modulesDirectories: ['src','node_modules']
