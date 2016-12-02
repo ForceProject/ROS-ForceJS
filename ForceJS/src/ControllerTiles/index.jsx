@@ -10,7 +10,7 @@ class ControllerTile extends Component {
 	componentDidMount() {
 		var type = this.dataTypeForTileID(this.state.tileID)
 		if (type !== "n/a") {
-			this.createTopic(type, this.state.tag)
+			this.createTopic()
 		}
 	}
 
@@ -25,13 +25,9 @@ class ControllerTile extends Component {
 	
 	// The 
 	// @param type should be a string with the first character capitalised 
-	createTopic = function (type, tag) {
-		var rosTopicName = '/ForceJS/toBot/' + tag
-		console.log(rosTopicName)
-		this.topic = ros.Topic({
-        name: this.state.ros.topic.name,//rosTopicName,
-        messageType: this.state.ros.topic.messageType //'std_msgs/' + type
-    });
+	createTopic = function () {
+		console.log(this.state.ros.topic)
+		this.topic = ros.Topic(this.state.ros.topic);
     this.topic.advertise()
 	}
 
@@ -57,8 +53,7 @@ class ControllerTile extends Component {
 		console.log("No Override", this)
 	}
 
-	sendMessage = function (data) {
-		console.log("Tag: " + this.state.tag + " sent: " + data)
+	oldCreateJSONToSend = function (data) {
 		var key = this.state.ros.send.variableValue.key
 
 		var toSend = {
@@ -66,6 +61,67 @@ class ControllerTile extends Component {
 		}
 
 		toSend = GF.mergeDictionaries(toSend, this.state.ros.send.staticValues)
+		return toSend
+	}
+
+	extractStringBetween = function (source, pre, suf) {
+		var splitByOpening = source.split(pre)
+		var filtered = splitByOpening.filter((string) => {return string.includes(suf)})
+		var cleaned = filtered.map((string) => {return string.split(suf)[0]})
+		return cleaned
+	}
+
+	getDataToInput = function (tag, thisData) {
+		var input = null
+			if (tag === "this") {
+				input = thisData
+			} else {
+				// Search all tiles for matching tag
+				// Read data from tag
+				// Set it to the input
+			}
+		return input
+	}
+
+	newCreateJSONToSend = function (data) {
+		var templateDict = this.state.ros.send
+		var stringified = JSON.stringify(templateDict)
+
+		/*
+		* find all triangular braces and extract internal contents
+		* remove the surrounding double quotes
+		* if the data type is not a string, but substitute the "" with the number
+		* if it is, insert it within the ""
+		*/
+		var placeholders = this.extractStringBetween(stringified, "<", ">")
+		var tags = placeholders.map((string) => {
+			return string.split("(").filter((string) => {
+				return !string.includes(")")
+			})[0]
+		})
+		var types = placeholders.map((string) => {return this.extractStringBetween(string, "(", ")")[0]})
+
+		for (var phIndex in placeholders) {
+			var placeholder = placeholders[phIndex]
+			var type = types[phIndex]
+
+			var input = "" + this.getDataToInput(tags[phIndex], data) // Gotta change it to a string
+			var convertedData = this.changeDataToType(input, type) // Then change it to the right data type
+
+			if (type !== String) {
+				placeholder = '"<' + placeholder + '>"'
+			}
+
+			stringified = stringified.replace(placeholder, convertedData.toString())
+		}
+
+		return JSON.parse(stringified)
+	}
+
+	sendMessage = function (data) {
+		console.log("Tag: " + this.state.tag + " sent: " + data)
+		
+		var toSend = this.newCreateJSONToSend(data)
 
 		this.topic.publish(toSend);
 		console.log(toSend)
