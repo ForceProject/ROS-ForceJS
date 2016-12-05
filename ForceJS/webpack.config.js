@@ -27,6 +27,19 @@ var cssLoader = {
     loader: cssPlugin.extract("style", "css!postcss")
 }
 
+
+
+var reactDomLibPath = path.join(__dirname, "./node_modules/react-dom/lib");
+var alias = {};
+["EventPluginHub", "EventConstants", "EventPluginUtils", "EventPropagators",
+ "SyntheticUIEvent", "CSSPropertyOperations", "ViewportMetrics"].forEach(function(filename){
+    alias["react/lib/"+filename] = path.join(__dirname, "./node_modules/react-dom/lib", filename);
+});
+
+
+
+
+
 // main config object
 var config = {
     entry: [
@@ -37,7 +50,8 @@ var config = {
         filename: '[name]-bundle.js'
     },
     resolve: {
-        extensions: ['', '.js', '.jsx', '.json']
+        extensions: ['', '.js', '.jsx', '.json'],
+        alias:alias
     },
     resolveLoader: {
         modulesDirectories: ['src','node_modules']
