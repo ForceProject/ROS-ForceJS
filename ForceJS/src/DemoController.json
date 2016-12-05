@@ -101,25 +101,17 @@
 					"messageType": "trajectory_msgs/JointTrajectory"
 				},
 				"send":{
-					"header": {
-					  "seq": 0,
-					  "stamp": {
-					    "secs": 1480661611,
-					    "nsecs": 999156375
-					  },
-					  "frame_id": ""
-					},
 					"joint_names": ["head_pan_joint", "head_tilt_joint"],
-					"points": {
+					"points":[{
 				    "positions": ["<this(Float64)>", -0.018430676901060112],
 				    "velocities": [0.3, 0.0],
 				    "accelerations": [],
 				    "effort": [],
 				    "time_from_start": {
-				      "secs": 0,
+				      "secs": 1,
 				      "nsecs": 150000000
       			}
-      		}
+      		}]
 				}
 			}
 		}
