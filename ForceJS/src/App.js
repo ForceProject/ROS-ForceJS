@@ -8,6 +8,7 @@ import {TileAdderHandler} from './TileAdderHandler.jsx'
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
+import TileSettingsDialog from './TileSettings'
 
 class App extends Component {
 
@@ -32,9 +33,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <meta name="viewport" content="width=device-width, user-scalable=no" />
           <NavBar adderHandler={this.tileAdder} />
           <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} />
+          <TileSettingsDialog />
       </div>
     );
   }

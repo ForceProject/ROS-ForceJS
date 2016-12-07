@@ -42,8 +42,8 @@ class SliderTile extends ControllerTile {
 
 	render() {
 		var style = {
-			marginLeft: '5%',
-			width: '90%',
+			marginLeft: '0%',
+			width: '100%',
 			height: '100%',
 			backgroundColor: 'white'
 		}

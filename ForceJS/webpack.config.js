@@ -79,6 +79,10 @@ var config = {
                 test: /\.(eot|woff|woff2|ttf(\?v=\d+\.\d+\.\d+)|svg(\?v=\d+\.\d+\.\d+)|gif|jpe?g|png)$/,
                 loader: "file",
                 query: {name:"[path][name].[ext]?[hash]"}
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: 'file?name=public/fonts/[name].[ext]'
             }
         ]
     },
