@@ -3,26 +3,43 @@ import TSDialogSection from '../TileSettings/TSDialogSection.jsx'
 import {EditableText} from '@blueprintjs/core'
 
 export var FormFieldType = {
-	Textfield:0
+	Textfield:0,
+	MultilineTextfield:1
 }
 
 class TSDSectionConfigurator {
 	newSection = () => {
-		this.fields = []
+		this.fields = {}
 	}
 
-	addField = (type, title) => {
+	addField = (type, title, params) => {
 		var field
 		switch (type) {
 			case FormFieldType.Textfield:
-				field = (<EditableText placeholder={title} />)
+				field = <EditableText {...params} />
+			break
+			case FormFieldType.MultilineTextfield:
+				field = <EditableText multiline placeholder={title} {...params} />
 			break
 			default:
 			break	
 		}
-		var nested = (<div>{field}<br/></div>)
-		this.fields.push(nested)
+		var style = {
+			marginTop: 5,
+			marginBottom: 10
+		}
+		var nested = (
+			<div style={style}>
+				<h6>{title}</h6>
+				{field}<br/>
+			</div>
+			)
+		this.fields[title] = {
+			type: type,
+			field: field
+        }
 	}
+
 
 	closeSection = (title) => {
 		var section = (<TSDialogSection title={title} fields={this.fields} />)

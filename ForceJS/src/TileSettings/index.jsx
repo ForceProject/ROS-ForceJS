@@ -7,14 +7,10 @@ import {
 } from '@blueprintjs/core'
 
 import '@blueprintjs/core/dist/blueprint.css'
-import TSDialogSection from '../TileSettings/TSDialogSection.jsx'
 import TSDSectionConfigurator, {FormFieldType} from '../TileSettings/TSDSectionConfigurator.jsx'
 
-interface TPDialogState {
-	isOpen: boolean
-}
 
-class TileSettingsDialog extends Component<{}, TPDialogState> {
+class TileSettingsDialog extends Component {
  	
 	constructor(props) {
 		super(props);
@@ -23,8 +19,18 @@ class TileSettingsDialog extends Component<{}, TPDialogState> {
 
     var configurator = new TSDSectionConfigurator()
     configurator.newSection()
-    configurator.addField(FormFieldType.Textfield, "Topic Name")
-    configurator.addField(FormFieldType.Textfield, "Message Type")
+    configurator.addField(FormFieldType.Textfield, "Topic Name", {
+        placeholder: "ROS Topic Name",
+        value: "Predefined Value 1998"
+    })
+    configurator.addField(FormFieldType.Textfield, "Message Type", {
+        placeholder: "ROS Message Type"
+    })
+    configurator.addField(FormFieldType.MultilineTextfield, "Send", {
+        minLines:3,
+        maxLines:10,
+        placeholder: "This is a JSON dictionary, wrap it in {}"
+    })
     configurator.closeSection("ROS")
 
 		this.state = {
