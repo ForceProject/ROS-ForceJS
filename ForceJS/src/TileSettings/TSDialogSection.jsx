@@ -32,7 +32,7 @@ class TSDialogSection extends Component {
 			sectionElements: this.props.fields
 		}
 
-		this.getValues()
+		this.props.getInstanceFunc(this)
 	}
 
 	render() {

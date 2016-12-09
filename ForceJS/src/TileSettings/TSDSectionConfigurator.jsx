@@ -40,9 +40,15 @@ class TSDSectionConfigurator {
         }
 	}
 
+	getClassInstanceOfSection = (instance) => {
+	    console.log("get section instance called")
+        console.log("returned values is: " + instance.getValues())
+	}
 
 	closeSection = (title) => {
-		var section = (<TSDialogSection title={title} fields={this.fields} />)
+		var section = (<TSDialogSection title={title}
+                                        fields={this.fields}
+                                        getInstanceFunc={this.getClassInstanceOfSection.bind(this)} />)
 		this.sections.push(section)
 	}
 

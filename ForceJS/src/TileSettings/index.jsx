@@ -35,7 +35,7 @@ class TileSettingsDialog extends Component {
 
 		this.state = {
 			isOpen: true,
-      sections: configurator.output()
+            sections: configurator.output()
 		}
 	}
 
