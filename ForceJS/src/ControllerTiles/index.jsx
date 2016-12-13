@@ -26,9 +26,9 @@ class ControllerTile extends Component {
 	// The 
 	// @param type should be a string with the first character capitalised 
 	createTopic = function () {
-		console.log(this.state.ros.topic)
+		//console.log(this.state.ros.topic)
 		this.topic = ros.Topic(this.state.ros.topic);
-    this.topic.advertise()
+    	this.topic.advertise()
 	}
 
 	stopTopic = function () {

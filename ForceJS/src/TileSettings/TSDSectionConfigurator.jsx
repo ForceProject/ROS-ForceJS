@@ -1,10 +1,15 @@
 import React, {Component} from 'react'
 import TSDialogSection from '../TileSettings/TSDialogSection.jsx'
-import {EditableText} from '@blueprintjs/core'
+import {
+    EditableText,
+    Switch
+} from '@blueprintjs/core'
 
 export var FormFieldType = {
 	Textfield:0,
-	MultilineTextfield:1
+	MultilineTextfield:1,
+    NumericalText: 2,
+    Switch: 3
 }
 
 class TSDSectionConfigurator {
@@ -21,21 +26,19 @@ class TSDSectionConfigurator {
 			case FormFieldType.MultilineTextfield:
 				field = <EditableText multiline placeholder={title} {...params} />
 			break
+            case FormFieldType.NumericalText:
+                field = <EditableText {...params} />
+                break
+            case FormFieldType.Switch:
+                field = <Switch {...params} />
+                break
 			default:
 			break	
 		}
-		var style = {
-			marginTop: 5,
-			marginBottom: 10
-		}
-		var nested = (
-			<div style={style}>
-				<h6>{title}</h6>
-				{field}<br/>
-			</div>
-			)
+
 		this.fields[title] = {
 			type: type,
+			title: title,
 			field: field
         }
 	}
@@ -43,6 +46,10 @@ class TSDSectionConfigurator {
 	getClassInstanceOfSection = (instance) => {
 	    console.log("get section instance called")
         console.log("returned values is: " + instance.getValues())
+	}
+
+	printLine = () => {
+		console.log("--------------------")
 	}
 
 	closeSection = (title) => {

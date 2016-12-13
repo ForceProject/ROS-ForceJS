@@ -5,7 +5,8 @@ import rosout from './rosout';
 
 // define a singleton with the live websocket connection
 // alert("Connecting: Connecting to ROS...")
-console.log("Connecting: Connecting to ROS...")
+// TODO: Uncomment this, it was just annoying me
+// console.log("Connecting: Connecting to ROS...")
 //statusDisplay.set('Connecting', 'Connecting to ROS...');
 var ros = new ROSLIB.Ros({
     url: process.env.ROSBRIDGE_URI
@@ -16,7 +17,8 @@ ros._connectSuccesses = 0;
 Object.assign(ros, rosout(ros));
 
 ros.on('error', function(error) {
-		console.log("Error: Error connecting to ROS")
+	// TODO: Uncomment this, it was just annoying me
+    //	console.log("Error: Error connecting to ROS")
     // statusDisplay.set('Error', 'Error connecting to ROS');
 });
 

@@ -54,7 +54,7 @@ class ControllerLoader {
 
 	createAndAddAllTilesFromArray = function (array) {
 		var tiles = array.map(this.createTileFromDict.bind(this))
-		console.log(tiles)
+		//console.log(tiles)
 		for (var tileIndex in tiles) {
 			this.tileAdder.addTileToView(tiles[tileIndex])
 		}

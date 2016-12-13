@@ -8,11 +8,30 @@ class TSDialogSection extends Component {
 		console.log(this.state.sectionElements["Topic Name"])
 	}
 
+    printLine = () => {
+        console.log("--------------------")
+    }
+
+    // PURE and working
     extractFieldElements = (fields) => {
+
+	    var nestStyle = {
+	        marginTop: 5,
+            marginBottom: 10
+        }
+
         var extracted = []
         var keys = Object.keys(fields)
         for (var key of keys) {
-            extracted.push(fields.key.field)
+			var field = fields[key]["field"]
+            var title = fields[key]["title"]
+            var nested = (
+                <div style={nestStyle}>
+                    <h6>{title}</h6>
+                    {field}<br/>
+                </div>
+            )
+            extracted.push(nested)
         }
         return extracted
     }
@@ -32,7 +51,7 @@ class TSDialogSection extends Component {
 			sectionElements: this.props.fields
 		}
 
-		this.props.getInstanceFunc(this)
+		//this.props.getInstanceFunc(this)
 	}
 
 	render() {
