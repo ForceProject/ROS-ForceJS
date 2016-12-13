@@ -70,7 +70,7 @@
     "websocket": "^1.0.23"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server",
+    "start": "NODE_ENV=development node node_modules/.bin/webpack-dev-server",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
