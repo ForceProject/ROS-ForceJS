@@ -77,7 +77,7 @@ export class TileAdderHandler {
   }
 
   createAt = function (tag, tileID, locations, size) {
-    var params = this.tileParameters(tag, tileID, [startLocation, endLocation], size)
+    var params = this.tileParameters(tag, tileID, locations, size)
     var newTile = this.createTileWithIDAndParameters(tileID, params)
     console.log("Adding Tile")
     this.addTileToView(newTile)
