@@ -8,10 +8,10 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 const TileMenu = (props) => (
     <IconMenu
-      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-      targetOrigin={{horizontal: 'left', vertical: 'top'}}
-      {...props}
+        iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+        targetOrigin={{horizontal: 'left', vertical: 'top'}}
+        {...props}
     >
       <MenuItem primaryText="Button" />
       <MenuItem primaryText="Slider" />
@@ -20,61 +20,77 @@ const TileMenu = (props) => (
       <MenuItem primaryText="TextField" />
       <MenuItem primaryText="Close" />
     </IconMenu>
-  )
+)
 
 TileMenu.muiName = 'IconMenu';
 
 class NavBar extends Component {
-  state = {
-    connected: false,
-    editting: false,
-    menuOpened: false
-  };
+    state = {
+        connected: false,
+        editting: false,
+        menuOpened: false
+    };
 
-  toggleConnection(event) {
-    // Chnage the state of the connection
-    this.setState({
-      connected: !this.state.connected
-    })
-  }
-
-  toggleEdit(event) {
-    this.setState({
-      editting: !this.state.editting
-    })
-  }
-
-  menuItemSelected(event, child) {
-    var selectionName = child.props.primaryText
-    if (selectionName !== 'Close') {
-      console.log(selectionName)
-      this.tileAdderHandler.startAddTileProcess(selectionName)
+    toggleConnection(event) {
+        // Chnage the state of the connection
+        this.setState({
+            connected: !this.state.connected
+        })
     }
-  }
 
-  constructor(props) {
-    super(props);
-    this.tileAdderHandler = props.adderHandler
-  }
+    toggleEdit(event) {
+        this.setState({
+            editting: !this.state.editting
+        })
+    }
 
-  render() {
-    return (
-      <div>
-        <AppBar
-          title="ForceJS"
-          iconElementLeft={
+    menuItemSelected(event, child) {
+        var selectionName = child.props.primaryText
+        if (selectionName !== 'Close') {
+            console.log(selectionName)
+            this.tileAdderHandler.startAddTileProcess(selectionName)
+        }
+    }
+
+    loadController = () => {
+      alert("NEED TO IMPLEMENT CONTROLLER IMPORT")
+    }
+
+    exportController = () => {
+        alert("NEED TO EXPORT THE CONTROLLER")
+    }
+
+    constructor(props) {
+        super(props);
+        this.app = this.props.pointers.app
+        this.tileAdderHandler = this.props.pointers.tileAdderHandler
+    }
+
+    render() {
+      /* Old Left
+       <div>
+       <FlatButton {...this.props} label={this.state.editting ? "Save" : "Edit"} onClick={this.toggleEdit.bind(this)} />
+       {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/> : ''}
+       </div>
+       */
+        return (
             <div>
-              <FlatButton {...this.props} label={this.state.editting ? "Save" : "Edit"} onClick={this.toggleEdit.bind(this)} />
-              {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/> : ''}
+              <AppBar
+                  title="ForceJS"
+                  iconElementLeft={
+                    <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/>
+                  }
+                  iconElementRight={
+                    <div>
+                      <FlatButton {... this.props} label={"Load Controller"} onClick={this.loadController} />
+                      <FlatButton {... this.props} label={"Export Controller"} onClick={this.exportController} />
+                      <FlatButton {...this.props} label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
+                    </div>
+                  }
+              />
             </div>
-          }
-          iconElementRight={
-            <FlatButton {...this.props} label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
-          }
-        />
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default NavBar;

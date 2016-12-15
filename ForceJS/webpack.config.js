@@ -9,7 +9,7 @@ var CopyPlugin = require('copy-webpack-plugin');
 var packageInfo = require('./package');
 var env = {
     NODE_ENV: 'development',
-    ROSBRIDGE_URI: 'ws://pr2:9090',//138.25.61.21 PINGED
+    ROSBRIDGE_URI: 'ws://localhost:9090',//138.25.61.21 PINGED
     PACKAGE_NAME: packageInfo.name,
     PACKAGE_VERSION: packageInfo.version
 };
@@ -89,8 +89,11 @@ var config = {
     devtool: process.env.WEBPACK_DEVTOOL || 'source-map'
 };
 
+let localhostOnly = false
+let ip = localhostOnly ? '127.0.0.1' : '0.0.0.0'
+
 config.devServer = {
-    host: process.env.HOST || '127.0.0.1',
+    host: process.env.HOST || ip,
     port: process.env.PORT || '8080',
     contentBase: config.output.path,
     publicPath: '/',

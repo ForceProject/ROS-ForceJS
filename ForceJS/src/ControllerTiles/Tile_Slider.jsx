@@ -33,10 +33,11 @@ class SliderTile extends ControllerTile {
 		// }
 		// newProps["axis"] = (props.isHorizontal ? "x":"y") + (props.reversed ? "-reversed":"")
 		super(props)
-
-		this.setState({
-			axis: (this.state.isHorizontal ? "x":"y") + (this.state.reversed ? "-reversed":"")
+		/*
+        this.setState({
+			axis: (this.state.params.isHorizontal ? "x":"y") + (this.state.params.reversed ? "-reversed":"")
 		})
+		*/
 		this.setData = this.setValue
 	}
 
@@ -49,7 +50,8 @@ class SliderTile extends ControllerTile {
 		}
 		var childElement = (
 			<Slider
-				{...this.state}
+				{...this.state.params}
+				axis={"x"}
 				style={style}
 				className={'vertically-centered'}
 				onChange={this.handleSliderValueChanged.bind(this)} />

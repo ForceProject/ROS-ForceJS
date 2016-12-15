@@ -28,7 +28,7 @@ class ControllerContainer extends Component {
 
   mouseClick = function (event) {
   	var tile = this.getTileLocationFromMouseEvent(event)
-  	console.log(tile.x, tile.y)
+  	//console.log(tile.x, tile.y)
   	this.tileAdder.getClickInput(tile.x, tile.y)
   }
 
@@ -49,7 +49,7 @@ class ControllerContainer extends Component {
     }
     
     setTimeout(() => {
-     var loader = new ControllerLoader(this.tileAdder, 'DemoController')
+        //var loader = new ControllerLoader(this.tileAdder, 'DemoController')
     }, 150)
   }
 

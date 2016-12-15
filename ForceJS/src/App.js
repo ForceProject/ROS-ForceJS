@@ -12,33 +12,65 @@ import TileSettingsDialog from './TileSettings'
 
 class App extends Component {
 
-  tileAdder = new TileAdderHandler(this, 80)
+    tileAdder = new TileAdderHandler(this, 80)
 
-  addTile = function (tileToAdd) {
-    this.state.tiles.push(tileToAdd)
-    this.forceUpdate()
-  }
-
-  getChildContext() {
-    return { muiTheme: getMuiTheme(baseTheme) };
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      tiles: []
+    addTile = function (tileToAdd) {
+        /* TODO:
+         -[ ] Show the TileSettingsDialog here, use a state change and pass a show:Bool and a params:Dict
+         -[ ] On the save button click, get the data and set it to the tile
+         -[ ] Add a delete tile button to the TSDialog
+         */
+        this.state.tiles.push(tileToAdd)
+        this.forceUpdate()
     }
-  }
 
-  render() {
-    return (
-      <div className="App">
-          <NavBar adderHandler={this.tileAdder} />
-          <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} />
-          <TileSettingsDialog />
-      </div>
-    );
-  }
+    printLine = () => {
+        console.log("--------------------")
+    }
+
+    showSettingsDialog = (settingsDialog) => {
+        this.setState({
+            settingsDialog: settingsDialog,
+        })
+        this.forceUpdate()
+    }
+
+    settingsDialog = () => {
+        if (this.state.settingsDialog !== null) {
+            return this.state.settingsDialog
+        }
+    }
+
+    removeCurrentSettingsDialog = () => {
+        this.setState({
+            settingsDialog: null
+        })
+    }
+
+    getChildContext() {
+        return { muiTheme: getMuiTheme(baseTheme) };
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            tiles: [],
+            settingsDialog: null,
+        }
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <NavBar pointers={{
+                    app: this,
+                    tileAdderHandler: this.tileAdder
+                }} />
+                <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} />
+                {this.settingsDialog()}
+            </div>
+        );
+    }
 }
 
 var injectTapEventPlugin = require("react-tap-event-plugin");
