@@ -56,10 +56,6 @@ class NavBar extends Component {
       alert("NEED TO IMPLEMENT CONTROLLER IMPORT")
     }
 
-    exportController = () => {
-        alert("NEED TO EXPORT THE CONTROLLER")
-    }
-
     constructor(props) {
         super(props);
         this.app = this.props.pointers.app
@@ -83,7 +79,7 @@ class NavBar extends Component {
                   iconElementRight={
                     <div>
                       <FlatButton {... this.props} label={"Load Controller"} onClick={this.loadController} />
-                      <FlatButton {... this.props} label={"Export Controller"} onClick={this.exportController} />
+                      <FlatButton {... this.props} label={"Export Controller"} onClick={this.app.exportController} />
                       <FlatButton {...this.props} label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
                     </div>
                   }

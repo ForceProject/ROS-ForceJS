@@ -14,7 +14,40 @@ class App extends Component {
 
     tileAdder = new TileAdderHandler(this, 80)
 
-    addTile = function (tileToAdd) {
+    exportController = () => {
+        console.log("Exporting")
+        let jsonArray = []
+        for (let instance of this.state.tileInstances) {
+            jsonArray.push(instance.exported())
+        }
+        console.log("\n\n\n Exported:")
+        console.log(jsonArray)
+
+        // TODO: Don't hardcode the dimensions of the controller
+        let exportDict = {
+            dimensions:{
+                width:1280,
+                height:720
+            },
+            tiles:jsonArray
+        }
+
+        /*
+        var file = new File("/tmp/exportedController.json","write")
+        let str = JSON.stringify(exportDict)
+        file.writeln(str)
+        file.close()
+        */
+        var str = JSON.stringify(exportDict)
+        var dataStr = "data:application/octet-stream;charset=utf-8," + encodeURIComponent(str);
+        window.open(dataStr)
+    }
+
+    addTileInstance = (instance) => {
+        this.state.tileInstances.push(instance)
+    }
+
+    addTile = function (tileToAdd, tileInstance) {
         /* TODO:
          -[ ] Show the TileSettingsDialog here, use a state change and pass a show:Bool and a params:Dict
          -[ ] On the save button click, get the data and set it to the tile
@@ -55,6 +88,7 @@ class App extends Component {
         super(props);
         this.state = {
             tiles: [],
+            tileInstances: [],
             settingsDialog: null,
         }
     }

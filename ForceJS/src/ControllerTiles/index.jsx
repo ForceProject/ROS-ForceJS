@@ -256,6 +256,26 @@ class ControllerTile extends Component {
         )
     }
 
+    exported = () => {
+        console.log(this.state)
+        let dict = {
+            universalParameters:{
+                tag:this.state.tag,
+                tileID:this.state.tileID,
+                location:this.state.location
+            },
+            parameters:this.state.params,
+            ros:{
+                topic:{
+                    name:this.state.ros.topic,
+                    messageType:this.state.ros.messageType
+                },
+                send:this.state.ros.send
+            }
+        }
+        return dict
+    }
+
     constructor(props) {
         super(props);
         let defaultROS = {
@@ -280,6 +300,7 @@ class ControllerTile extends Component {
         this.state = GF.mergeDictionaries(defaultROS, this.props)
         this.isEditting = false
         this.app = this.state.app
+        this.app.addTileInstance(this)
     }
 
     render() {
