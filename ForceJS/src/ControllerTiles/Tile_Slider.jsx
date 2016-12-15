@@ -26,12 +26,6 @@ class SliderTile extends ControllerTile {
 	}
 
 	constructor(props) {
-		// var newProps = {}
-		// newProps = {
-		// 	...props,
-		// 	axis: (props.isHorizontal ? "x":"y") + (props.reversed ? "-reversed":"")
-		// }
-		// newProps["axis"] = (props.isHorizontal ? "x":"y") + (props.reversed ? "-reversed":"")
 		super(props)
 		/*
         this.setState({

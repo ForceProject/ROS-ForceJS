@@ -26,9 +26,9 @@ class Switch extends ControllerTile {
 	render() {
 		var childElement = (					
 			<Toggle
-			label={this.state.title}
-			labelPosition={this.state.labelSideLeft ? "left":"right"}
-			toggled={this.state.toggled}
+			label={this.state.params.title}
+			labelPosition={this.state.params.labelSideLeft ? "left":"right"}
+			toggled={this.state.params.toggled}
 			className={"vertically-centered"}
 			onToggle={this.switchToggled.bind(this)} />
 		)

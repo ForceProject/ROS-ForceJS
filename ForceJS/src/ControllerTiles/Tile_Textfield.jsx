@@ -23,9 +23,9 @@ class Textfield extends ControllerTile {
 
 		var childElement = (
 			<TextField
-				floatingLabelText={this.state.labelText}
-				hintText={this.state.placeHolder}
-				value={this.state.defaultValue}
+				floatingLabelText={this.state.params.labelText}
+				hintText={this.state.params.placeHolder}
+				value={this.state.params.defaultValue}
 				onChange={this.textValueChanged.bind(this)}
 			/>
 		)

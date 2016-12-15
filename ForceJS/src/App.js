@@ -32,15 +32,10 @@ class App extends Component {
             tiles:jsonArray
         }
 
-        /*
-        var file = new File("/tmp/exportedController.json","write")
-        let str = JSON.stringify(exportDict)
-        file.writeln(str)
-        file.close()
-        */
         var str = JSON.stringify(exportDict)
         var dataStr = "data:application/octet-stream;charset=utf-8," + encodeURIComponent(str);
         window.open(dataStr)
+        alert("Exported controller is now saved in your downloads folder under a name along the lines of 'download'.")
     }
 
     addTileInstance = (instance) => {

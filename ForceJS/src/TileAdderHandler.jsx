@@ -78,7 +78,7 @@ export class TileAdderHandler {
 
     createAt = function (tag, tileID, locations, size) {
         var params = this.tileParameters(tag, tileID, locations, size)
-        var newTile = this.createTileWithIDAndParameters(tileID, params)
+        var newTile = this.createTileWithIDAndParameters(tileID, params, locations, size)
         console.log("Adding Tile")
         this.addTileToView(newTile)
     }
@@ -87,7 +87,7 @@ export class TileAdderHandler {
         this.gridViewParent.addTile(tile)
     }
 
-    createTileWithIDAndParameters = function (tileID, params) {
+    createTileWithIDAndParameters = function (tileID, params, location, size) {
         var uiElement
         switch (tileID) {
             case 1:

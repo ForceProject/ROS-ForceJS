@@ -5,61 +5,62 @@ import ControllerTile from '.'
 
 class NumericStepper extends ControllerTile {
 
-	add = function (x, y) {
-		return x + y
-	}
+    add = function (x, y) {
+        return x + y
+    }
 
-	subtract = function (x, y) {
-		return x - y
-	}
+    subtract = function (x, y) {
+        return x - y
+    }
 
-	isInBounds = function (min, num, max) {
-		return min <= num && num <= max
-	}
+    isInBounds = function (min, num, max) {
+        return min <= num && num <= max
+    }
 
-	isValidNumber = function (number) {
-		return this.isInBounds(this.state.min, number, this.state.max)
-	}
+    isValidNumber = function (number) {
+        return this.isInBounds(this.state.params.min, number, this.state.params.max)
+    }
 
-	setValue = function (value) {
-		if (this.isValidNumber(value)) {
-			this.setState({
-				value: value
+    setValue = function (value) {
+        if (this.isValidNumber(value)) {
+            this.setState({
+            	params:{
+            		incr:this.state.params.incr,
+					max:this.state.params.max,
+					min:this.state.params.min,
+					value:value
+				}
 			})
-		}
-	}
+        }
+    }
 
-	/**
-	* Thanks to Sam Pfeiffer for his expert debugging skills in debuggin the bullshit nature of order of arguments in the below function.
-	*/
-	buttonPressed = function (func, event) {
+    /**
+     * Thanks to Sam Pfeiffer for his expert debugging skills in debuggin the bullshit nature of order of arguments in the below function.
+     */
+    buttonPressed = function (func, event) {
 
-		var newNum = func(this.state.value, this.state.incr)
+        var newNum = func(this.state.params.value, this.state.params.incr)
 
-		if (this.isValidNumber(newNum)) {
-			this.setState({
-				value: newNum
-			})
-		}
-		this.sendMessage(this.state.value)
-	}
+        this.setValue(newNum)
+        this.sendMessage(this.state.params.value)
+    }
 
-	constructor(props) {
-		super(props)
-		this.setData = this.setValue
-	}
+    constructor(props) {
+        super(props)
+        this.setData = this.setValue
+    }
 
-	render() {
-		var childElement = (
+    render() {
+        var childElement = (
 			<div className="numericStepper">
-					<p>{this.state.value}</p>
-					<RaisedButton className='numericStepper-button' label="-" onClick={this.buttonPressed.bind(this, this.subtract)} />
-					<RaisedButton className='numericStepper-button' label="+" onClick={this.buttonPressed.bind(this, this.add)} />
-				</div>
-		)
+				<p>{this.state.params.value}</p>
+				<RaisedButton className='numericStepper-button' label="-" onClick={this.buttonPressed.bind(this, this.subtract)} />
+				<RaisedButton className='numericStepper-button' label="+" onClick={this.buttonPressed.bind(this, this.add)} />
+			</div>
+        )
 
-		return this.embedInContainerTile(childElement)
-	}
+        return this.embedInContainerTile(childElement)
+    }
 }
 
 export default NumericStepper

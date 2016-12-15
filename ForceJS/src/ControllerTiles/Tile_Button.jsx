@@ -17,7 +17,7 @@ class ButtonTile extends ControllerTile {
 	}
 
 	render() {
-		var title = this.state.title
+		var title = this.state.params.title
 		var height = this.state.height
 		var size = this.state.size
 
