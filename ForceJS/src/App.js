@@ -14,14 +14,20 @@ class App extends Component {
 
     tileAdder = new TileAdderHandler(this, 80)
 
+    tileInstanceForTag = (tag) => {
+        for (let instance of this.state.tileInstances) {
+            if (instance.getTag() === tag) {
+                return instance
+            }
+        }
+        return null
+    }
+
     exportController = () => {
-        console.log("Exporting")
         let jsonArray = []
         for (let instance of this.state.tileInstances) {
             jsonArray.push(instance.exported())
         }
-        console.log("\n\n\n Exported:")
-        console.log(jsonArray)
 
         // TODO: Don't hardcode the dimensions of the controller
         let exportDict = {

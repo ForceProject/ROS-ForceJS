@@ -90,15 +90,26 @@ class ControllerTile extends Component {
         return cleaned
     }
 
+    setLatestData = (data) => {
+        this.latestData = data
+    }
+
+    getLatestData = () => {
+        return this.latestData
+    }
+
+    getTag = () => {
+        return this.state.tag
+    }
+
     getDataToInput = function (tag, thisData) {
         var input = null
         if (tag === "this") {
             input = thisData
         } else {
-            // TODO: Bidirectional stuff
-            // Search all tiles for matching tag
-            // Read data from tag
-            // Set it to the input
+            // Will pull data from other tiles if needed
+            let instance = this.app.tileInstanceForTag(tag)
+            input = instance.getLatestData()
         }
         return input
     }
@@ -139,6 +150,9 @@ class ControllerTile extends Component {
     }
 
     sendMessage =  (data) => {
+        // Keep track of the last value regardless if sent or not
+        this.setLatestData(data)
+
         console.log("Tag: " + this.state.tag + " sent: " + data)
 
         if (this.topic !== undefined) {
