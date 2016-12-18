@@ -51,8 +51,12 @@ class NumericStepper extends ControllerTile {
     }
 
     render() {
+        let labelStyle = {
+            lineHeight: 'normal'
+        }
+
         var childElement = (
-			<div className="numericStepper">
+			<div className="numericStepper" style={labelStyle}>
 				<p>{this.state.params.value}</p>
 				<RaisedButton className='numericStepper-button' label="-" onClick={this.buttonPressed.bind(this, this.subtract)} />
 				<RaisedButton className='numericStepper-button' label="+" onClick={this.buttonPressed.bind(this, this.add)} />

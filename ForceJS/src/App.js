@@ -19,6 +19,8 @@ class App extends Component {
     }
 
     removeTile = (tag) => {
+        // TODO: WHY is the output correct, but what is displayed wrong?
+        // TODO: WHY does it work for manually added stuff but not loaded stuff?
         console.log("Delete: " + tag)
         console.log("Tiles")
         console.log(this.state.tiles.map(this.getDOMTileTag))

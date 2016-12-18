@@ -48,13 +48,15 @@ class ControllerTile extends Component {
         let rosData = this.state.ros
         if (typ !== "n/a" && rosData !== undefined) {
             this.createTopic()
+        } else if (typ === "Read" && rosData !== undefined) {
+            this.listenToTopic()
         }
     }
 
     componentWillUnmount() {
-        let type = this.dataTypeForTileID(this.state.tileID)
+        let typ = this.dataTypeForTileID(this.state.tileID)
 
-        if (type !== "n/a") {
+        if (typ !== "n/a") {
             this.stopTopic()
         }
     }
@@ -64,6 +66,20 @@ class ControllerTile extends Component {
     }
 
     // BEGIN ROS data flow
+
+    listenToTopic = () => {
+        let topicName = this.state.ros.topic
+        let typ = this.state.ros.messageType
+        console.log("About to subscribe to topic: " + topicName)
+
+        if (topicName !== null && typ !== null) {
+            this.topic = ros.Topic({
+                name: topicName,
+                messageType: typ
+            })
+            this.topic.advertise()
+        }
+    }
 
     // The
     // @param type should be a string with the first character capitalised
@@ -77,13 +93,27 @@ class ControllerTile extends Component {
                 name: topicName,
                 messageType: typ
             })
-            this.topic.advertise()
+            this.topic.subscribe((recv) => {
+                let keys = this.state.ros.send.keys
+                let format = this.state.ros.send.format
+                // Work through the keys to get to the final data that we want
+                var latest = recv
+                for (let key of keys) {
+                    latest = latest[key]
+                }
+                this.setData(format.replace("<here>", latest.toString()))
+            })
         }
     }
 
     stopTopic = function () {
         if (this.topic !== undefined) {
-            this.topic.unadvertise()
+            let typ = this.dataTypeForTileID(this.state.tileID)
+            if (type === "Read") {
+                this.topic.unsubscribe()
+            } else {
+                this.topic.unadvertise()
+            }
         }
     }
 
@@ -208,18 +238,6 @@ class ControllerTile extends Component {
         return newData
     }
 
-    dataKeyForTileID = function (id) {
-        var lookUp = [
-            "n/a",
-            "defaultValue",
-            "toggled",
-            "value",
-            "defaultValue",
-        ]
-
-        return lookUp[ id - 1 ]
-    }
-
     dataTypeForTileID = function (id) {
         var lookUp = [
             "n/a",
@@ -227,6 +245,7 @@ class ControllerTile extends Component {
             "Bool",
             "Int64",
             "String",
+            "Read"
         ]
         return lookUp[ id - 1 ]
     }
@@ -244,6 +263,7 @@ class ControllerTile extends Component {
             left: topLeft[x] * size,
             width: tileWidth * size,
             height: tileHeight * size,
+            lineHeight: '' + size + 'px'
         }
         return style
     }
