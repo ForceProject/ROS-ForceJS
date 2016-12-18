@@ -54,7 +54,11 @@ class ControllerLoader {
         }
         params = GF.mergeDictionaries(params, size)
 
-        var tile = this.tileAdder.createTileWithIDAndParameters(dictionary.universalParameters.tileID, params)
+        var tile = this.tileAdder.createTileWithIDAndParameters(
+            dictionary.universalParameters.tileID,
+            params,
+            dictionary.universalParameters.location,
+            size.size)
         return tile
     }
 
