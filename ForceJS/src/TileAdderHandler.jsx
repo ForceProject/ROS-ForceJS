@@ -69,8 +69,12 @@ export class TileAdderHandler {
             this.clickBuffer.push({'x':x, 'y':y})
             if (this.clickBuffer.length === 2) {
                 this.acceptingClicks = false
-                var tag = this.gridViewParent.state.tiles.length.toString()
-                this.createAt(tag, this.tileID, this.clickBuffer, this.size) // This should check which one is top left and which one isn't
+                var tag = this.gridViewParent.state.tiles.length
+                let allTags = this.gridViewParent.allTags()
+                while (allTags.indexOf(tag.toString()) !== -1) {
+                    tag += 1
+                }
+                this.createAt(tag.toString(), this.tileID, this.clickBuffer, this.size) // This should check which one is top left and which one isn't
                 this.clickBuffer = []
             }
         }
