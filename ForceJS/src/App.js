@@ -12,6 +12,10 @@ import TileSettingsDialog from './TileSettings'
 
 class App extends Component {
 
+    allTags = () => {
+        return this.state.tileInstances.map((instance) => {return instance.getTag()})
+    }
+
     tileInstanceForTag = (tag) => {
         for (let instance of this.state.tileInstances) {
             if (instance.getTag() === tag) {
@@ -102,7 +106,7 @@ class App extends Component {
         this.setState({
             tiles:[],
             tileInstances:[],
-            settingsDialog:null
+            settingsDialog:null,
             controllerJSONStr: ""
         })
         alert("Controller has been reset.")

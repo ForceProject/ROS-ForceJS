@@ -20,6 +20,9 @@ class TSDSectionConfigurator {
     }
 
 	addField = (type, title, params) => {
+	    if (title === "Tag") {
+	        this.thisTag = params.defaultValue
+        }
         var newParams = params
         // Add in the onChange listener to track the changes
         newParams["onChange"] = this.trackFieldChange.bind(this, type, this.sectionTitle, title)
@@ -87,13 +90,23 @@ class TSDSectionConfigurator {
 	        v = parseFloat(value)
         }
 		this.trackedChanges[section][key] = v
+        // TODO: Make it so it doesn't warn twice
+		if (section === "Tag") {
+			if (v !== this.thisTag) {
+                let index = this.allTags.indexOf(v)
+                if (index !== -1) {
+                    alert("Tag (" + v + ") already exists, please choose another one.")
+                }
+            }
+		}
 	}
 
 	getData = () => {
 		return this.trackedChanges
 	}
 
-	constructor() {
+	constructor(allTags) {
+		this.allTags = allTags
 		this.sections = []
 		this.sectionTitle = ""
 		this.trackedChanges = {}

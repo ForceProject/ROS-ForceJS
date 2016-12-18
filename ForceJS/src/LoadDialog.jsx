@@ -9,6 +9,7 @@ import {
 } from '@blueprintjs/core'
 import Dropzone from 'react-dropzone'
 import './LoadDialog.css'
+import GF from './GlobalFunctions'
 
 class LoadDialog extends Component {
 
@@ -19,7 +20,7 @@ class LoadDialog extends Component {
     saveClicked = () => {
         let value = this.state.showUpload ? this.uploadValue : this.state.pasteValue
         console.log(value)
-        if (this.isJSON(value)) {
+        if (GF.isJSON(value)) {
             this.app.loadController(value)
             this.toggleDialog()
         } else {
@@ -37,15 +38,6 @@ class LoadDialog extends Component {
         //}
     }
 
-    isJSON = (str) => {
-        try {
-            JSON.parse(str);
-        } catch (e) {
-            return false;
-        }
-        return true;
-    }
-
     fileDropped = (files) => {
         if (files.length > 0) {
             console.log("File Dropped")
@@ -56,7 +48,7 @@ class LoadDialog extends Component {
             reader.onload = (e) => {
                 // get file content
                 var text = e.target.result;
-                if (this.isJSON(text)) {
+                if (GF.isJSON(text)) {
                     this.uploadValue = text
                 } else {
                     alert("Uploaded file was not a valid JSON file.")

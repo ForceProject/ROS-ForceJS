@@ -9,10 +9,16 @@ class ControllerTile extends Component {
 
     tileSettingsCallback = (newSettings) => {
         var rosSettings = newSettings.ROS
-        rosSettings["send"] = JSON.parse(rosSettings["send"])
+        let sendStr = rosSettings["send"]
+        if (GF.isJSON(sendStr)) {
+            rosSettings["send"] = JSON.parse(sendStr)
+        } else {
+            rosSettings["send"] = {}
+        }
         let params = newSettings["Tile Parameters"]
 
         this.setState({
+            tag:newSettings["Tag"]["Tag"],
             ros:rosSettings,
             params:params
         })
@@ -249,11 +255,13 @@ class ControllerTile extends Component {
     }
 
     showTilePreferences = () => {
-        console.log(this.state)
-        this.app.showDialog(<TileSettingsDialog ros={this.state.ros}
-                                                        params={this.state.params}
-                                                        callback={this.tileSettingsCallback}
-                                                        preferencesAreNow={this.preferencesAreNow}/>)
+        //console.log(this.state)
+        this.app.showDialog(<TileSettingsDialog tag={this.state.tag}
+                                                allTags={this.app.allTags()}
+                                                ros={this.state.ros}
+                                                params={this.state.params}
+                                                callback={this.tileSettingsCallback}
+                                                preferencesAreNow={this.preferencesAreNow}/>)
     }
 
     rightClicked = (e) => {
@@ -276,7 +284,7 @@ class ControllerTile extends Component {
     }
 
     exported = () => {
-        console.log(this.state)
+        //console.log(this.state)
         let dict = {
             universalParameters:{
                 tag:this.state.tag,

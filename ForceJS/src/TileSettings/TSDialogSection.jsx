@@ -59,7 +59,7 @@ class TSDialogSection extends Component {
 		 {this.state.isOpen ? "Hide":"Show"} {this.state.sectionTitle} Section
 		 </Button>-->
 		 */
-		console.log(this.props)
+		//console.log(this.props)
         return (
 			<div key={this.props.title} style={style} >
 				<h4>{this.state.sectionTitle}</h4>

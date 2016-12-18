@@ -62,6 +62,15 @@ class TileSettingsDialog extends Component {
         config.closeSection()
     }
 
+    createTagSection = (tag, config) => {
+        config.newSection("Tag")
+        config.addField(FormFieldType.Textfield, "Tag", {
+            defaultValue:tag,
+            placeholder:"Enter a unique tag for this tile."
+        })
+        config.closeSection()
+    }
+
     printLine = () => {
         console.log("--------------------")
     }
@@ -69,7 +78,8 @@ class TileSettingsDialog extends Component {
 	constructor(props) {
 		super(props);
 
-        var configurator = new TSDSectionConfigurator()
+        var configurator = new TSDSectionConfigurator(this.props.allTags)
+        this.createTagSection(this.props.tag, configurator)
         this.createROSSection(this.props.ros, configurator)
         this.createSectionFromParamsDict(this.props.params, configurator)
 
@@ -102,7 +112,7 @@ class TileSettingsDialog extends Component {
                 </div>
                 <div className="pt-dialog-footer">
                     <div className="pt-dialog-footer-actions">
-                        <Button text="Cancel" />
+                        <Button text="Cancel" onClick={this.toggleDialog} />
                         <Button intent={Intent.PRIMARY} onClick={this.saveClicked} text="Save" />
                     </div>
                 </div>
