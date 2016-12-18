@@ -5,6 +5,7 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import LoadDialog from './LoadDialog'
 
 const TileMenu = (props) => (
     <IconMenu
@@ -52,8 +53,8 @@ class NavBar extends Component {
         }
     }
 
-    loadController = () => {
-        alert("NEED TO IMPLEMENT CONTROLLER IMPORT")
+    loadControllerPressed = () => {
+        this.app.showDialog(<LoadDialog app={this.app} />)
     }
 
     constructor(props) {
@@ -69,6 +70,10 @@ class NavBar extends Component {
          {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/> : ''}
          </div>
          */
+
+        /* Connect Button
+         <FlatButton label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
+         */
         return (
             <div>
                 <AppBar
@@ -79,9 +84,8 @@ class NavBar extends Component {
                     iconElementRight={
                         <div>
                             <FlatButton label={"Save to Local"} onClick={this.app.saveToLocalStorage} />
-                            <FlatButton label={"Load Controller"} onClick={this.loadController} />
-                            <FlatButton label={"Export Controller"} onClick={this.app.exportController} />
-                            <FlatButton label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
+                            <FlatButton label={"Load"} onClick={this.loadControllerPressed} />
+                            <FlatButton label={"Export"} onClick={this.app.exportController} />
                         </div>
                     }
                 />

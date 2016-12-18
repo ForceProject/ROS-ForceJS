@@ -60,11 +60,6 @@ class App extends Component {
     }
 
     addTile = function (tileToAdd, tileInstance) {
-        /* TODO:
-         -[ ] Show the TileSettingsDialog here, use a state change and pass a show:Bool and a params:Dict
-         -[ ] On the save button click, get the data and set it to the tile
-         -[ ] Add a delete tile button to the TSDialog
-         */
         this.state.tiles.push(tileToAdd)
         this.forceUpdate()
     }
@@ -73,7 +68,7 @@ class App extends Component {
         console.log("--------------------")
     }
 
-    showSettingsDialog = (settingsDialog) => {
+    showDialog = (settingsDialog) => {
         this.setState({
             settingsDialog: settingsDialog,
         })
@@ -86,9 +81,16 @@ class App extends Component {
         }
     }
 
-    removeCurrentSettingsDialog = () => {
+    removeCurrentDialog = () => {
         this.setState({
             settingsDialog: null
+        })
+    }
+
+    loadController = (jsonStr) => {
+        this.setState({
+            controllerJSONStr: jsonStr,
+            tiles:[]
         })
     }
 
@@ -102,10 +104,10 @@ class App extends Component {
             tiles: [],
             tileInstances: [],
             settingsDialog: null,
+            controllerJSONStr: this.getFromLocalStorage()
         }
 
         this.tileAdder = new TileAdderHandler(this, 80)
-        this.controllerJSONStr = this.getFromLocalStorage()
     }
 
     render() {
@@ -115,7 +117,7 @@ class App extends Component {
                     app: this,
                     tileAdderHandler: this.tileAdder
                 }} />
-                <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} load={this.controllerJSONStr} />
+                <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} load={this.state.controllerJSONStr} />
                 {this.settingsDialog()}
             </div>
         );

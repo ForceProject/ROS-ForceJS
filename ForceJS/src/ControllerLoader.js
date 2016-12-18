@@ -71,13 +71,6 @@ class ControllerLoader {
 
         let parsed = JSON.parse(str)
         this.createAndAddAllTilesFromArray(parsed.tiles)
-
-        /*
-        this.loadJSON(filePath, true, (response) => {
-            var allTileData = response.tiles
-            this.createAndAddAllTilesFromArray(allTileData)
-        })
-        */
     }
 
 }

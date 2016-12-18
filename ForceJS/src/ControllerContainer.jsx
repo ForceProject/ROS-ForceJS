@@ -33,13 +33,21 @@ class ControllerContainer extends Component {
     }
 
     loadController = (jsonStr) => {
-        var loader = new ControllerLoader(this.tileAdder, jsonStr)
+        if (jsonStr !== null) {
+            this.lastJSONStr = jsonStr
+            this.loader = new ControllerLoader(this.tileAdder, jsonStr)
+        }
     }
 
+
+
     componentDidMount() {
-        // Load controller
+        this.loadController(this.props.load)
+    }
+
+    componentDidUpdate() {
         var jsonStr = this.props.load
-        if (jsonStr !== null) {
+        if (jsonStr !== this.lastJSONStr) {
             this.loadController(jsonStr)
         }
     }

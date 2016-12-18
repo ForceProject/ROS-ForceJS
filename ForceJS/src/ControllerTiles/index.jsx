@@ -244,13 +244,13 @@ class ControllerTile extends Component {
 
     preferencesAreNow = (shown) => {
         if (!shown) {
-            this.app.removeCurrentSettingsDialog()
+            this.app.removeCurrentDialog()
         }
     }
 
     showTilePreferences = () => {
         console.log(this.state)
-        this.app.showSettingsDialog(<TileSettingsDialog ros={this.state.ros}
+        this.app.showDialog(<TileSettingsDialog ros={this.state.ros}
                                                         params={this.state.params}
                                                         callback={this.tileSettingsCallback}
                                                         preferencesAreNow={this.preferencesAreNow}/>)
