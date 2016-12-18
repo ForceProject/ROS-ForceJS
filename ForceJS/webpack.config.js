@@ -9,7 +9,7 @@ var CopyPlugin = require('copy-webpack-plugin');
 var packageInfo = require('./package');
 var env = {
     NODE_ENV: 'development',
-    ROSBRIDGE_URI: 'ws://localhost:9090',//138.25.61.21 PINGED
+    ROSBRIDGE_URI: 'ws://Orange.local:9090',//138.25.61.21 PINGED
     PACKAGE_NAME: packageInfo.name,
     PACKAGE_VERSION: packageInfo.version
 };

@@ -22,7 +22,7 @@ class TSDialogSection extends Component {
             let field = fields[key]["field"]
             let title = fields[key]["title"]
             let nested = (
-				<div style={nestStyle}>
+				<div key={key+title} style={nestStyle}>
 					<h6>{title}</h6>
                     {field}<br/>
 				</div>
@@ -61,7 +61,7 @@ class TSDialogSection extends Component {
 		 */
 		console.log(this.props)
         return (
-			<div key={this.props.key} style={style} >
+			<div key={this.props.title} style={style} >
 				<h4>{this.state.sectionTitle}</h4>
 				<Collapse isOpen={this.state.isOpen}>
                     {this.extractFieldElements(this.state.sectionElements)}

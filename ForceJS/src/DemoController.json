@@ -1,4 +1,7 @@
 {
+	"ROS":{
+		"ROSBRIDGE_URI":"ws://Orange.local:9090"
+	},
 	"dimensions":{
 		"width":1280,
 		"height":720

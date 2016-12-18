@@ -38,13 +38,19 @@ class ControllerLoader {
         var params = GF.mergeDictionaries(dictionary.universalParameters, dictionary.parameters)
 
         var ros = {
-            ros:dictionary.ros
+            ros:{
+                topic:dictionary.ros.topic.name,
+                messageType:dictionary.ros.topic.messageType,
+                send:dictionary.send
+            },
+            params:dictionary.parameters
         }
         params = GF.mergeDictionaries(params, ros)
 
         // DO SOMETHING ABOUT THIS, IT'S BAD, IT'S HARDCODED
         var size = {
-            size:80
+            size:80,
+            app:this.tileAdder.gridViewParent
         }
         params = GF.mergeDictionaries(params, size)
 
@@ -60,13 +66,18 @@ class ControllerLoader {
         }
     }
 
-    constructor(tileAdder, filePath) {
+    constructor(tileAdder, str) {
         this.tileAdder = tileAdder
 
+        let parsed = JSON.parse(str)
+        this.createAndAddAllTilesFromArray(parsed.tiles)
+
+        /*
         this.loadJSON(filePath, true, (response) => {
             var allTileData = response.tiles
             this.createAndAddAllTilesFromArray(allTileData)
         })
+        */
     }
 
 }

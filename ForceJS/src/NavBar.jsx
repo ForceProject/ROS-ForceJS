@@ -13,12 +13,12 @@ const TileMenu = (props) => (
         targetOrigin={{horizontal: 'left', vertical: 'top'}}
         {...props}
     >
-      <MenuItem primaryText="Button" />
-      <MenuItem primaryText="Slider" />
-      <MenuItem primaryText="Switch" />
-      <MenuItem primaryText="Numeric Stepper" />
-      <MenuItem primaryText="TextField" />
-      <MenuItem primaryText="Close" />
+        <MenuItem primaryText="Button" />
+        <MenuItem primaryText="Slider" />
+        <MenuItem primaryText="Switch" />
+        <MenuItem primaryText="Numeric Stepper" />
+        <MenuItem primaryText="TextField" />
+        <MenuItem primaryText="Close" />
     </IconMenu>
 )
 
@@ -53,7 +53,7 @@ class NavBar extends Component {
     }
 
     loadController = () => {
-      alert("NEED TO IMPLEMENT CONTROLLER IMPORT")
+        alert("NEED TO IMPLEMENT CONTROLLER IMPORT")
     }
 
     constructor(props) {
@@ -63,27 +63,28 @@ class NavBar extends Component {
     }
 
     render() {
-      /* Old Left
-       <div>
-       <FlatButton {...this.props} label={this.state.editting ? "Save" : "Edit"} onClick={this.toggleEdit.bind(this)} />
-       {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/> : ''}
-       </div>
-       */
+        /* Old Left
+         <div>
+         <FlatButton {...this.props} label={this.state.editting ? "Save" : "Edit"} onClick={this.toggleEdit.bind(this)} />
+         {this.state.editting ? <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/> : ''}
+         </div>
+         */
         return (
             <div>
-              <AppBar
-                  title="ForceJS"
-                  iconElementLeft={
-                    <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/>
-                  }
-                  iconElementRight={
-                    <div>
-                      <FlatButton {... this.props} label={"Load Controller"} onClick={this.loadController} />
-                      <FlatButton {... this.props} label={"Export Controller"} onClick={this.app.exportController} />
-                      <FlatButton {...this.props} label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
-                    </div>
-                  }
-              />
+                <AppBar
+                    title="ForceJS"
+                    iconElementLeft={
+                        <TileMenu onItemTouchTap={this.menuItemSelected.bind(this)}/>
+                    }
+                    iconElementRight={
+                        <div>
+                            <FlatButton label={"Save to Local"} onClick={this.app.saveToLocalStorage} />
+                            <FlatButton label={"Load Controller"} onClick={this.loadController} />
+                            <FlatButton label={"Export Controller"} onClick={this.app.exportController} />
+                            <FlatButton label={this.state.connected ? "Disconnect" : "Connect"} onClick={this.toggleConnection.bind(this)}/>
+                        </div>
+                    }
+                />
             </div>
         );
     }

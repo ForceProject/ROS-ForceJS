@@ -36,14 +36,13 @@ class ControllerTile extends Component {
 
     // React Component LifeCycle
     componentDidMount() {
-        this.showTilePreferences()
-        /*
-         let typ = this.dataTypeForTileID(this.state.tileID)
-         let rosData = this.state.ros
-         if (typ !== "n/a" && rosData !== undefined) {
-         this.createTopic()
-         }
-         */
+        //this.showTilePreferences()
+
+        let typ = this.dataTypeForTileID(this.state.tileID)
+        let rosData = this.state.ros
+        if (typ !== "n/a" && rosData !== undefined) {
+            this.createTopic()
+        }
     }
 
     componentWillUnmount() {
@@ -64,10 +63,16 @@ class ControllerTile extends Component {
     // @param type should be a string with the first character capitalised
     createTopic = function () {
         let topicName = this.state.ros.topic
+        let typ = this.state.ros.messageType
         console.log("About to advertise topic: " + topicName)
 
-        this.topic = ros.Topic(topicName)
-        this.topic.advertise()
+        if (topicName !== null && typ !== null) {
+            this.topic = ros.Topic({
+                name: topicName,
+                messageType: typ
+            })
+            this.topic.advertise()
+        }
     }
 
     stopTopic = function () {
@@ -244,15 +249,15 @@ class ControllerTile extends Component {
     }
 
     showTilePreferences = () => {
+        console.log(this.state)
         this.app.showSettingsDialog(<TileSettingsDialog ros={this.state.ros}
                                                         params={this.state.params}
                                                         callback={this.tileSettingsCallback}
-        preferencesAreNow={this.preferencesAreNow}/>)
+                                                        preferencesAreNow={this.preferencesAreNow}/>)
     }
 
     rightClicked = (e) => {
         e.preventDefault()
-        // TODO: Show the tile settings
         console.log("\n\n Tile RIGHT CLICKED! Show the tile's preferences.")
         this.showTilePreferences()
     }
@@ -313,6 +318,7 @@ class ControllerTile extends Component {
         }
         this.state = GF.mergeDictionaries(defaultROS, this.props)
         this.isEditting = false
+
         this.app = this.state.app
         this.app.addTileInstance(this)
     }

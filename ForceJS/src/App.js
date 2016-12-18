@@ -12,8 +12,6 @@ import TileSettingsDialog from './TileSettings'
 
 class App extends Component {
 
-    tileAdder = new TileAdderHandler(this, 80)
-
     tileInstanceForTag = (tag) => {
         for (let instance of this.state.tileInstances) {
             if (instance.getTag() === tag) {
@@ -23,7 +21,7 @@ class App extends Component {
         return null
     }
 
-    exportController = () => {
+    createSaveJSONStr = () => {
         let jsonArray = []
         for (let instance of this.state.tileInstances) {
             jsonArray.push(instance.exported())
@@ -37,8 +35,21 @@ class App extends Component {
             },
             tiles:jsonArray
         }
+        return JSON.stringify(exportDict)
+    }
 
-        var str = JSON.stringify(exportDict)
+    getFromLocalStorage = () => {
+        return localStorage.getItem('ForceJS_LastController')
+    }
+
+    saveToLocalStorage = () => {
+        var jsonStr = this.createSaveJSONStr()
+        localStorage.setItem('ForceJS_LastController', jsonStr)
+        console.log("Saved to localStorage")
+    }
+
+    exportController = () => {
+        var str = this.createSaveJSONStr()
         var dataStr = "data:application/octet-stream;charset=utf-8," + encodeURIComponent(str);
         window.open(dataStr)
         alert("Exported controller is now saved in your downloads folder under a name along the lines of 'download'.")
@@ -92,6 +103,9 @@ class App extends Component {
             tileInstances: [],
             settingsDialog: null,
         }
+
+        this.tileAdder = new TileAdderHandler(this, 80)
+        this.controllerJSONStr = this.getFromLocalStorage()
     }
 
     render() {
@@ -101,7 +115,7 @@ class App extends Component {
                     app: this,
                     tileAdderHandler: this.tileAdder
                 }} />
-                <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} />
+                <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} load={this.controllerJSONStr} />
                 {this.settingsDialog()}
             </div>
         );
