@@ -83,9 +83,10 @@ class NavBar extends Component {
                     }
                     iconElementRight={
                         <div>
-                            <FlatButton label={"Save to Local"} onClick={this.app.saveToLocalStorage} />
-                            <FlatButton label={"Load"} onClick={this.loadControllerPressed} />
-                            <FlatButton label={"Export"} onClick={this.app.exportController} />
+                            <FlatButton label="Reset" onClick={this.app.resetController} />
+                            <FlatButton label="Save to Local" onClick={this.app.saveToLocalStorage} />
+                            <FlatButton label="Load" onClick={this.loadControllerPressed} />
+                            <FlatButton label="Export" onClick={this.app.exportController} />
                         </div>
                     }
                 />

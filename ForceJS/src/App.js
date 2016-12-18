@@ -98,6 +98,16 @@ class App extends Component {
         return { muiTheme: getMuiTheme(baseTheme) };
     }
 
+    resetController = () => {
+        this.setState({
+            tiles:[],
+            tileInstances:[],
+            settingsDialog:null
+            controllerJSONStr: ""
+        })
+        alert("Controller has been reset.")
+    }
+
     constructor(props) {
         super(props);
         this.state = {

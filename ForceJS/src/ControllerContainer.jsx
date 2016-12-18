@@ -34,8 +34,12 @@ class ControllerContainer extends Component {
 
     loadController = (jsonStr) => {
         if (jsonStr !== null) {
-            this.lastJSONStr = jsonStr
-            this.loader = new ControllerLoader(this.tileAdder, jsonStr)
+            if (this.props.tiles.length > 0) {
+                alert("You must reset the controller before loading one.")
+            } else {
+                this.lastJSONStr = jsonStr
+                this.loader = new ControllerLoader(this.tileAdder, jsonStr)
+            }
         }
     }
 
@@ -55,7 +59,7 @@ class ControllerContainer extends Component {
     constructor(props) {
         super(props)
 
-        this.tileAdder = props.adderHandler
+        this.tileAdder = this.props.adderHandler
 
         var indTileSize = 80
 
@@ -70,7 +74,6 @@ class ControllerContainer extends Component {
     }
 
     render() {
-
         var bgtiles = this.tileAdder.createBGTiles(this.state.dimensions.width, this.state.dimensions.height, this.state.tileSize)
 
         return (
