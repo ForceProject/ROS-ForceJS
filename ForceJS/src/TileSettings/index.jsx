@@ -77,7 +77,7 @@ class TileSettingsDialog extends Component {
 
 	constructor(props) {
 		super(props);
-
+        this.app = this.props.app
         var configurator = new TSDSectionConfigurator(this.props.allTags)
         this.createTagSection(this.props.tag, configurator)
         this.createROSSection(this.props.ros, configurator)
@@ -96,8 +96,14 @@ class TileSettingsDialog extends Component {
 	saveClicked = (event) => {
         this.toggleDialog()
 
-        var settingsData = this.state.sections.getData()
+        let settingsData = this.state.sections.getData()
         this.props.callback(settingsData)
+    }
+
+    deleteTile = () => {
+        let tag = this.props.tag
+        this.toggleDialog()
+        this.app.removeTile(tag)
     }
 
  	render() {
@@ -112,8 +118,20 @@ class TileSettingsDialog extends Component {
                 </div>
                 <div className="pt-dialog-footer">
                     <div className="pt-dialog-footer-actions">
-                        <Button text="Cancel" onClick={this.toggleDialog} />
-                        <Button intent={Intent.PRIMARY} onClick={this.saveClicked} text="Save" />
+                        <Button text="Delete"
+                                onClick={this.deleteTile}
+                                intent={Intent.DANGER}
+                                rightIconName="pt-icon-trash" />
+                        <Button text="     " disabled={true} />
+                        <Button text="     " disabled={true} />
+                        <Button text="     " disabled={true} />
+                        <Button text="Cancel"
+                                onClick={this.toggleDialog}
+                                rightIconName="pt-icon-undo"/>
+                        <Button intent={Intent.PRIMARY}
+                                onClick={this.saveClicked}
+                                text="Save"
+                                rightIconName="pt-icon-floppy-disk"/>
                     </div>
                 </div>
             </Dialog>

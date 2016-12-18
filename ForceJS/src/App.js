@@ -11,9 +11,43 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import TileSettingsDialog from './TileSettings'
 
 class App extends Component {
+    getDOMTileTag = (tile) => {
+        return tile.props.tag
+    }
+    getTileInstanceTag = (instance) => {
+        return instance.getTag()
+    }
+
+    removeTile = (tag) => {
+        console.log("Delete: " + tag)
+        console.log("Tiles")
+        console.log(this.state.tiles.map(this.getDOMTileTag))
+        console.log("Instances")
+        console.log(this.state.tileInstances.map(this.getTileInstanceTag))
+        console.log("Updated")
+        let updatedTiles = this.state.tiles.filter((tile) => {
+            return this.getDOMTileTag(tile) !== tag
+        })
+        console.log(updatedTiles.map(this.getDOMTileTag))
+        let updatedInstances = this.state.tileInstances.filter((instance) => {
+            return this.getTileInstanceTag(instance) !== tag
+        })
+        console.log(updatedInstances.map(this.getTileInstanceTag))
+
+        this.setState({
+            tiles:updatedTiles,
+            tileInstances:updatedInstances
+        })
+    }
+
+    componentDidUpdate() {
+        console.log("Component Updated")
+        console.log(this.state.tiles.map(this.getDOMTileTag))
+        console.log(this.state.tileInstances.map(this.getTileInstanceTag))
+    }
 
     allTags = () => {
-        return this.state.tileInstances.map((instance) => {return instance.getTag()})
+        return this.state.tileInstances.map(this.getTileInstanceTag)
     }
 
     tileInstanceForTag = (tag) => {

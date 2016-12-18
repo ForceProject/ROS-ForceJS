@@ -260,6 +260,7 @@ class ControllerTile extends Component {
                                                 allTags={this.app.allTags()}
                                                 ros={this.state.ros}
                                                 params={this.state.params}
+                                                app={this.app}
                                                 callback={this.tileSettingsCallback}
                                                 preferencesAreNow={this.preferencesAreNow}/>)
     }
