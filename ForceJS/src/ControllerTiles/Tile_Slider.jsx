@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
-import Slider from 'material-ui/Slider'
+import {Slider} from '@blueprintjs/core'
 import '../tile.css'
 import ControllerTile from '.'
 
 class SliderTile extends ControllerTile {
 
-	handleSliderValueChanged = function (event, value) {
+	handleSliderValueChanged = (value) => {
+	    var nParams = this.state.params
+        nParams["value"] = value
+        this.setState({
+            params:nParams
+        })
 		this.sendMessage(value)
 	}
 
@@ -37,19 +42,21 @@ class SliderTile extends ControllerTile {
 
 	render() {
 		var style = {
-			marginLeft: '0%',
 			width: '100%',
-			height: '100%',
-			backgroundColor: 'white'
 		}
 		var childElement = (
-			<Slider
-				{...this.state.params}
-				axis={"x"}
-				style={style}
-				className={'vertically-centered'}
-				onChange={this.handleSliderValueChanged.bind(this)} />
-			)
+            <div className="vertically-centered" style={{
+                paddingLeft: 15,
+                paddingRight: 15,
+                width:'100%',
+                backgroundColor: 'white'
+            }}>
+                <Slider
+                    {...this.state.params}
+                    style={style}
+                    onChange={this.handleSliderValueChanged} />
+            </div>
+        )
 		return this.embedInContainerTile(childElement)
 	}
 }

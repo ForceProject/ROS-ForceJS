@@ -109,7 +109,7 @@ class ControllerTile extends Component {
     stopTopic = function () {
         if (this.topic !== undefined) {
             let typ = this.dataTypeForTileID(this.state.tileID)
-            if (type === "Read") {
+            if (typ === "Read") {
                 this.topic.unsubscribe()
             } else {
                 this.topic.unadvertise()

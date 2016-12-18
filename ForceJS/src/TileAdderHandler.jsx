@@ -153,10 +153,12 @@ export class TileAdderHandler {
                 title:"PR2"
             },
             { // Slider
-                value:0,
-                step:1,
+                initialValue:0,
+                value:10,
+                stepSize:1,
                 min:0,
-                max:100
+                max:100,
+                labelStepSize:10,
                 //axis:"x"
                 //isHorizontal:true,
                 //reversed:false
