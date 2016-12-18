@@ -20,6 +20,7 @@ const TileMenu = (props) => (
         <MenuItem primaryText="Numeric Stepper" />
         <MenuItem primaryText="TextField" />
         <MenuItem primaryText="Label" />
+        <MenuItem primaryText="Image" />
         <MenuItem primaryText="Close" />
     </IconMenu>
 )

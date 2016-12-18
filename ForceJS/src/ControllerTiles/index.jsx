@@ -245,6 +245,7 @@ class ControllerTile extends Component {
             "Bool",
             "Int64",
             "String",
+            "Read",
             "Read"
         ]
         return lookUp[ id - 1 ]

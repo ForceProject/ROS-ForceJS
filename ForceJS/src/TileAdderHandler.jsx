@@ -12,6 +12,7 @@ import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
 import NumericStepper from './ControllerTiles/Tile_NumericStepper.jsx'
 import Textfield from './ControllerTiles/Tile_Textfield.jsx' // 5
 import Label from './ControllerTiles/Tile_Label.jsx'
+import ImageTile from './ControllerTiles/Tile_Image.jsx' // 7
 
 import GF from './GlobalFunctions.js'
 
@@ -58,7 +59,8 @@ export class TileAdderHandler {
             Switch: 3,
             'Numeric Stepper': 4,
             TextField: 5,
-            Label: 6
+            Label: 6,
+            Image: 7
         }
         return lookUp[name]
     }
@@ -116,6 +118,10 @@ export class TileAdderHandler {
                 break
             case 6:
                 uiElement = <Label {...params} />
+                break
+            case 7:
+                uiElement = <ImageTile {...params} />
+                break
             default:
                 break;
         }
@@ -173,6 +179,9 @@ export class TileAdderHandler {
             },
             { // Label
                 value: "Hello World"
+            },
+            { // Image
+                // TODO: Put something here for image params
             }
         ]
         return lookUp[ id - 1 ]
