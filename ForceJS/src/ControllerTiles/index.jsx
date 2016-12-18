@@ -77,22 +77,6 @@ class ControllerTile extends Component {
                 name: topicName,
                 messageType: typ
             })
-            this.topic.advertise()
-        }
-    }
-
-    // The
-    // @param type should be a string with the first character capitalised
-    createTopic = function () {
-        let topicName = this.state.ros.topic
-        let typ = this.state.ros.messageType
-        console.log("About to advertise topic: " + topicName)
-
-        if (topicName !== null && typ !== null) {
-            this.topic = ros.Topic({
-                name: topicName,
-                messageType: typ
-            })
             this.topic.subscribe((recv) => {
                 let keys = this.state.ros.send.keys
                 let format = this.state.ros.send.format
@@ -103,6 +87,23 @@ class ControllerTile extends Component {
                 }
                 this.setData(format.replace("<here>", latest.toString()))
             })
+        }
+    }
+
+    // The
+    // @param type should be a string with the first character capitalised
+    createTopic = function () {
+        let topicName = this.state.ros.topic
+        let typ = this.state.ros.messageType
+        let send = this.state.ros.send
+        console.log("About to advertise topic: " + topicName)
+
+        if (topicName !== null && typ !== null && send !== undefined) {
+            this.topic = ros.Topic({
+                name: topicName,
+                messageType: typ
+            })
+            this.topic.advertise()
         }
     }
 
