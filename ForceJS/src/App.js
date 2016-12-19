@@ -75,7 +75,7 @@ class App extends Component {
             },
             tiles:jsonArray
         }
-        return JSON.stringify(exportDict, null, '\t')
+        return JSON.stringify(exportDict, null, 4)
     }
 
     getFromLocalStorage = () => {
