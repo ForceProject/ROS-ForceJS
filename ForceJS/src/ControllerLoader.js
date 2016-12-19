@@ -41,7 +41,7 @@ class ControllerLoader {
             ros:{
                 topic:dictionary.ros.topic.name,
                 messageType:dictionary.ros.topic.messageType,
-                send:dictionary.send
+                send:dictionary.ros.send
             },
             params:dictionary.parameters
         }

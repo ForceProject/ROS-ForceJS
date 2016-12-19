@@ -10,7 +10,9 @@ class ImageTile extends ControllerTile {
     // TODO: Make this work
 
     setImage = (imageData) => {
-        console.log("SET IMAGE: DO SOMETHING")
+        this.setState({
+            imgData:"data:image/jpg;base64,"+imageData
+        })
     }
 
     constructor(props) {
@@ -24,7 +26,7 @@ class ImageTile extends ControllerTile {
             height: '100%',
             backgroundColor: 'purple'
         }
-        let childElement = (<img style={style} />)
+        let childElement = (<img style={style} src={this.state.imgData}/>)
         return this.embedInContainerTile(childElement)
     }
 }

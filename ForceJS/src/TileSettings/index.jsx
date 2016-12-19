@@ -26,7 +26,7 @@ class TileSettingsDialog extends Component {
             minLines:3,
             maxLines:5,
             placeholder: 'This is a JSON dictionary, wrap it in {}; Sample:\n{"data":"<this(Float64)>"}',
-            defaultValue: JSON.stringify(ros.send)
+            defaultValue: JSON.stringify(ros.send, null, 2)
         })
         configurator.closeSection()
     }

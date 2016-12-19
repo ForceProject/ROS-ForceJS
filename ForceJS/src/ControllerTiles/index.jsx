@@ -36,21 +36,26 @@ class ControllerTile extends Component {
     componentDidUpdate() {
         if (this.shouldCreateTopic) {
             this.shouldCreateTopic = false
-            this.createTopic()
+            this.doTopicStuff()
+        }
+    }
+
+    doTopicStuff = () => {
+        let typ = this.dataTypeForTileID(this.state.tileID)
+        let rosData = this.state.ros
+        if (rosData !== undefined) {
+            if (typ === "Read") {
+                this.listenToTopic()
+            } else if (typ !== "n/a") {
+                this.createTopic()
+            }
         }
     }
 
     // React Component LifeCycle
     componentDidMount() {
         //this.showTilePreferences()
-
-        let typ = this.dataTypeForTileID(this.state.tileID)
-        let rosData = this.state.ros
-        if (typ !== "n/a" && rosData !== undefined) {
-            this.createTopic()
-        } else if (typ === "Read" && rosData !== undefined) {
-            this.listenToTopic()
-        }
+        this.doTopicStuff()
     }
 
     componentWillUnmount() {
@@ -78,7 +83,7 @@ class ControllerTile extends Component {
                 messageType: typ
             })
             this.topic.subscribe((recv) => {
-                let keys = this.state.ros.send.keys
+                let keys = this.state.ros["send"]["keys"]
                 let format = this.state.ros.send.format
                 // Work through the keys to get to the final data that we want
                 var latest = recv
