@@ -9,6 +9,10 @@
     padding: 0px;
 }
 
+.controller-tile:hover {
+    background-color: #4b7d36;
+}
+
 .circle {
     background-color: white;
     width: 50px;

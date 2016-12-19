@@ -28,7 +28,8 @@ import GF from './GlobalFunctions.js'
 //      mergeDictionaries
 export class TileAdderHandler {
 
-    createBGTiles = function (width, height, size) {
+    createBGTiles = function (width, height, size, container, callback) {
+        this.container = container
         var numHor = width / size
         var numVert = height / size
 
@@ -37,7 +38,7 @@ export class TileAdderHandler {
         for (var v = 0; v < numVert; v++) {
             var row = []
             for (var h = 0; h < numHor; h++) {
-                row.push(<BGTile key={(h*numHor)+v} x={h*size} y={v*size} size={size} />)
+                row.push(<BGTile key={(h*numHor)+v} x={h*size} y={v*size} size={size} getInstance={callback} />)
             }
             tiles.push(row)
         }
@@ -70,7 +71,9 @@ export class TileAdderHandler {
     getClickInput = function (x, y) {
         if (this.acceptingClicks) {
             //console.log("Got Click Input")
-            this.clickBuffer.push({'x':x, 'y':y})
+            let locDict = {'x':x, 'y':y}
+            this.clickBuffer.push(locDict)
+            this.container.setBGTileHighlighted(locDict, true)
             if (this.clickBuffer.length === 2) {
                 this.acceptingClicks = false
                 var tag = this.gridViewParent.state.tiles.length
@@ -79,6 +82,8 @@ export class TileAdderHandler {
                     tag += 1
                 }
                 this.createAt(tag.toString(), this.tileID, this.clickBuffer, this.size) // This should check which one is top left and which one isn't
+                this.container.setBGTileHighlighted(this.clickBuffer[0], false)
+                this.container.setBGTileHighlighted(this.clickBuffer[1], false)
                 this.clickBuffer = []
             }
         }

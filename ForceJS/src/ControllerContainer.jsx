@@ -56,12 +56,24 @@ class ControllerContainer extends Component {
         }
     }
 
+    getBGTileInstance = (instance) => {
+        this.state.bgInstances.push(instance)
+    }
+
+    setBGTileHighlighted = (location, highlighted) => {
+        for (let instance of this.state.bgInstances) {
+            if (instance.getX() === location.x && instance.getY() === location.y) {
+                instance.setHighlighted(highlighted)
+            }
+        }
+    }
+
     constructor(props) {
         super(props)
 
         this.tileAdder = this.props.adderHandler
 
-        var indTileSize = 80
+        let indTileSize = 80
 
         this.state = {
             listeningForCurserLocation: false,
@@ -70,16 +82,16 @@ class ControllerContainer extends Component {
                 height:720
             },
             tileSize: indTileSize,
+            bgTiles: this.tileAdder.createBGTiles(1280, 720, indTileSize, this, this.getBGTileInstance),
+            bgInstances: []
         }
     }
 
     render() {
-        var bgtiles = this.tileAdder.createBGTiles(this.state.dimensions.width, this.state.dimensions.height, this.state.tileSize)
-
         return (
             <div className="controller-container" onClick={this.mouseClick.bind(this)} >
                 <div>
-                    {bgtiles}
+                    {this.state.bgTiles}
                 </div>
                 <div>
                     {this.props.tiles}

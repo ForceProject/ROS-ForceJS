@@ -3,26 +3,45 @@ import './tile.css';
 
 class BGTile extends Component {
 
-	render() {
+    getX = () => {return this.props.x / this.props.size}
+    getY = () => {return this.props.y / this.props.size}
 
-		var x = this.props.x
-		var y = this.props.y
-		var size = this.props.size
+    setHighlighted = (highlighted) => {
+    	console.log('is highlighted: ' + highlighted)
+        this.setState({
+            highlighted: highlighted ? "#4b7d36" : ""
+        })
+    }
 
-		var style = {
-		      top: y,
-		      left: x,
-		      width: size,
-		      height: size
-		    };
+    constructor(props) {
+        super(props)
 
-		return (
+        this.props.getInstance(this)
+        this.state = {
+            highlighted: ""
+        }
+    }
+
+    render() {
+
+        var x = this.props.x
+        var y = this.props.y
+        var size = this.props.size
+
+        var style = {
+            top: y,
+            left: x,
+            width: size,
+            height: size,
+            backgroundColor: this.state.highlighted
+        };
+
+        return (
 			<div className="controller-tile" style={style}>
-	                <div className="circle">
-	                </div>
-	        </div>
+				<div className="circle"></div>
+			</div>
         );
-	}
+    }
 }
 
 export default BGTile;
