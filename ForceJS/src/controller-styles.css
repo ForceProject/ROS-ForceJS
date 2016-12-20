@@ -3,8 +3,8 @@ background-color: #5bace6;
 }
 
 .controller-container {
-    width: 1280px;
-    height: 720px;
+    /*width: 1280px;
+    height: 720px;*/
     background-color: #e44c4c;
     position: relative;
     top: 100px;

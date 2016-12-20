@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './NavBar.jsx'
 import ControllerContainer from './ControllerContainer.jsx'
 import {TileAdderHandler} from './TileAdderHandler.jsx'
+import DimensionsDialog from './DimensionsDialog.jsx'
 
 import baseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -21,20 +22,22 @@ class App extends Component {
     removeTile = (tag) => {
         // TODO: WHY is the output correct, but what is displayed wrong?
         // TODO: WHY does it work for manually added stuff but not loaded stuff?
+        /*
         console.log("Delete: " + tag)
         console.log("Tiles")
         console.log(this.state.tiles.map(this.getDOMTileTag))
         console.log("Instances")
         console.log(this.state.tileInstances.map(this.getTileInstanceTag))
         console.log("Updated")
+        */
         let updatedTiles = this.state.tiles.filter((tile) => {
             return this.getDOMTileTag(tile) !== tag
         })
-        console.log(updatedTiles.map(this.getDOMTileTag))
+        //console.log(updatedTiles.map(this.getDOMTileTag))
         let updatedInstances = this.state.tileInstances.filter((instance) => {
             return this.getTileInstanceTag(instance) !== tag
         })
-        console.log(updatedInstances.map(this.getTileInstanceTag))
+        //console.log(updatedInstances.map(this.getTileInstanceTag))
 
         this.setState({
             tiles:updatedTiles,
@@ -43,9 +46,16 @@ class App extends Component {
     }
 
     componentDidUpdate() {
-        console.log("Component Updated")
-        console.log(this.state.tiles.map(this.getDOMTileTag))
-        console.log(this.state.tileInstances.map(this.getTileInstanceTag))
+        //console.log("Component Updated")
+        //console.log(this.state.tiles.map(this.getDOMTileTag))
+        //console.log(this.state.tileInstances.map(this.getTileInstanceTag))
+
+        if (this.state.settingsDialog === null) {
+            if (this.pendingDialog !== null) {
+                this.showDialog(this.pendingDialog)
+                this.pendingDialog = null
+            }
+        }
     }
 
     allTags = () => {
@@ -109,10 +119,14 @@ class App extends Component {
     }
 
     showDialog = (settingsDialog) => {
-        this.setState({
-            settingsDialog: settingsDialog,
-        })
-        this.forceUpdate()
+        if (this.state.settingsDialog === null) {
+            this.setState({
+                settingsDialog: settingsDialog,
+            })
+        } else {
+            this.removeCurrentDialog()
+            this.pendingDialog = settingsDialog
+        }
     }
 
     settingsDialog = () => {
@@ -139,18 +153,32 @@ class App extends Component {
     }
 
     resetController = () => {
-        this.setState({
-            tiles:[],
-            tileInstances:[],
-            settingsDialog:null,
-            controllerJSONStr: ""
-        })
-        alert("Controller has been reset.")
+
+        let dialog = (<DimensionsDialog dimensions={this.state.dimensions}
+                                        completion={
+                                            (newDimensions) => {
+                                                this.setState({
+                                                    dimensions: newDimensions,
+                                                    tiles:[],
+                                                    tileInstances:[],
+                                                    settingsDialog:null,
+                                                    controllerJSONStr: ""
+                                                })
+                                                this.forceUpdate()
+                                            }
+                                        }/>)
+
+        this.showDialog(dialog)
     }
 
     constructor(props) {
         super(props);
         this.state = {
+            dimensions: {
+                width:1280,
+                height:720,
+                divisor:80
+            },
             tiles: [],
             tileInstances: [],
             settingsDialog: null,
@@ -161,13 +189,17 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.state.dimensions)
         return (
             <div className="App">
                 <NavBar pointers={{
                     app: this,
                     tileAdderHandler: this.tileAdder
                 }} />
-                <ControllerContainer adderHandler={this.tileAdder} tiles={this.state.tiles} load={this.state.controllerJSONStr} />
+                <ControllerContainer dimensions={this.state.dimensions}
+                                     adderHandler={this.tileAdder}
+                                     tiles={this.state.tiles}
+                                     load={this.state.controllerJSONStr} />
                 {this.settingsDialog()}
             </div>
         );

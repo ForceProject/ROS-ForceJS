@@ -7,7 +7,7 @@ import './controller-styles.css';
 class ControllerContainer extends Component {
 
     tileCoordinateAtLocation = function (x, y) {
-        var size = this.state.tileSize
+        var size = this.state.dimensions.divisor
         var tile_x = Math.floor(x/size)
         var tile_y = Math.floor(y/size)
         return {x:tile_x, y:tile_y}
@@ -54,6 +54,13 @@ class ControllerContainer extends Component {
         if (jsonStr !== this.lastJSONStr) {
             this.loadController(jsonStr)
         }
+
+        if (this.state.dimensions !== this.props.dimensions) {
+            this.setState({
+                dimensions: this.props.dimensions,
+                bgInstances:[]
+            })
+        }
     }
 
     getBGTileInstance = (instance) => {
@@ -73,25 +80,35 @@ class ControllerContainer extends Component {
 
         this.tileAdder = this.props.adderHandler
 
-        let indTileSize = 80
+        let dimensions = this.props.dimensions
 
         this.state = {
             listeningForCurserLocation: false,
-            dimensions: {
-                width:1280,
-                height:720
-            },
-            tileSize: indTileSize,
-            bgTiles: this.tileAdder.createBGTiles(1280, 720, indTileSize, this, this.getBGTileInstance),
+            dimensions: dimensions,
             bgInstances: []
         }
     }
 
     render() {
+
+        let dimensions = this.state.dimensions
+
+        let dimensionsStyle = {
+            width: dimensions.width.toString() + "px",
+            height: dimensions.height.toString() + "px"
+        }
+
+        let bgTiles = this.tileAdder.createBGTiles(dimensions.width,
+            dimensions.height,
+            dimensions.divisor,
+            this,
+            this.getBGTileInstance
+        )
+
         return (
-            <div className="controller-container" onClick={this.mouseClick.bind(this)} >
+            <div className="controller-container" style={dimensionsStyle} onClick={this.mouseClick.bind(this)} >
                 <div>
-                    {this.state.bgTiles}
+                    {bgTiles}
                 </div>
                 <div>
                     {this.props.tiles}

@@ -21,6 +21,26 @@ var GlobalFunctions = {
             return false;
         }
         return true;
+    },
+
+    isNumberType: function (str, transformer) {
+        var toCheck = str
+        if (str[0] === "0") {
+            toCheck = str.split(str[0])[1]
+        }
+        if (transformer(str).toString() === toCheck) {
+            return true
+        }
+        return false
+    },
+    isInt: function (str) {
+        return this.isNumberType(str, parseInt)
+    },
+    isFloat: function (str) {
+       return this.isNumberType(str, parseFloat)
+    },
+    isNumber: function (str) {
+        return this.isInt(str) || this.isFloat(str)
     }
 }
 
