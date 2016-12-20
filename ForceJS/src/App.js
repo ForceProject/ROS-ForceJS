@@ -220,7 +220,10 @@ class App extends Component {
                 <ControllerContainer dimensions={this.state.dimensions}
                                      adderHandler={this.tileAdder}
                                      tiles={this.state.tiles}
-                                     load={this.state.controllerJSONStr} />
+                                     load={this.state.controllerJSONStr}
+                                     acceptingClicks={this.tileAdder.acceptingClicks}
+                                     positionChosen={this.tileAdder.positionChosen}
+                />
                 {this.settingsDialog()}
             </div>
         );

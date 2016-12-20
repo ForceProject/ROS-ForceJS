@@ -1,35 +1,68 @@
 import React, {Component} from 'react'
 
 import ControllerLoader from './ControllerLoader.js'
-import {TileAdderHandler} from './TileAdderHandler.jsx'
 import './controller-styles.css';
+import BGTile from './BGTile.jsx';
 
 class ControllerContainer extends Component {
+    constructor(props) {
+        super(props)
 
-    tileCoordinateAtLocation = function (x, y) {
-        var size = this.props.dimensions.divisor
-        var tile_x = Math.floor(x/size)
-        var tile_y = Math.floor(y/size)
-        return {x:tile_x, y:tile_y}
+        this.tileAdder = this.props.adderHandler
+
+        this.state = {
+            listeningForCurserLocation: false,
+            bgInstances: [],
+            clickBuffer: []
+        }
     }
 
-    correctCoordinatesToContainer = function (x, y) {
-        var thisContainer = document.getElementsByClassName('controller-container')[0]
-        var new_x = x - thisContainer.offsetLeft + 1
-        var new_y = y - thisContainer.offsetTop
-        return {x:new_x, y:new_y}
+    tileClicked = (info)=> {
+        // console.log("clicked", info)
+
+        if (this.props.acceptingClicks) {
+            let clickBuffer = this.state.clickBuffer
+            clickBuffer.push(info)
+
+            if (clickBuffer.length >= 2) {
+                this.props.positionChosen(clickBuffer)
+                clickBuffer = []
+            }
+            this.setState({
+                clickBuffer: clickBuffer
+            })
+        }
     }
 
-    getTileLocationFromMouseEvent = function (event) {
-        var corrected = this.correctCoordinatesToContainer(event.pageX, event.pageY)
-        var tile = this.tileCoordinateAtLocation(corrected.x, corrected.y)
-        return tile
-    }
+    createBGTiles = function (width, height, size, callback) {
+        var numHor = width / size
+        var numVert = height / size
 
-    mouseClick = function (event) {
-        var tile = this.getTileLocationFromMouseEvent(event)
-        //console.log(tile.x, tile.y)
-        this.tileAdder.getClickInput(tile.x, tile.y)
+        var tiles = []
+
+        for (var v = 0; v < numVert; v++) {
+            var row = []
+            for (var h = 0; h < numHor; h++) {
+                var highlighted = false
+                for (var click of this.state.clickBuffer) {
+                    if (click.x === h && click.y === v) {
+                        highlighted = true
+                    }
+                }
+                row.push(
+                    <BGTile key={(v*numHor)+h}
+                        x={h*size}
+                        y={v*size}
+                        size={size}
+                        highlighted={highlighted}
+                        onClick={this.tileClicked}
+                    />
+                )
+            }
+            tiles.push(row)
+        }
+
+        return tiles
     }
 
     loadController = (jsonStr) => {
@@ -42,8 +75,6 @@ class ControllerContainer extends Component {
             }
         }
     }
-
-
 
     componentDidMount() {
         this.loadController(this.props.load)
@@ -71,13 +102,10 @@ class ControllerContainer extends Component {
         }
 
         if (this.props.dimensions !== nextProps.dimensions) {
+            this.bgTiles = null
             this.setState({
                 bgInstances:[]
             })
-        }
-
-        if (this.props.tiles.length !== nextProps.tiles.length) {
-            this.forceUpdate()
         }
     }
 
@@ -93,17 +121,6 @@ class ControllerContainer extends Component {
         }
     }
 
-    constructor(props) {
-        super(props)
-
-        this.tileAdder = this.props.adderHandler
-
-        this.state = {
-            listeningForCurserLocation: false,
-            bgInstances: []
-        }
-    }
-
     render() {
 
         let dimensions = this.props.dimensions
@@ -113,16 +130,14 @@ class ControllerContainer extends Component {
             height: dimensions.height.toString() + "px"
         }
 
-        let bgTiles = this.tileAdder.createBGTiles(
+        let bgTiles = this.createBGTiles(
             dimensions.width,
             dimensions.height,
-            dimensions.divisor,
-            this,
-            this.getBGTileInstance
+            dimensions.divisor
         )
 
         return (
-            <div className="controller-container" style={dimensionsStyle} onClick={this.mouseClick.bind(this)} >
+            <div className="controller-container" style={dimensionsStyle} >
                 <div>
                     {bgTiles}
                 </div>

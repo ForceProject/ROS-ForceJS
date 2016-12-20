@@ -4,8 +4,6 @@ import React from 'react'
 
 import ControllerTile from './ControllerTiles'
 
-import BGTile from './BGTile.jsx';
-
 import Button from './ControllerTiles/Tile_Button.jsx' // 1
 import Slider from './ControllerTiles/Tile_Slider.jsx'
 import Switch from './ControllerTiles/Tile_Switch.jsx' // 3
@@ -27,30 +25,12 @@ import GF from './GlobalFunctions.js'
 //        mergeDictionaries
 //      mergeDictionaries
 export class TileAdderHandler {
-
-    createBGTiles = function (width, height, size, container, callback) {
-        this.container = container
-        var numHor = width / size
-        var numVert = height / size
-
-        var tiles = []
-
-        for (var v = 0; v < numVert; v++) {
-            var row = []
-            for (var h = 0; h < numHor; h++) {
-                row.push(<BGTile key={(h*numHor)+v} x={h*size} y={v*size} size={size} getInstance={callback} />)
-            }
-            tiles.push(row)
-        }
-
-        return tiles
-    }
-
     // BEGIN Creating and Adding the Tile
     startAddTileProcess = function (name) {
         //console.log("Accepting Click Inputs")
         this.tileID = this.tileIDFromName(name)
         this.acceptingClicks = true
+        this.gridViewParent.forceUpdate() // ugly
     }
 
     tileIDFromName = function (name) {
@@ -66,27 +46,13 @@ export class TileAdderHandler {
         return lookUp[name]
     }
 
-    // This is so impure it a drug addict wouldn't even inject it
-    clickBuffer = []
-    getClickInput = function (x, y) {
-        if (this.acceptingClicks) {
-            //console.log("Got Click Input")
-            let locDict = {'x':x, 'y':y}
-            this.clickBuffer.push(locDict)
-            this.container.setBGTileHighlighted(locDict, true)
-            if (this.clickBuffer.length === 2) {
-                this.acceptingClicks = false
-                var tag = this.gridViewParent.state.tiles.length
-                let allTags = this.gridViewParent.allTags()
-                while (allTags.indexOf(tag.toString()) !== -1) {
-                    tag += 1
-                }
-                this.createAt(tag.toString(), this.tileID, this.clickBuffer, this.size) // This should check which one is top left and which one isn't
-                this.container.setBGTileHighlighted(this.clickBuffer[0], false)
-                this.container.setBGTileHighlighted(this.clickBuffer[1], false)
-                this.clickBuffer = []
-            }
+    positionChosen = (locations) => {
+        var tag = this.gridViewParent.state.tiles.length
+        let allTags = this.gridViewParent.allTags()
+        while (allTags.indexOf(tag.toString()) !== -1) {
+            tag += 1
         }
+        this.createAt(tag.toString(), this.tileID, locations, this.size) // This should check which one is top left and which one isn't
     }
 
     createAt = function (tag, tileID, locations, size) {

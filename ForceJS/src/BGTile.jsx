@@ -6,20 +6,12 @@ class BGTile extends Component {
     getX = () => {return this.props.x / this.props.size}
     getY = () => {return this.props.y / this.props.size}
 
-    setHighlighted = (highlighted) => {
-    	console.log('is highlighted: ' + highlighted)
-        this.setState({
-            highlighted: highlighted ? "#4b7d36" : ""
-        })
+    handleClick = (event) => {
+        this.props.onClick({x: this.getX(), y: this.getY()})
     }
 
     constructor(props) {
         super(props)
-
-        this.props.getInstance(this)
-        this.state = {
-            highlighted: ""
-        }
     }
 
     render() {
@@ -33,11 +25,11 @@ class BGTile extends Component {
             left: x,
             width: size,
             height: size,
-            backgroundColor: this.state.highlighted
+            backgroundColor: this.props.highlighted ? "#4b7d36" : ""
         };
 
         return (
-			<div className="controller-tile" style={style}>
+			<div className="controller-tile" style={style} onClick={this.handleClick}>
 				<div className="circle"></div>
 			</div>
         );
