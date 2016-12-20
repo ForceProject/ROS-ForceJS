@@ -90,13 +90,14 @@ class ControllerContainer extends Component {
     */
 
     componentWillReceiveProps(nextProps) {
-
+        /*
         console.log("Will Receive Props")
         console.log(nextProps.tiles.map((tile) => {
             return `TAG: ${tile.props.tag}; KEY: ${tile.key}`
         }))
         console.log(nextProps.tiles)
-
+        */
+        
         if (this.props.load !== nextProps.load) {
             this.loadController(nextProps.load)
         }

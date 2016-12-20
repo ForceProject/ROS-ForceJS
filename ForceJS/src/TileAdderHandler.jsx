@@ -68,6 +68,11 @@ export class TileAdderHandler {
 
     createTileWithIDAndParameters = function (tileID, params, location, size) {
         var uiElement
+        // var nParams = {
+        //     key:params.tag
+        // }
+        // nParams = Object.assign(nParams, params)
+        params.key = params.tag
         switch (tileID) {
             case 1:
                 uiElement = <Button
@@ -106,7 +111,6 @@ export class TileAdderHandler {
     tileParameters = function (tag, tileID, location, size) {
         let parameters = this.defaultParametersForTileID(tileID)
         let constantProps = {
-            key: tag,
             tag: tag,
             tileID: tileID,
             location: location,
