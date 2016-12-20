@@ -22,22 +22,24 @@ class App extends Component {
     removeTile = (tag) => {
         // TODO: WHY is the output correct, but what is displayed wrong?
         // TODO: WHY does it work for manually added stuff but not loaded stuff?
-        /*
+
         console.log("Delete: " + tag)
         console.log("Tiles")
         console.log(this.state.tiles.map(this.getDOMTileTag))
         console.log("Instances")
         console.log(this.state.tileInstances.map(this.getTileInstanceTag))
         console.log("Updated")
-        */
+
         let updatedTiles = this.state.tiles.filter((tile) => {
             return this.getDOMTileTag(tile) !== tag
         })
-        //console.log(updatedTiles.map(this.getDOMTileTag))
+        console.log(updatedTiles.map(this.getDOMTileTag))
+
         let updatedInstances = this.state.tileInstances.filter((instance) => {
             return this.getTileInstanceTag(instance) !== tag
         })
-        //console.log(updatedInstances.map(this.getTileInstanceTag))
+
+        console.log(updatedInstances.map(this.getTileInstanceTag))
 
         this.setState({
             tiles:updatedTiles,
@@ -88,11 +90,30 @@ class App extends Component {
         return JSON.stringify(exportDict, null, 4)
     }
 
+    // http://stackoverflow.com/questions/11214404/how-to-detect-if-browser-supports-html5-local-storage
+    isLocalStorageAvailable = () => {
+        let mod = 'test1234'
+        try {
+            localStorage.setItem(mod, mod);
+            localStorage.removeItem(mod);
+            return true;
+        } catch(e) {
+            return false;
+        }
+
+    }
+
     getFromLocalStorage = () => {
         return localStorage.getItem('ForceJS_LastController')
     }
 
     saveToLocalStorage = () => {
+
+        let isLocal = this.isLocalStorageAvailable()
+        if (!isLocal) {
+            alert("Local storage is: " + (isLocal ? "" : "NOT ") + "AVAILABLE")
+        }
+
         var jsonStr = this.createSaveJSONStr()
         localStorage.setItem('ForceJS_LastController', jsonStr)
         console.log("Saved to localStorage")

@@ -7,7 +7,7 @@ import './controller-styles.css';
 class ControllerContainer extends Component {
 
     tileCoordinateAtLocation = function (x, y) {
-        var size = this.state.dimensions.divisor
+        var size = this.props.dimensions.divisor
         var tile_x = Math.floor(x/size)
         var tile_y = Math.floor(y/size)
         return {x:tile_x, y:tile_y}
@@ -37,7 +37,7 @@ class ControllerContainer extends Component {
             if (this.props.tiles.length > 0) {
                 alert("You must reset the controller before loading one.")
             } else {
-                this.lastJSONStr = jsonStr
+                //this.lastJSONStr = jsonStr
                 this.loader = new ControllerLoader(this.tileAdder, jsonStr)
             }
         }
@@ -49,17 +49,35 @@ class ControllerContainer extends Component {
         this.loadController(this.props.load)
     }
 
+    /*
     componentDidUpdate() {
         var jsonStr = this.props.load
         if (jsonStr !== this.lastJSONStr) {
             this.loadController(jsonStr)
         }
+    }
+    */
 
-        if (this.state.dimensions !== this.props.dimensions) {
+    componentWillReceiveProps(nextProps) {
+
+        console.log("Will Receive Props")
+        console.log(nextProps.tiles.map((tile) => {
+            return `TAG: ${tile.props.tag}; KEY: ${tile.key}`
+        }))
+        console.log(nextProps.tiles)
+
+        if (this.props.load !== nextProps.load) {
+            this.loadController(nextProps.load)
+        }
+
+        if (this.props.dimensions !== nextProps.dimensions) {
             this.setState({
-                dimensions: this.props.dimensions,
                 bgInstances:[]
             })
+        }
+
+        if (this.props.tiles.length !== nextProps.tiles.length) {
+            this.forceUpdate()
         }
     }
 
@@ -80,25 +98,23 @@ class ControllerContainer extends Component {
 
         this.tileAdder = this.props.adderHandler
 
-        let dimensions = this.props.dimensions
-
         this.state = {
             listeningForCurserLocation: false,
-            dimensions: dimensions,
             bgInstances: []
         }
     }
 
     render() {
 
-        let dimensions = this.state.dimensions
+        let dimensions = this.props.dimensions
 
         let dimensionsStyle = {
             width: dimensions.width.toString() + "px",
             height: dimensions.height.toString() + "px"
         }
 
-        let bgTiles = this.tileAdder.createBGTiles(dimensions.width,
+        let bgTiles = this.tileAdder.createBGTiles(
+            dimensions.width,
             dimensions.height,
             dimensions.divisor,
             this,

@@ -42,13 +42,18 @@ ros.on('close', function() {
       // statusDisplay.set('Error', 'ROS Connection closed. Reconnecting...');
     }
     var delay = Math.min(60*1000, 5*1000 * ros._connectAttempts); // linear falloff
-    setTimeout(function(){
-        ros.connect(process.env.ROSBRIDGE_URI);
-        ros._connectAttempts++;
-        // note: other modules still need to re-subscribe to everything.
-        // reloading the page will work,
-        // but it may be possible to re-mount components
-    }, delay);
+
+    let SHOULD_RETRY = false
+
+    if (SHOULD_RETRY) {
+        setTimeout(function () {
+            ros.connect(process.env.ROSBRIDGE_URI);
+            ros._connectAttempts++;
+            // note: other modules still need to re-subscribe to everything.
+            // reloading the page will work,
+            // but it may be possible to re-mount components
+        }, delay);
+    }
 });
 
 export {ros, ROSLIB}
