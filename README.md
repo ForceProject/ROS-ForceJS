@@ -2,7 +2,7 @@
 
 ## Description
 
-ForceJS is a basic port of the iOS Force app, linked (here)[http://forceproject.github.io]. This current port is designed to communicate using ROSBridge by publishing data to ROS Topics and subscribing to data sent from ROS Topics from the robot.
+ForceJS is a basic port of the iOS Force app, linked [here](http://forceproject.github.io). This current port is designed to communicate using ROSBridge by publishing data to ROS Topics and subscribing to data sent from ROS Topics from the robot.
 To publish data, the following information is required:
 - The ROS Topic Name
 - Type

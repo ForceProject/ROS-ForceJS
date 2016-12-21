@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {
     Button,
     Dialog,
-    EditableText,
     Intent,
     RadioGroup,
     Radio

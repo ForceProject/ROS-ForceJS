@@ -5,11 +5,12 @@ import {
     EditableText,
     Intent
 } from '@blueprintjs/core'
+import TextField from 'material-ui/TextField'
 import GF from './GlobalFunctions.js'
 
 class DimensionsDialog extends Component {
 
-    trackChanges = function (key, value) {
+    trackChanges = function (key, event, value) {
         var toCheck = value
         if (value.length === 1) {
             toCheck = 0
@@ -58,20 +59,26 @@ class DimensionsDialog extends Component {
                 onClose={this.toggleDialog}
                 title="Controller Dimensions">
                 <div className="pt-dialog-body">
-                    <h6>Width</h6>
-                    <EditableText placeholder="Width"
-                                  value={this.state.newDimensions.width}
-                                  onChange={this.trackChanges.bind(this, "width")} />
+                    <TextField
+                        hintText={"Width"}
+                        floatingLabelText={"Width"}
+                        fullWidth={true}
+                        onChange={this.trackChanges.bind(this, "width")}
+                        value={this.state.newDimensions.width} />
                     <br/><br/>
-                    <h6>Height</h6>
-                    <EditableText placeholder="Height"
-                                  value={this.state.newDimensions.height}
-                                  onChange={this.trackChanges.bind(this, "height")} />
+                    <TextField
+                        hintText={"Height"}
+                        floatingLabelText={"Height"}
+                        fullWidth={true}
+                        onChange={this.trackChanges.bind(this, "height")}
+                        value={this.state.newDimensions.height} />
                     <br/><br/>
-                    <h6>Size</h6>
-                    <EditableText placeholder="Divisor / Single Tile Size"
-                                  value={this.state.newDimensions.divisor}
-                                  onChange={this.trackChanges.bind(this, "divisor")} />
+                    <TextField
+                        hintText={"Divisor / Single Tile Size"}
+                        floatingLabelText={"Divisor / Single Tile Size"}
+                        fullWidth={true}
+                        onChange={this.trackChanges.bind(this, "divisor")}
+                        value={this.state.newDimensions.divisor} />
                 </div>
                 <div className="pt-dialog-footer">
                     <div className="pt-dialog-footer-actions">
