@@ -68,7 +68,7 @@ class ControllerContainer extends Component {
     loadController = (jsonStr) => {
         if (jsonStr !== null) {
             if (this.props.tiles.length > 0) {
-                alert("You must reset the controller before loading one.")
+                //alert("You must reset the controller before loading one.")
             } else {
                 //this.lastJSONStr = jsonStr
                 this.loader = new ControllerLoader(this.tileAdder, jsonStr)

@@ -7,18 +7,19 @@ import {
     RadioGroup,
     Radio
 } from '@blueprintjs/core'
+import TextField from 'material-ui/TextField'
 import Dropzone from 'react-dropzone'
 import './LoadDialog.css'
 import GF from './GlobalFunctions'
 
 class LoadDialog extends Component {
 
-    textfieldValueChanged = (newValue) => {
+    textfieldValueChanged = (event, newValue) => {
         this.pasteValue = newValue
     }
 
     saveClicked = () => {
-        let value = this.state.showUpload ? this.uploadValue : this.state.pasteValue
+        let value = this.state.showUpload ? this.uploadValue : this.pasteValue
         console.log(value)
         if (GF.isJSON(value)) {
             this.app.loadController(value)
@@ -71,6 +72,7 @@ class LoadDialog extends Component {
             uploadMethod:"Upload",
             showUpload: true,
         }
+        this.pasteValue = ""
     }
 
     radioChanged = () => {
@@ -96,16 +98,35 @@ class LoadDialog extends Component {
             </Dropzone>
         </div>)
 
+        /*
+         <EditableText
+         placeholder="Copy and Paste the JSON of a save file into here to load it as a controller."
+         multiline
+         minLines={10}
+         maxLines={15}
+         onChange={this.textfieldValueChanged}
+         defaultValue={this.pasteValue}/>
+         */
+
         var pasteSection = (
             <div>
                 <h5>Paste Controller JSON</h5>
-                <EditableText
-                    placeholder="Copy and Paste the JSON of a save file into here to load it as a controller."
-                    multiline
-                    minLines={10}
-                    maxLines={15}
-                    onChange={this.textfieldValueChanged}
-                    defaultValue={this.pasteValue}/>
+                <TextField
+                    hintText="Copy & Paste the JSON of a save file here to load it."
+                    floatingLabelText="JSON Entry Field"
+                    multiLine={true}
+                    fullWidth={true}
+                    rows={
+                        this.pasteValue.length > 0 ? 5:1
+                    }
+                    rowsMax={15}
+                    style={
+                        {
+                            fontSize: this.pasteValue.length > 0 ? 10:15
+                        }
+                    }
+                    onChange={this.textfieldValueChanged}/>
+
             </div>
         )
 

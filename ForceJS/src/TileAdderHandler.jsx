@@ -110,13 +110,19 @@ export class TileAdderHandler {
      */
     tileParameters = function (tag, tileID, location, size) {
         let parameters = this.defaultParametersForTileID(tileID)
+        let blankROS = {
+            topic: "",
+            messageType: "",
+            send: {}
+        }
         let constantProps = {
             tag: tag,
             tileID: tileID,
             location: location,
             size: size,
             app: this.gridViewParent,
-            params: parameters
+            params: parameters,
+            ros: blankROS
         }
 
         return constantProps

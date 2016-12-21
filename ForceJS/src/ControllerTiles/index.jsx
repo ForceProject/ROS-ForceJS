@@ -333,26 +333,7 @@ class ControllerTile extends Component {
 
     constructor(props) {
         super(props);
-        let defaultROS = {
-            ros: {
-                topic: "/head_traj_controller/command",
-                messageType: "trajectory_msgs/JointTrajectory",
-                send: {
-                    "joint_names": ["head_pan_joint", "head_tilt_joint"],
-                    "points":[{
-                        "positions": ["<this(Float64)>", -0.018430676901060112],
-                        "velocities": [0.3, 0.0],
-                        "accelerations": [],
-                        "effort": [],
-                        "time_from_start": {
-                            "secs": 1,
-                            "nsecs": 150000000
-                        }
-                    }]
-                }
-            }
-        }
-        this.state = GF.mergeDictionaries(defaultROS, this.props)
+        this.state = this.props
         this.isEditting = false
 
         this.app = this.state.app
