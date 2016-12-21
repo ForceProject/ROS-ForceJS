@@ -15,6 +15,7 @@ class LoadDialog extends Component {
 
     textfieldValueChanged = (event, newValue) => {
         this.pasteValue = newValue
+        this.forceUpdate()
     }
 
     saveClicked = () => {

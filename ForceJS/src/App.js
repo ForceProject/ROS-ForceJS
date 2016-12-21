@@ -20,27 +20,12 @@ class App extends Component {
     }
 
     removeTile = (tag) => {
-        // TODO: WHY is the output correct, but what is displayed wrong?
-        // TODO: WHY does it work for manually added stuff but not loaded stuff?
-
-        // console.log("Delete: " + tag)
-        // console.log("Tiles")
-        // console.log(this.state.tiles.map(this.getDOMTileTag))
-        // console.log("Instances")
-        // console.log(this.state.tileInstances.map(this.getTileInstanceTag))
-        // console.log("Updated")
-
         let updatedTiles = this.state.tiles.filter((tile) => {
             return this.getDOMTileTag(tile) !== tag
         })
-        //console.log(updatedTiles.map(this.getDOMTileTag))
-
         let updatedInstances = this.state.tileInstances.filter((instance) => {
             return this.getTileInstanceTag(instance) !== tag
         })
-
-        //console.log(updatedInstances.map(this.getTileInstanceTag))
-
         this.setState({
             tiles:updatedTiles,
             tileInstances:updatedInstances
@@ -48,10 +33,6 @@ class App extends Component {
     }
 
     componentDidUpdate() {
-        //console.log("Component Updated")
-        //console.log(this.state.tiles.map(this.getDOMTileTag))
-        //console.log(this.state.tileInstances.map(this.getTileInstanceTag))
-
         if (this.state.settingsDialog === null) {
             if (this.pendingDialog !== null) {
                 this.showDialog(this.pendingDialog)
@@ -81,10 +62,7 @@ class App extends Component {
 
         // TODO: Don't hardcode the dimensions of the controller
         let exportDict = {
-            dimensions:{
-                width:1280,
-                height:720
-            },
+            dimensions:this.state.dimensions,
             tiles:jsonArray
         }
         return JSON.stringify(exportDict, null, 4)

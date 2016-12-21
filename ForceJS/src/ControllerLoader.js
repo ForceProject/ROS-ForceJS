@@ -19,9 +19,8 @@ class ControllerLoader {
         }
         params = GF.mergeDictionaries(params, ros)
 
-        // DO SOMETHING ABOUT THIS, IT'S BAD, IT'S HARDCODED
         var size = {
-            size:80,
+            size:dictionary.dimensions.divisor,
             app:this.tileAdder.gridViewParent
         }
         params = GF.mergeDictionaries(params, size)
