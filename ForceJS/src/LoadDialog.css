@@ -1,0 +1,19 @@
+.dropzone {
+    width: 100%;
+    height: 150px;
+    border-width: 2;
+    border-color: #666;
+    border-style: dashed;
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.dropzone:hover {
+    border-style: solid;
+    background-color: #65ac4e;
+}
+
+.dropzone div {
+    left: 50%;
+    /*transform: translateX(-50%);*/
+}

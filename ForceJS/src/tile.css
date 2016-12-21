@@ -1,0 +1,60 @@
+.controller-tile {
+    width: 80px;
+    height: 80px;
+    background-color: #8cdb57;
+    position: absolute;
+    border-color: white;
+    border-width: 10px;
+    border-style: line;
+    padding: 0px;
+}
+
+.controller-tile:hover {
+    background-color: #4b7d36;
+}
+
+.circle {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    border-radius: 50%;
+    position: relative;
+    top: 15.625%;
+}
+
+.ui-tile {
+    position: absolute;
+    background-color: red;
+}
+
+.vertically-centered {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.horizontally-centered {
+    margin: 0 auto;
+}
+
+
+
+
+
+.numericStepper {
+    padding: 5px;
+}
+
+.numericStepper p {
+    margin: 2px;
+    color: blue;
+    font-size: 20px;
+    font-weight: 40;
+}
+
+.numericStepper-button {
+    display: block;
+    width: 45%;
+    margin: 5px;
+}
