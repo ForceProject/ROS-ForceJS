@@ -13,6 +13,7 @@ var env = {
     PACKAGE_NAME: packageInfo.name,
     PACKAGE_VERSION: packageInfo.version
 };
+
 Object.keys(env).forEach(function(key){
     if (key in process.env) {
         env[key] = process.env[key];
